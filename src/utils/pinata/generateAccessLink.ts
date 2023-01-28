@@ -1,7 +1,7 @@
 import sub from "./sub";
 
-// Checks a submarined CID. If valid, generates an access link that by default is accessible for one hour
-export const generateAccessLink = async (
+// Checks a submarined CID. If valid, generates an access link that is accessible for a set amount of time
+const generateAccessLink = async (
   cid: string,
   unlockTimeInSec: number = 3600
 ) => {
@@ -19,3 +19,5 @@ export const generateAccessLink = async (
 
   return { foundContent, link: null };
 };
+
+export default generateAccessLink;

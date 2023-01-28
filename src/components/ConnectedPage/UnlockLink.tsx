@@ -11,12 +11,10 @@ interface Props {
 }
 
 const UnlockLink = ({ title, unlockUrl, cid }: Props) => {
-  const href = `https://www.gstop-content.com/ipfs/${cid}`;
-
   return (
     <a
       className="flex space-x-4 items-center w-full border-t border-white/20 py-4 hover:bg-white/10 duration-150 px-2 group text-white/80 hover:text-white-100"
-      href={href}
+      href={unlockUrl}
       target="_blank"
       rel="noreferrer"
     >
@@ -28,7 +26,7 @@ const UnlockLink = ({ title, unlockUrl, cid }: Props) => {
         <h2 className="font-medium text-lg group-hover:text-sky-500 duration-150">
           {title ? title : "Untitled"}
         </h2>
-        <p className="opacity-70 truncate w-32 text-sm">{cid}</p>
+        <p className="opacity-70 truncate w-80 text-sm">{cid}</p>
       </div>
       <ChevronRightIcon className="w-5 h-5 flex-shrink-0 text-white/50 group-hover:text-white duration-150" />
     </a>

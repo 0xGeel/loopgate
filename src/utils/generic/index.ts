@@ -6,16 +6,16 @@ const checkIfContainsAll = (config: string[], target: string[]) => {
 };
 
 // Compare NFTs owned by an individual to the configurated combinations to find unlockable content
-const findUnlocks = (nfts: any) => {
-  let unlocks: Unlockable[] = [];
-
+const findUnlockedCids = (nfts: any) => {
   // For each row in the config, check if the user holds all NFTs necessary to unlock them.
-  unlockables.forEach((item) => {
-    // Compare nftIds for the item with the NFTs owned by the user. If true, add to the unlocks
-    checkIfContainsAll(item.nftId, nfts) && unlocks.push(item);
-  });
+  const unlocks = unlockables.filter((item) =>
+    checkIfContainsAll(item.nftId, nfts)
+  );
 
-  return unlocks;
+  // We're only interested in the CIDs
+  const cids = unlocks.map((item) => item.cid);
+
+  return cids;
 };
 
 // Get the current year
@@ -24,4 +24,4 @@ const getCurrentYear = (): number => {
   return currentTime.getFullYear();
 };
 
-export { checkIfContainsAll, findUnlocks, getCurrentYear };
+export { checkIfContainsAll, findUnlockedCids, getCurrentYear };

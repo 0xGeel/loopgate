@@ -37,7 +37,7 @@ const ConnectedPage = () => {
 
   return (
     <div className="flex flex-col items-center flex-grow space-y-8">
-      <div className="max-w-lg w-full py-8 px-6">
+      <div className="max-w-xl w-full py-8 px-6">
         <h1 className="text-2xl font-medium mb-4">Your unlocked content</h1>
 
         {isLoading ? (
@@ -51,10 +51,10 @@ const ConnectedPage = () => {
               <div className="flex flex-col mb-8">
                 {unlocks.map((unlock) => (
                   <UnlockLink
-                    key={`${unlock.name}${unlock.cid}`}
-                    title={unlock.name}
-                    unlockUrl={unlock.cid}
-                    cid={unlock.cid}
+                    key={`${unlock.item.id}${unlock.accessLink}`}
+                    title={unlock.item.name}
+                    unlockUrl={unlock.accessLink}
+                    cid={unlock.item.cid}
                   />
                 ))}
               </div>
