@@ -1,11 +1,9 @@
-// Parses a Loopring API response to extract the NFT IDs
-const extractNfts = (res: any) => {
-  let nfts: string[] = [];
-  res.forEach((item: any) => {
-    nfts.push(item.nftId);
-  });
+// API Call Implementations
+import getUserAddress from "./getUserAddress";
+import getUserNfts from "./getUserNfts";
 
-  return nfts;
-};
+// Utils / general
+import extractNfts from "./extractNfts";
+import headerOpts from "./headerOpts";
 
-export { extractNfts };
+export { extractNfts, getUserAddress, getUserNfts, headerOpts };

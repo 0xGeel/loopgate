@@ -5,7 +5,7 @@ import { getCurrentYear } from "../../utils/generic";
 const Footer = () => {
   const currentYear = getCurrentYear();
   const twitterLink = "#!"; // TODO
-  const sourceCodeLink = "#!"; // TODO
+  const sourceCodeLink = "https://github.com/0xGeel/loopring-token-gating";
 
   return (
     <div className="py-4 px-8 w-full flex flex-col md:flex-row items-center justify-between space-y-1 md:space-y-0 mt-auto ">

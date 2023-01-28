@@ -1,22 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-
-import { sub } from "../../utils/pinata";
-
-const generateAccessLink = async (cid: string) => {
-  const foundContent = await sub.getSubmarinedContentByCid(cid);
-  const folder = foundContent.items[0];
-  if (folder) {
-    const unlockTimeInSec = 3600; // one hour
-    const accessLink = await sub.generateAccessLink(
-      unlockTimeInSec,
-      folder.id,
-      cid
-    );
-
-    return { items: foundContent.items, accessLink };
-  }
-  return { foundContent, link: null };
-};
+import { generateAccessLink } from "../../utils/pinata/generateAccessLink";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;

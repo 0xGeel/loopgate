@@ -1,17 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { findUnlocks } from "../../utils/generic";
-import { extractNfts } from "../../utils/loopring";
-import axios from "axios";
-import {
-  USER_ACCOUNT_INFO_URL,
-  USER_NFT_BALANCE_URL,
-} from "../../utils/loopring/_routes";
-
-// TODO: Refactor with typing
-// type Data = {
-//   name: string;
-// };
-// const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+import { extractNfts, getUserAddress, getUserNfts } from "../../utils/loopring";
 
 /*  1. Call the Loopring API to find user's Loopring Account ID ✅
     2. Call the Loopring API to find the NFTs held by the user  ✅
@@ -23,29 +12,23 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { address } = query;
 
   if (address) {
-    axios
-      .get(`${USER_ACCOUNT_INFO_URL}?owner=${address}`)
-      .then((response) => {
-        return axios.get(
-          `${USER_NFT_BALANCE_URL}?accountId=${response.data.accountId}&limit=100`, //&metadata=true
-          {
-            headers: {
-              "X-API-KEY": `${process.env.LOOPRING_API_KEY}`,
-            },
-          }
-        );
-      })
-      .then((response) => {
-        const nfts = extractNfts(response.data.data);
-        const unlocks = findUnlocks(nfts);
-        res.status(200).json({ unlocks: unlocks });
-      })
-      .catch((error) => {
-        res.status(400).json({ unlocks: [] });
-      });
+    const accountId = await getUserAddress(address); // User's 0x address -> Loopring Account ID
+    const userNfts = await getUserNfts(accountId); // Get the NFTs the user holds
+    const nfts = extractNfts(userNfts.data); // Extract NFTs from Loopring API response
+    const unlocks = findUnlocks(nfts); // Check user's NFTs against config to determine unlocks
+
+    // Todo: generate access links on Pinata
+
+    res.status(200).json({ unlocks: unlocks });
   } else {
     res.status(400).json({ unlocks: [] });
   }
 };
 
 export default handler;
+
+// TODO: Refactor with typing
+// type Data = {
+//   name: string;
+// };
+// const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {

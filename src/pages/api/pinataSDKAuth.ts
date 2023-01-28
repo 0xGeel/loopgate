@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import pinataSDK from "@pinata/sdk";
 // See: https://www.npmjs.com/package/@pinata/sdk
 
-// Use the api keys by specifying your api key and api secret
+// Testing the Pinata SDK by authenticating
 
 const pinata = new pinataSDK({
   pinataApiKey: process.env.PINATA_API_KEY,

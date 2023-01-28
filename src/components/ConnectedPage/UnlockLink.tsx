@@ -3,10 +3,15 @@ import {
   LockOpenIcon,
   ChevronRightIcon,
 } from "@heroicons/react/24/solid";
-import { IUnlockable } from "./types";
 
-const UnlockLink = ({ title, ipfsUrl }: IUnlockable) => {
-  const href = `https://www.gstop-content.com/ipfs/${ipfsUrl}`;
+interface Props {
+  title: string;
+  unlockUrl: string;
+  cid: `baf${string}`;
+}
+
+const UnlockLink = ({ title, unlockUrl, cid }: Props) => {
+  const href = `https://www.gstop-content.com/ipfs/${cid}`;
 
   return (
     <a
@@ -21,9 +26,9 @@ const UnlockLink = ({ title, ipfsUrl }: IUnlockable) => {
       </div>
       <div className="flex-col w-full text-left">
         <h2 className="font-medium text-lg group-hover:text-sky-500 duration-150">
-          {title}
+          {title ? title : "Untitled"}
         </h2>
-        <p className="opacity-70 truncate w-32 text-sm">{ipfsUrl}</p>
+        <p className="opacity-70 truncate w-32 text-sm">{cid}</p>
       </div>
       <ChevronRightIcon className="w-5 h-5 flex-shrink-0 text-white/50 group-hover:text-white duration-150" />
     </a>

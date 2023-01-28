@@ -51,9 +51,10 @@ const ConnectedPage = () => {
               <div className="flex flex-col mb-8">
                 {unlocks.map((unlock) => (
                   <UnlockLink
-                    key={unlock.title}
-                    title={unlock.title}
-                    ipfsUrl={unlock.ipfsUrl}
+                    key={`${unlock.name}${unlock.cid}`}
+                    title={unlock.name}
+                    unlockUrl={unlock.cid}
+                    cid={unlock.cid}
                   />
                 ))}
               </div>
