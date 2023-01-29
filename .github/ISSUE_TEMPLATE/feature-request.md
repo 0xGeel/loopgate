@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for this project
 title: 'Feature request: <summary of feature here>'
-labels: enhancement
+labels: Enhancement ✨
 assignees: ''
 
 ---
