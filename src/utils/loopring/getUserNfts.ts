@@ -11,6 +11,7 @@ const getUserNfts = async (accountId: string) => {
     return response.data;
   } catch (error) {
     console.log(error);
+    return false;
   }
 };
 
