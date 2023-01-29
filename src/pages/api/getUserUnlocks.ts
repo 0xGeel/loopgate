@@ -13,8 +13,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // 2. Call the Loopring API to find the NFTs held by the User
     const userNfts = await getUserNfts(accountId);
-    const nfts = extractNfts(userNfts.data); // Extract NFTs from Loopring API response
-    const cids = findUnlockedCids(nfts); // Check user's NFTs against config to determine unlocks
+    const nftIds = extractNfts(userNfts.data); // Extract NFT IDs from Loopring API response
+    const cids = findUnlockedCids(nftIds); // Check user's NFT IDs against config to determine unlocks
 
     // 3. Call the Pinata API for each CID the user should have access too
     const unlocks = await Promise.all(
