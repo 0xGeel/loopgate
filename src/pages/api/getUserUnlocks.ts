@@ -3,7 +3,7 @@ import { findUnlockedCids } from "../../utils/generic";
 import { getAllUserNftIds, getUserAddress } from "../../utils/loopring";
 import { getPinataIndexLink } from "../../utils/pinata";
 
-// Summary:
+// Summary of what happens:
 // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
 // 2️⃣ Call the Loopring API to find the NFTs held by the user
 // 3️⃣ Check the user's NFT IDs against the config.ts to determine unlocks
@@ -45,10 +45,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   if (!unlocks) {
-    return res.status(200).json({ unlocks: [] });
+    return res.status(200).json({ unlocks: [] }); // API calls succeeded, but there are no unlocks.
   }
 
-  return res.status(200).json({ unlocks: unlocks });
+  return res.status(200).json({ unlocks: unlocks }); // User has unlocks
 };
 
 export default handler;

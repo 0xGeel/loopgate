@@ -1,24 +1,24 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getAllUserNftIds } from "../../utils/loopring";
 
 // Request NFTs on Loopring held by a user
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;
   const { accountId } = query;
 
-  // Check if an Account ID is specified
-  if (!accountId) {
+  if (!accountId || Array.isArray(accountId[0])) {
+    // Check if multiple or no Account IDs are specified. If so: early return.
     return res.status(400).json({ error: "No Loopring Account ID specified." });
   }
 
-  //@ts-ignore
-  const allNftIds = await getAllNftIds(accountId);
+  // Call Loopring API to find- and extract all user NFT IDs
+  const allNftIds = await getAllUserNftIds(accountId);
 
-  if (!allNftIds)
-    return res.status(400).json({
-      error: "Unable to find any NFTs for the supplied Loopring Account ID",
-    });
-
-  return res.status(200).json(allNftIds);
+  return allNftIds
+    ? res.status(200).json(allNftIds)
+    : res.status(400).json({
+        error: "Unable to find any NFTs for the supplied Loopring Account ID",
+      });
 };
 
 export default handler;
