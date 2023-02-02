@@ -4,6 +4,26 @@
 
 <br />
 
+# Current status
+
+This project is **in active development** 🚀.
+
+- The foundation is in place: ✅
+  - Integrating a `web3 provider` to allow users to connect with their wallet (`WalletConnect`, `GameStop/Metamask/Injected`).
+  - Accessing the `Loopring API` to retrieve the connected user's held NFTs.
+  - Accessing the `Pinata Submarine API` to unlock submarined files based on the admin-specified `config.ts`.
+
+Next steps include:
+
+- Auth, client-side & server-side sessions.
+- Documentation for others on how to use this.
+- Individual pages for unlockables.
+
+# Contributing
+
+Got ideas for this project? Feel free to add feature requests or report issues:
+https://github.com/0xGeel/loopring-token-gating/issues
+
 # Getting Started
 
 Run `npm run dev` in your terminal, and then open [localhost:3000](http://localhost:3000) in your browser.
