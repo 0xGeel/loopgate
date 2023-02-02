@@ -1,45 +1,41 @@
-# 👋 Welcome to A Product
+<img style="width: 600px; border-radius: 4px; margin-bottom: 6px;" src="public/splash.png">
 
-{% hint style="info" %}
-**GitBook tip:** your product docs aren't just a reference of all your features! use them to encourage folks to perform certain actions and discover the value in your product.
-{% endhint %}
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0737e3fd-543b-491d-b955-8bdfde51b13f/deploy-status)](https://app.netlify.com/sites/whimsical-cascaron-a5c80e/deploys)
 
-## Overview
+<br />
 
-Here are a couple of example overviews from products with really great docs:
+# Current status
 
-> Loom is a video messaging tool that helps you get your message across through instantly shareable videos.
->
-> With Loom, you can record your camera, microphone, and desktop simultaneously. Your video is then instantly available to share through Loom's patented technology.
->
-> — From the [Loom Docs](https://support.loom.com/hc/en-us/articles/360002158057-What-is-Loom-)
+This project is **in active development** 🚀.
 
-> The Mailchimp Marketing API provides programmatic access to Mailchimp data and functionality, allowing developers to build custom features to do things like sync email activity and campaign analytics with their database, manage audiences and campaigns, and more.
->
-> — From the [Mailchimp Marketing API docs](https://mailchimp.com/developer/marketing/docs/fundamentals/)
+- The foundation is in place: ✅
+  - Integrating a `web3 provider` to allow users to connect with their wallet (`WalletConnect`, `GameStop/Metamask/Injected`).
+  - Accessing the `Loopring API` to retrieve the connected user's held NFTs.
+  - Accessing the `Pinata Submarine API` to unlock submarined files based on the admin-specified `config.ts`.
 
-## Quick links
+Next steps include:
 
-{% content-ref url="overview/what-we-do.md" %}
-[what-we-do.md](overview/what-we-do.md)
-{% endcontent-ref %}
+- Auth, client-side & server-side sessions.
+- Documentation for others on how to use this.
+- Individual pages for unlockables.
 
-{% content-ref url="overview/our-features.md" %}
-[our-features.md](overview/our-features.md)
-{% endcontent-ref %}
+# Contributing
 
-## Get Started
+Got ideas for this project? Feel free to add feature requests or report issues:
+https://github.com/0xGeel/loopring-token-gating/issues
 
-We've put together some helpful guides for you to get setup with our product quickly and easily.
+# Getting Started
 
-{% content-ref url="fundamentals/getting-set-up/" %}
-[getting-set-up](fundamentals/getting-set-up/)
-{% endcontent-ref %}
+Run `npm run dev` in your terminal, and then open [localhost:3000](http://localhost:3000) in your browser.
 
-{% content-ref url="fundamentals/getting-set-up/setting-permissions.md" %}
-[setting-permissions.md](fundamentals/getting-set-up/setting-permissions.md)
-{% endcontent-ref %}
+Once the webpage has loaded, changes made to files inside the `src/` directory (e.g. `src/pages/index.tsx`) will automatically update the webpage.
 
-{% content-ref url="fundamentals/getting-set-up/inviting-members.md" %}
-[inviting-members.md](fundamentals/getting-set-up/inviting-members.md)
-{% endcontent-ref %}
+# Learn more
+
+To learn more about [Next.js](https://nextjs.org), [ConnectKit](https://docs.family.co/connectkit) or [wagmi](https://wagmi.sh), check out the following resources:
+
+- [wagmi Documentation](https://wagmi.sh) – learn about wagmi Hooks and API.
+- [wagmi Examples](https://wagmi.sh/examples/connect-wallet) – a suite of simple examples using wagmi.
+- [ConnectKit Documentation](https://docs.family.co/connectkit) – learn more about ConnectKit (configuration, theming, advanced usage, etc).
+- [Next.js Documentation](https://nextjs.org/docs) learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
