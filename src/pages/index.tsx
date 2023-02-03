@@ -4,9 +4,11 @@ import ConnectPrompt from "../components/ConnectPrompt";
 import ConnectedPage from "../components/ConnectedPage";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import useActiveSession from "../hooks/useActiveSession";
 
 const Page = () => {
-  const { isConnected } = useAccount();
+  const { address, isConnected } = useAccount();
+  const { isStateActive } = useActiveSession();
 
   return (
     <div
