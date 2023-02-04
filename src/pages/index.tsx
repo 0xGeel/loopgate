@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import useActiveSession from "../hooks/useActiveSession";
 
 const Page = () => {
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
   const { isStateActive } = useActiveSession();
 
   return (
