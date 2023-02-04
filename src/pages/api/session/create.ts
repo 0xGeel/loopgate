@@ -7,6 +7,7 @@ const createSessionRoute = async (
   res: NextApiResponse
 ) => {
   if (req.method !== "POST") {
+    req.session.destroy();
     return res.status(405).send({ message: "What are ye doin' in my swamp?!" });
   }
 
