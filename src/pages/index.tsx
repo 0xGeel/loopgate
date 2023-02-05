@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import { useSIWE } from "connectkit";
 
 const Page = () => {
-  const { signedIn, address } = useSIWE();
+  const { signedIn } = useSIWE();
 
   return (
     <div

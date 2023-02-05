@@ -1,15 +1,15 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import NextHead from "next/head";
 import { useEffect, useState } from "react";
-
 import { WagmiConfig } from "wagmi";
-import { WagmiClient } from "../utils/wagmi";
 import { ConnectKitProvider } from "connectkit";
-import { overrides } from "../styles/ConnectKit/overrides";
-import { siwe } from "../siwe";
 
-function App({ Component, pageProps }: AppProps) {
+import "../styles/globals.css";
+import { WagmiClient } from "../utils/wagmi";
+import { siwe } from "../siwe";
+import { overrides } from "../styles/ConnectKit/overrides";
+import NextHeadBase from "../components/SEO/NextHeadBase";
+
+const App = ({ Component, pageProps }: AppProps) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -23,16 +23,14 @@ function App({ Component, pageProps }: AppProps) {
             walletConnectName: "WalletConnect",
           }}
         >
-          <NextHead>
-            <title>LoopGate V0.1.0</title>
-          </NextHead>
+          <NextHeadBase />
 
           {mounted && <Component {...pageProps} />}
         </ConnectKitProvider>
       </siwe.Provider>
     </WagmiConfig>
   );
-}
+};
 
 export default App;
 
