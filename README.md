@@ -1,4 +1,4 @@
-<img style="width: 600px; border-radius: 4px; margin-bottom: 6px;" src="public/splash.png">
+<img style="width: 600px; border-radius: 4px; margin-bottom: 6px;" src="public/images/splash.png">
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0737e3fd-543b-491d-b955-8bdfde51b13f/deploy-status)](https://app.netlify.com/sites/whimsical-cascaron-a5c80e/deploys)
 
