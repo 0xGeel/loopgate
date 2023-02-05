@@ -8,6 +8,7 @@ import { WagmiClient } from "../utils/wagmi";
 import { siwe } from "../siwe";
 import { overrides } from "../styles/ConnectKit/overrides";
 import NextHeadBase from "../components/SEO/NextHeadBase";
+import { inter, unbounded } from "../components/Fonts/Fonts";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [mounted, setMounted] = useState(false);
@@ -23,9 +24,10 @@ const App = ({ Component, pageProps }: AppProps) => {
             walletConnectName: "WalletConnect",
           }}
         >
-          <NextHeadBase />
-
-          {mounted && <Component {...pageProps} />}
+          <main className={`${inter.variable} ${unbounded.variable} font-sans`}>
+            <NextHeadBase />
+            {mounted && <Component {...pageProps} />}
+          </main>
         </ConnectKitProvider>
       </siwe.Provider>
     </WagmiConfig>

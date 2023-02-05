@@ -23,10 +23,10 @@ const UnlockLink = ({ title, unlockUrl, cid }: Props) => {
         <LockOpenIcon className="absolute h-full w-full left-0 top-0 p-1.5 duration-150 ease-in-out -translate-y-full group-hover:translate-y-0" />
       </div>
       <div className="flex-col w-full text-left">
-        <h2 className="font-medium text-lg group-hover:text-sky-500 duration-150">
+        <h2 className=" group-hover:text-sky-500 duration-150 font-display">
           {title ? title : "Untitled"}
         </h2>
-        <p className="opacity-70 truncate w-80 text-sm">{cid}</p>
+        <p className="truncate w-40 text-sm text-cyan-100/40">{cid}</p>
       </div>
       <ChevronRightIcon className="w-5 h-5 flex-shrink-0 text-white/50 group-hover:text-white duration-150" />
     </a>

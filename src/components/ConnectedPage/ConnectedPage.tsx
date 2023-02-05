@@ -37,8 +37,10 @@ const ConnectedPage = () => {
 
   return (
     <div className="flex flex-col items-center flex-grow space-y-8">
-      <div className="max-w-xl w-full py-8 px-6">
-        <h1 className="text-2xl font-medium mb-4">Your unlocked content</h1>
+      <div className="max-w-2xl w-full py-8 px-6">
+        <h1 className="text-2xl font-medium font-display mb-4">
+          Your unlocked content
+        </h1>
 
         {isLoading ? (
           <div className="flex items-center space-x-2">
