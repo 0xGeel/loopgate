@@ -1,9 +1,9 @@
 import Head from "next/head";
 
 const NextHeadBase = () => {
-  const url = "https://loopgate.netlify.app/";
-  const ogImgUrl = "https://www.loopgate.com/images/splash.png";
-  const title = "LoopGate - Token-Gated Content using Loopring NFTs";
+  const baseUrl = "https://loopgate.netlify.app/";
+  const ogImgUrl = `${baseUrl}/images/splash.png`;
+  const title = "LoopGate — Token-Gated Content using Loopring NFTs";
   const description =
     "Securely and easily access exclusive digital content with LoopGate, using Loopring NFTs.";
 
@@ -13,7 +13,7 @@ const NextHeadBase = () => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={baseUrl} />
       <meta property="og:image" content={ogImgUrl} />
       <meta property="og:site_name" content="LoopGate" />
       <meta property="og:locale" content="en_US" />
