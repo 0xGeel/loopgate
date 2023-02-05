@@ -108,24 +108,24 @@ const verifyRoute = async (
       try {
         const session = await getSession(req, res, sessionConfig);
         const { message, signature } = req.body;
-        console.log("Signature: " + signature);
+        // console.log("Signature: " + signature);
         const siweMessage = new SiweMessage(message);
-        console.log("siweMessage: ");
-        console.log(siweMessage.validate);
+        // console.log("siweMessage: ");
+        // console.log(siweMessage.validate);
 
         // Note to self: siweMessage.validate() is deprecated.
         // The docs mention to use verify() instead.
         // See: https://github.com/spruceid/siwe/blob/main/packages/siwe/lib/client.ts
-        // const fields = await siweMessage.verify(signature);
-        const fields = await siweMessage.validate(signature);
-        console.log("👀 Fields:");
+        const fields = await siweMessage.verify({ signature: signature });
+        // const fields = await siweMessage.validate(signature);
+        // console.log("👀 Fields:");
         console.log(fields);
-        if (fields.nonce !== session.nonce) {
+        if (fields.data.nonce !== session.nonce) {
           return res.status(422).end("Invalid nonce.");
         }
-        session.address = fields.address;
-        session.chainId = fields.chainId;
-        console.log("Session successful. Saving...");
+        session.address = fields.data.address;
+        session.chainId = fields.data.chainId;
+        // console.log("Session successful. Saving...");
         await session.save();
         res.status(200).end();
       } catch (error) {
