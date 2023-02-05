@@ -14,7 +14,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       } else {
         req.session.destroy();
         res.json({
-          siwe: null,
           isActive: false,
           message: `Please sign in with Ethereum to access this Dapp.`,
         });
