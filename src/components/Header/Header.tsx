@@ -1,12 +1,17 @@
 import { ConnectKitButton } from "connectkit";
+import Image from "next/image";
+import LogoBrandLight from "@/public/images/logo/loopgate-brand-light.svg";
 
 const Header = () => {
   return (
     <div className="w-full flex py-3 px-4 sm:px-6 sticky top-0 items-center justify-between border-b sm:border-b-0 border-white/10 bg-slate-900/50 backdrop-blur-lg z-10">
-      <p className="font-medium text-2xl cursor-default">
-        Loop<span className="text-sky-500">Gate</span>
-        <span className="text-xs ml-2 text-white/50">V.0.1.0</span>
-      </p>
+      <Image
+        src={LogoBrandLight}
+        alt="loopgate Logo"
+        // width={108}
+        height={32}
+      />
+
       <ConnectKitButton />
     </div>
   );
