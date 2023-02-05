@@ -7,15 +7,15 @@ import {
 
 declare module "iron-session" {
   interface IronSessionData {
-    address?: {
-      id: string;
-    };
+    apiKey: string;
+    accountId: string;
+    active: boolean;
   }
 }
 
 const sessionOptions = {
   password: `${process.env.SESSION_SECRET}`,
-  cookieName: "LG_IRON_SESH",
+  cookieName: "LG_IRON",
   cookieOptions: {
     secure: process.env.NODE_ENV === "production", // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
   },
