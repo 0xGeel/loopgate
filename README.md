@@ -13,11 +13,12 @@ This project is **in active development** 🚀.
   - Accessing the `Loopring API` to retrieve the connected user's held NFTs.
   - Accessing the `Pinata Submarine API` to unlock submarined files based on the admin-specified `config.ts`.
 
-Next steps include:
+Next steps may include:
 
-- Auth, client-side & server-side sessions.
+- ✅ ~~Auth, client-side & server-side sessions.~~
 - Documentation for others on how to use this.
 - Individual pages for unlockables.
+- Requiring user's Loopring sig to use Loopring API.
 
 # Contributing
 
