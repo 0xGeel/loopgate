@@ -1,12 +1,11 @@
-import { useAccount } from "wagmi";
-
 import ConnectPrompt from "../components/ConnectPrompt";
 import ConnectedPage from "../components/ConnectedPage";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useSIWE } from "connectkit";
 
 const Page = () => {
-  const { isConnected } = useAccount();
+  const { signedIn, address } = useSIWE();
 
   return (
     <div
@@ -17,7 +16,7 @@ const Page = () => {
     >
       <Header />
 
-      {!isConnected ? <ConnectPrompt /> : <ConnectedPage />}
+      {!signedIn ? <ConnectPrompt /> : <ConnectedPage />}
 
       <Footer />
     </div>

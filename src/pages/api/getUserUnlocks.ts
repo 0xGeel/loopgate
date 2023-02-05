@@ -2,6 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { findUnlockedCids } from "../../utils/generic";
 import { getAllUserNftIds, getUserAddress } from "../../utils/loopring";
 import { getPinataIndexLink } from "../../utils/pinata";
+import { withSessionRoute } from "@/src/utils/iron-session/withSession";
+import { siwe } from "@/src/siwe";
 
 // Summary of what happens:
 // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
@@ -11,9 +13,15 @@ import { getPinataIndexLink } from "../../utils/pinata";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;
   const { address } = query;
+  const siweSesh = await siwe.getSession(req, res);
 
-  if (!address) {
+  if (!address || Array.isArray(address)) {
     return res.status(400).json({ error: "No 0x address specified." });
+  }
+
+  // Check if there is a session. Only connected users may call this endpoint.
+  if (!siweSesh.address || siweSesh.address !== address) {
+    return res.status(405).send({ message: "What are ye doin' in my swamp?!" });
   }
 
   // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
@@ -51,4 +59,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.status(200).json({ unlocks: unlocks }); // User has unlocks
 };
 
-export default handler;
+export default withSessionRoute(handler);
