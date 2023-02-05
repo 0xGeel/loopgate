@@ -9,7 +9,7 @@ import { siwe } from "../siwe";
 import { overrides } from "../styles/ConnectKit/overrides";
 import NextHeadBase from "../components/SEO/NextHeadBase";
 
-function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -30,7 +30,7 @@ function App({ Component, pageProps }: AppProps) {
       </siwe.Provider>
     </WagmiConfig>
   );
-}
+};
 
 export default App;
 
