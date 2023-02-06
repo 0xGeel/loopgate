@@ -4,6 +4,7 @@ import type { IncomingMessage, ServerResponse } from "http";
 import { getIronSession, IronSession, IronSessionOptions } from "iron-session";
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import { generateNonce, SiweMessage } from "siwe";
+import { getDefaultProvider } from "ethers";
 
 type NextSIWEConfig = {
   apiRoutePrefix: string;
@@ -108,29 +109,23 @@ const verifyRoute = async (
       try {
         const session = await getSession(req, res, sessionConfig);
         const { message, signature } = req.body;
-        // console.log("Signature: " + signature);
         const siweMessage = new SiweMessage(message);
-        // console.log("siweMessage: ");
-        // console.log(siweMessage.validate);
+        const ethProvider = getDefaultProvider();
 
-        // Note to self: siweMessage.validate() is deprecated.
-        // The docs mention to use verify() instead.
-        // See: https://github.com/spruceid/siwe/blob/main/packages/siwe/lib/client.ts
-        const fields = await siweMessage.verify({ signature: signature });
-        // const fields = await siweMessage.validate(signature);
-        // console.log("👀 Fields:");
-        console.log(fields);
+        // Verify the SIWE message
+        const fields = await siweMessage.verify(
+          { signature: signature },
+          { provider: ethProvider }
+        );
+
         if (fields.data.nonce !== session.nonce) {
           return res.status(422).end("Invalid nonce.");
         }
         session.address = fields.data.address;
         session.chainId = fields.data.chainId;
-        // console.log("Session successful. Saving...");
         await session.save();
         res.status(200).end();
       } catch (error) {
-        console.log("💥 Session not successful...");
-        console.log(error);
         res.status(400).end(String(error));
       }
       break;

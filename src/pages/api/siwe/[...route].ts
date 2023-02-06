@@ -1,2 +1,2 @@
-import { siwe } from "../../../siwe";
+import { siwe } from "../../../utils/siwe";
 export default siwe.apiRouteHandler;

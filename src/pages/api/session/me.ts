@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { siwe } from "@/src/siwe";
+import { siwe } from "@/src/utils/siwe";
 import { withSessionRoute } from "@/src/utils/iron-session/withSession";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
