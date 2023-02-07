@@ -19,6 +19,7 @@ Next steps may include:
 - Documentation for others on how to use this.
 - Individual pages for unlockables.
 - Requiring user's Loopring sig to use Loopring API.
+- Adding unit/integration tests for core services/functionalities
 
 # Contributing
 
@@ -40,3 +41,9 @@ To learn more about [Next.js](https://nextjs.org), [ConnectKit](https://docs.fam
 - [ConnectKit Documentation](https://docs.family.co/connectkit) – learn more about ConnectKit (configuration, theming, advanced usage, etc).
 - [Next.js Documentation](https://nextjs.org/docs) learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+# License
+
+`BSD-2-Clause License`.
+
+See [LICENSE](/LICENSE) for more information.
