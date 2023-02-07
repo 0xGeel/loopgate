@@ -30,7 +30,6 @@
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
     "connectkit": "^1.1.1",
-    "connectkit-next-siwe": "^0.0.2",
     "ethers": "^5.7.2",
     "iron-session": "^6.3.1",
     "next": "^13.0.0",
