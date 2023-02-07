@@ -166,7 +166,6 @@ export const configureSIWE = <TSessionData extends Object = {}>({
     }
 
     const route = req.query.route.join("/");
-    console.log("ROUTE: Resolving " + route);
     switch (route) {
       case "nonce":
         return await nonceRoute(req, res, sessionConfig);
