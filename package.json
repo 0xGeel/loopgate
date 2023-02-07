@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Easily Token-Gate Content using Loopring Layer-2 NFTs and Pinata",
   "author": "Geel <@0xGeel>",
+  "license": "BSD-2-Clause",
   "repository": "https://github.com/0xGeel/loopring-token-gating.git",
   "bugs": "https://github.com/0xGeel/loopring-token-gating/issues",
   "homepage": "https://loopgate.netlify.app",
