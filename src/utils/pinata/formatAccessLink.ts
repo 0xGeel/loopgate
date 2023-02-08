@@ -1,7 +1,11 @@
 import { PINATA_GATEWAY_URL } from "../../config/config";
+import { PinataFolderItem } from "./_types";
 
 // Formats a Pinata access link by checking whether there is an index file in the submarined content, and adding https
-const formatAccessLink = (accessLink: string, htmlIndex: any) => {
+const formatAccessLink = (
+  accessLink: string,
+  htmlIndex: PinataFolderItem | false
+) => {
   if (htmlIndex) {
     // Retrieve the access token from the link to use with the HTML index file instead.
     const accessToken = accessLink.split("?accessToken=")[1];

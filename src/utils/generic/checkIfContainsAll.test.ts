@@ -1,5 +1,5 @@
 import checkIfContainsAll from "./checkIfContainsAll";
-import { ConfigError } from "../../config/configError";
+import { ConfigError } from "../../config/types";
 
 const mockConfig = ["0x1", "0x2", "0x3"];
 

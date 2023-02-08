@@ -1,4 +1,4 @@
-import { ConfigError } from "../../config/configError";
+import { ConfigError } from "../../config/types";
 
 /**
  * Compares two arrays, returns true if the target array contains all values of the config array.
