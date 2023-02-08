@@ -11,7 +11,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
@@ -43,6 +44,9 @@
     "wagmi": "~0.10.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.4.0",
     "@types/node": "^17.0.31",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
@@ -50,6 +54,7 @@
     "eslint": "^8.15.0",
     "eslint-config-next": "^12.1.6",
     "jest": "^29.4.2",
+    "jest-environment-jsdom": "^29.4.2",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.6.4"
