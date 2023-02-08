@@ -19,12 +19,11 @@ Next steps may include:
 - Documentation for others on how to use this.
 - Individual pages for unlockables.
 - Requiring user's Loopring sig to use Loopring API.
-- Adding unit/integration tests for core services/functionalities
+- ⏳ Completing coverage for unit/integration tests for core services/functionalities
 
 # Contributing
 
-Got ideas for this project? Feel free to add feature requests or report issues:
-https://github.com/0xGeel/loopring-token-gating/issues
+Got ideas for this project? Feel free to add feature requests or report issues: https://github.com/0xGeel/loopring-token-gating/issues. Please read the [contributing docs](https://github.com/0xGeel/loopring-token-gating/blob/master/.github/CONTRIBUTING.md) **before submitting a pull request**.
 
 # Getting Started
 
