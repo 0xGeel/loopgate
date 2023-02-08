@@ -1,6 +1,5 @@
 import findUnlockedCids from "./findUnlockedCids";
-import { Unlockable } from "../../config/config";
-import { ConfigError } from "../../config/configError";
+import { Unlockable, ConfigError } from "../../config/types";
 
 const mockUnlockables: Unlockable[] = [
   {

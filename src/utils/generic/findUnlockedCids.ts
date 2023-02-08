@@ -1,6 +1,6 @@
-import { unlockables, Unlockable } from "../../config/config";
+import { unlockables } from "../../config/config";
 import { checkIfContainsAll } from "./index";
-import { ConfigError } from "../../config/configError";
+import { Unlockable, ConfigError } from "../../config/types";
 
 // Compare NFTs owned by an individual to the configurated combinations to find unlockable content
 /**
