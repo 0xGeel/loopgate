@@ -1,10 +1,6 @@
 const PINATA_GATEWAY_URL = "j.mypinata.cloud";
 
-export interface Unlockable {
-  cid: `baf${string}`; // Submarined Pinata files always start with 'baf'
-  name?: string; // Names are optional. If unspecified, the 'name' set inside Pinata will be used.
-  nftId: `0x${string}`[];
-}
+import { Unlockable } from "./types";
 
 // Specify unlockable files on IPFS by specifying their Content Identifier (CID), and unlock criteria.
 const unlockables: Unlockable[] = [

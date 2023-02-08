@@ -1,26 +1,10 @@
-interface PinataFolderRes {
-  childContent: PinataFolderItem[];
-  hasIndexHtml: boolean;
-}
-
-interface PinataFolderItem {
-  id: string;
-  createdAt: string;
-  cid: `baf${string}`;
-  name: string;
-  originalName: string;
-  size: string;
-  metadata: any;
-  type: string;
-  pinToIpfs: boolean;
-  uri: `/ipfs/baf${string}`;
-}
+import { PinataFolderRes, PinataFolderItem } from "./_types";
 
 const checkPinataFolderForHtml = (pinataFolder: PinataFolderRes) => {
   if (pinataFolder.hasIndexHtml) {
     // Content has a file named 'index.html'. It's fairly safe to assume that we want to use this file.
-    const htmlIndex = pinataFolder.childContent.filter(
-      (item: PinataFolderItem) => item.uri.endsWith("index.html")
+    const htmlIndex = pinataFolder.childContent.filter((item) =>
+      item.uri.endsWith("index.html")
     );
 
     return htmlIndex[0];
