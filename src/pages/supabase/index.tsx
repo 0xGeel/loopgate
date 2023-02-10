@@ -1,23 +1,30 @@
 import { supabase } from "@/src/utils/supabase/supabaseClient";
+import { GetServerSideProps } from "next";
+import { Database } from "@/src/utils/supabase/types";
 
-const Page = ({ countries }) => {
+type Country = Database["public"]["Tables"]["countries"]["Row"];
+type Countries = Country[];
+
+const Page = ({ allCountries }: { allCountries: Countries }) => {
+  console.log(allCountries);
+
   return (
     <ul>
-      {countries.map((country) => (
+      {allCountries.map((country) => (
         <li key={country.id}>{country.name}</li>
       ))}
     </ul>
   );
 };
 
-export async function getServerSideProps() {
-  let { data } = await supabase.from("countries").select();
+export const getServerSideProps: GetServerSideProps = async () => {
+  const data = await supabase.from("countries").select();
 
   return {
     props: {
-      countries: data,
+      allCountries: data.data,
     },
   };
-}
+};
 
 export default Page;

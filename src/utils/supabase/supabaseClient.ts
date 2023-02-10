@@ -1,9 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
+import { Database } from "./types";
 
-// Interesting: use the Supabase CLI or Github Actions to automatically generate types
-// https://supabase.com/docs/guides/database/api/generating-types
-
-export const supabase = createClient(
+export const supabase = createClient<Database>(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_ANON
 );
