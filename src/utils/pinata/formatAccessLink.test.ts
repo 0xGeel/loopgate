@@ -1,5 +1,5 @@
 import formatAccessLink from "./formatAccessLink";
-import { PINATA_GATEWAY_URL } from "../../config/config";
+const PINATA_GATEWAY_URL = process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL;
 
 const mockFolderAccessLink = `${PINATA_GATEWAY_URL}bafybeiehgpaip4f7jafzf7imgannx3nnv3ubaiwp6ph56mlyzijpqxi45m/index.html?accessToken=foo.bar.-baz`;
 const mockDirectAccessLink = `${PINATA_GATEWAY_URL}/ipfs/bafybeihx5eacyxeydcpvudwxa242rnjhn67femy46gzas5d2djb24ti5mi?accessToken=foo.bar.baz-qux`;
