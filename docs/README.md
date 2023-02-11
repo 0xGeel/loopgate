@@ -15,19 +15,13 @@ To view the source code, see the [GitHub repository](https://github.com/0xGeel/l
 - **Collectors** can visit the LoopGate website to access token-gated content. They can connect their crypto wallet to the website to verify their ownership.
   - If their wallet contains NFTs that should unlock content, LoopGate will display links to that content, allowing access.
 
-<!-- In these docs you will find information on how LoopGate works, and how you can host your own instance of LoopGate.
+---
+
+In these docs you will find information on how LoopGate works, and how you can host your own instance of LoopGate.
 
 ## Use headings to create page groups like this one​
 
-- [First page's title](page1/README.md)
+- [Setting up your own LoopGate](setup/OVERVIEW.md)
 
-  - [Some child page](page1/page1-1.md)
+  - [Technical overview](setup/OVERVIEW.md)
   - [Some other child page](part1/page1-2.md)
-
-- [Second page's title](page2/README.md)
-  - [Some child page](page2/page2-1.md)
-  - [Some other child page](part2/page2-2.md)
-
-## A second-page group​
-
-- [Yet another page](another-page.md) -->
