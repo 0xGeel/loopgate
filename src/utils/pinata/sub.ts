@@ -1,5 +1,5 @@
 import { Submarine } from "pinata-submarine";
-import { PINATA_GATEWAY_URL } from "../../config/config";
+const PINATA_GATEWAY_URL = process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL;
 
 const sub = new Submarine(
   process.env.PINATA_SUBMARINE_KEY as String,

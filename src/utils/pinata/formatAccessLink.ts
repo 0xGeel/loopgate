@@ -1,5 +1,5 @@
-import { PINATA_GATEWAY_URL } from "../../config/config";
 import { PinataFolderItem } from "./_types";
+const PINATA_GATEWAY_URL = process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL;
 
 // Formats a Pinata access link by checking whether there is an index file in the submarined content, and adding https
 const formatAccessLink = (
