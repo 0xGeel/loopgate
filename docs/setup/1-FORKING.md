@@ -6,7 +6,7 @@ description: >-
 
 # 1. Forking the project
 
-1. Log in with your Github account on https://github.com.
+1. Log in with your Github account on [https://github.com](https://github.com).
 2. Go to [LoopGate's GitHub page](https://github.com/0xGeel/loopgate) and click on **'Fork'** > **'Create a new fork'**. This will create a copy of the project that you can edit.
 
 ![Click on 'Fork' > 'Create a new fork'.](../../public/images/docs/fork-step-1.png)

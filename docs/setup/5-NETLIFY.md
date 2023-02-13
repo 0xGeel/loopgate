@@ -19,7 +19,7 @@ description: >-
 4. Pick your repository: `<YOUR_NAME>/loopgate`.
 5. Click on 'Deploy site'.
 
-Any changes you make to your `main` branch on your GitHub repository will be deployed!
+**Any changes you make to your `main` branch on your GitHub repository will be deployed!**
 
 {% hint style="info" %}
 Your Netlify website will most likely have an auto-generated name like '[https://adjective-noun-12345.netlify.app](https://adjective-noun-12345.netlify.app)'. You can easily change the domain name in Netlify!
