@@ -1,14 +1,23 @@
+---
+description: >-
+  TL;DR: In this section, you'll learn how to run LoopGate on your local
+  computer, and how to push changes you make to your GitHub repository.
+---
+
 # 4. Running your site locally
 
-> **TL;DR:** In this section, you'll learn how to run LoopGate on your local computer, and how to push changes you make to your GitHub repository
-
 1. Open the terminal in your code editor.
-2. Type `npm install`, hit enter.
-3. Type `npm run dev`.
+2. Type `npm install`, and hit enter.
+3. Type `npm run dev`, and hit enter.
 
-Your app should now be served on https://localhost:3000 🚀
+Your app should now be running locally on your computer! 🚀&#x20;
 
-**Publishing your changes:**
+You can access it by opening a browser and going to the following URL: \
+[https://localhost:3000](https://localhost:3000)
+
+
+
+### **Publishing your changes:**
 
 If you've made changes to the config, you'll probably want your users to see this too.
 
@@ -21,5 +30,5 @@ Follow these steps to update your code in GitHub:
 3. 'Push' them to your GitHub repository by clicking 'Push'.
 
 {% hint style="info" %}
-Confused as to how GitHub works? Check out their excellent tutorial: https://docs.github.com/en/get-started/quickstart/hello-world
+Confused as to how GitHub works? Check out their excellent tutorial: [https://docs.github.com/en/get-started/quickstart/hello-world](https://docs.github.com/en/get-started/quickstart/hello-world)
 {% endhint %}

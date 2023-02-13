@@ -1,6 +1,12 @@
+---
+description: >-
+  TL;DR: In this section, you'll learn how to link your GitHub repository with a
+  Netlify account. This makes any changes you make publish to your domain!
+---
+
 # 5. Deploying your site
 
-> **TL;DR:** In this section, you'll learn how to link your GitHub repository with a Netlify account. This makes any changes you make publish to your domain!
+
 
 !['Pushing' new changes to GitHub using VS Code](../../public/images/docs/netlify-import-project.gif)
 
@@ -16,5 +22,5 @@
 Any changes you make to your `main` branch on your GitHub repository will be deployed!
 
 {% hint style="info" %}
-Your Netlify website will most likely have an auto-generated name like 'adjective-noun-12345'. You can easily change the domain name in Netlify!
+Your Netlify website will most likely have an auto-generated name like '[https://adjective-noun-12345.netlify.app](https://adjective-noun-12345.netlify.app)'. You can easily change the domain name in Netlify!
 {% endhint %}
