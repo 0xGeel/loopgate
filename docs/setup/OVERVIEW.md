@@ -1,5 +1,7 @@
 # Technical Overview
 
+![A visual overview of the APIs and SDKs LoopGate interacts with](../../public/images/docs/loopgate-overview.png)
+
 - LoopGate is a web application built using in TypeScript using [NextJS](https://nextjs.org/) and [TailwindCSS](https://tailwindcss.com/).
 - LoopGate implements external **SDKs/APIs**. Most importantly:
   - [Loopring API](https://docs.loopring.io/en/) — Query the Loopring blockchain to get NFT ownership data.
@@ -25,4 +27,6 @@ In order to create your own instance of LoopGate, you will need the following:
 - A [Piñata 'Picnic'](https://www.pinata.cloud/pricing) account.
   - [Piñata currently offer a 30-day trial](https://www.submarine.me/?utm_medium=social&utm_source=twitter&utm_campaign=submarine_q1_2023_jan)!
 
-Once you meet all of the requirements above, [proceed to the setup](/SETUP.md).
+{% hint style="info" %}
+Once you meet all of the requirements above, [proceed to setting up](/1-FORKING.md)!
+{% endhint %}
