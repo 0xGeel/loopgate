@@ -1,48 +1,48 @@
-<img style="width: 600px; border-radius: 4px; margin-bottom: 6px;" src="public/images/splash.png">
+![](/public/images/docs/what-is-token-gating.png)
+
+- [LoopGate](https://loopgate.netlify.app/) is a web app that allows creators to token-gate content based on Loopring Layer-2 NFTs.
+- It uses the [Loopring API](https://docs.loopring.io/en/) alongside the [Piñata Submarine API](https://docs.pinata.cloud/submarine-api) to unlock hidden content hosted on IPFS.
+
+<br />
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0737e3fd-543b-491d-b955-8bdfde51b13f/deploy-status)](https://app.netlify.com/sites/whimsical-cascaron-a5c80e/deploys)
 
 <br />
 
-# Current status
+# How to use LoopGate
 
-This project is **in active development** 🚀.
+- You can run your own version of LoopGate by [following the tutorial in the documentation](https://0xgeel.gitbook.io/loopgate-documentation/).
 
-- The foundation is in place: ✅
-  - Integrating a `web3 provider` to allow users to connect with their wallet (`WalletConnect`, `GameStop/Metamask/Injected`).
-  - Accessing the `Loopring API` to retrieve the connected user's held NFTs.
-  - Accessing the `Pinata Submarine API` to unlock submarined files based on the admin-specified `config.ts`.
-
-Next steps may include:
-
-- ✅ ~~Auth, client-side & server-side sessions.~~
-- Documentation for others on how to use this.
-- Individual pages for unlockables.
-- Requiring user's Loopring sig to use Loopring API.
-- ⏳ Completing coverage for unit/integration tests for core services/functionalities
+<a href="https://0xgeel.gitbook.io/loopgate-documentation/"><img src="public/images/docs/read-the-documentation.png" /></a>
 
 # Contributing
 
-Got ideas for this project? Feel free to add feature requests or report issues: https://github.com/0xGeel/loopring-token-gating/issues. Please read the [contributing docs](https://github.com/0xGeel/loopring-token-gating/blob/master/.github/CONTRIBUTING.md) **before submitting a pull request**.
+Got ideas for this project?
 
-# Getting Started
-
-Run `npm run dev` in your terminal, and then open [localhost:3000](http://localhost:3000) in your browser.
-
-Once the webpage has loaded, changes made to files inside the `src/` directory (e.g. `src/pages/index.tsx`) will automatically update the webpage.
-
-# Learn more
-
-To learn more about [Next.js](https://nextjs.org), [ConnectKit](https://docs.family.co/connectkit) or [wagmi](https://wagmi.sh), check out the following resources:
-
-- [wagmi Documentation](https://wagmi.sh) – learn about wagmi Hooks and API.
-- [wagmi Examples](https://wagmi.sh/examples/connect-wallet) – a suite of simple examples using wagmi.
-- [ConnectKit Documentation](https://docs.family.co/connectkit) – learn more about ConnectKit (configuration, theming, advanced usage, etc).
-- [Next.js Documentation](https://nextjs.org/docs) learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Feel free to add feature requests or report issues: https://github.com/0xGeel/loopgate/issues.
+- Please read the [contributing docs](https://github.com/0xGeel/loopgate/blob/master/.github/CONTRIBUTING.md) **before submitting a pull request**.
 
 # License
 
-`BSD-2-Clause License`.
+- **BSD-2-Clause License**
 
 See [LICENSE](/LICENSE) for more information.
+
+---
+
+## Current status
+
+This project is **in active development** 🚀.
+
+- ✅ The foundation is in place:
+  - ✅ Integrating a `web3 provider` to allow users to connect with their wallet (`WalletConnect`, `GameStop/Metamask/Injected`).
+  - ✅ Accessing the `Loopring API` to retrieve the connected user's held NFTs.
+  - ✅ Accessing the `Pinata Submarine API` to unlock submarined files based on the admin-specified `config.ts`.
+
+**Next steps may include**
+
+- ✅ ~~Auth, client-side & server-side sessions.~~
+- ✅ ~~Documentation for others on how to use this.~~
+- Individual pages for unlockables.
+- Requiring user's Loopring signature to use Loopring API.
+- ⏳ Completing coverage for unit/integration tests for core services/functionalities
