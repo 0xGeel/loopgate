@@ -22,7 +22,7 @@ const NextHeadBase = () => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImgUrl} />
-      <link rel="shortcut icon" href="/images/favicon.svg" />
+      <link rel="shortcut icon" href="/images/favicon.png" />
     </Head>
   );
 };
