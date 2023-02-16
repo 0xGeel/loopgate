@@ -2,6 +2,7 @@ import { createClient, configureChains, mainnet, goerli } from "wagmi";
 
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
+import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { publicProvider } from "wagmi/providers/public";
 
 const { provider, chains } = configureChains(
@@ -24,6 +25,9 @@ const WagmiClient = createClient({
       options: {
         qrcode: true,
       },
+    }),
+    new MetaMaskConnector({
+      chains: chains,
     }),
   ],
   provider,
