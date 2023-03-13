@@ -1,12 +1,12 @@
 import axios from "axios";
-import { API } from "./_constants";
+import { LOOP_API } from "./_constants";
 import { headerOpts, extractNfts } from "./index";
 
 const getAllUserNftIds = async (accountId: string | string[]) => {
   // Gets all Loopring L2 NFTs for a specified Account ID
   const LIMIT = 50; // API can handle up to 50 per call
   const firstReq = await axios.get(
-    `${API.USER_NFT_BALANCE}?accountId=${accountId}&limit=${LIMIT}`,
+    `${LOOP_API.USER_NFT_BALANCE}?accountId=${accountId}&limit=${LIMIT}`,
     headerOpts
   );
 
@@ -33,9 +33,9 @@ const getAllUserNftIds = async (accountId: string | string[]) => {
   const followUpReqs = await Promise.all(
     amountOfCalls.map(async (index) => {
       return await axios.get(
-        `${API.USER_NFT_BALANCE}?accountId=${accountId}&limit=${LIMIT}&offset=${
-          LIMIT * index
-        }`,
+        `${
+          LOOP_API.USER_NFT_BALANCE
+        }?accountId=${accountId}&limit=${LIMIT}&offset=${LIMIT * index}`,
         headerOpts
       );
     })
