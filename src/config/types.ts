@@ -4,6 +4,24 @@ export interface Unlockable {
   nftId: `0x${string}`[];
 }
 
+export interface UnlockableV2 {
+  id: string;
+  owner: `0x${string}`;
+  metadata: {
+    name?: string;
+    description?: string;
+    lastUpdated: Date | string;
+  };
+  content: {
+    type: "IPFS";
+    url: string;
+  };
+  unlockCriteria: {
+    unlockAmount: number;
+    nftId: `0x${string}`[];
+  };
+}
+
 export class ConfigError extends Error {
   constructor(message: string) {
     super(message);
