@@ -21,7 +21,7 @@ const ShinyLogo = () => (
   </div>
 );
 
-const Post = () => {
+const Page = () => {
   const router = useRouter();
   const { cid } = router.query;
   const { signedIn } = useSIWE();
@@ -83,4 +83,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Page;

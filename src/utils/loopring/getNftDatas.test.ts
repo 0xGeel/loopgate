@@ -6,7 +6,7 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe("querying TheGraph's API to get the find the NftDatas based on NFT ID", () => {
   it.todo(
-    "returns a Loopring NFT Datas when given a valid NFT ID"
+    "returns a Loopring 'NFT Datas' for a valid NFT ID"
     // async () => {
     //   console.log("Mocking some shit");
     //   mockedAxios.post.mockResolvedValue({
@@ -27,9 +27,9 @@ describe("querying TheGraph's API to get the find the NftDatas based on NFT ID",
     // }
   );
 
-  it("returns false when an invalid 0x address is presented", async () => {
+  it("returns false for an invalid NFT ID", async () => {
     mockedAxios.get.mockRejectedValue(false);
-    const data = await getNftDatas("bruh");
+    const data = await getNftDatas("0xbruh");
     expect(data).toEqual(false);
   });
 });

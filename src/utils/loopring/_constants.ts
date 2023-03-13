@@ -3,6 +3,7 @@ const BASE_URL = "https://api3.loopring.io/api/v3";
 export const API = {
   USER_ACCOUNT: `${BASE_URL}/account`,
   USER_NFT_BALANCE: `${BASE_URL}/user/nft/balances`,
+  NFT_HOLDERS: `${BASE_URL}/nft/info/nftHolders`,
 };
 
 export const CONTRACTS = {
