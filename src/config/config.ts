@@ -51,7 +51,7 @@ const unlockablesV2: UnlockableV2[] = [
     owner: "0x1337CC354AeAf15B0E98A609cd348DF171174e14",
     metadata: {
       name: "HTML Blog Example",
-      description: "An incredibly exclusive article on token-gating",
+      description: "An incredibly exclusive article on token-gating...",
       lastUpdated: "2023-03-13 16:05:23.481327",
     },
     content: {
@@ -87,7 +87,7 @@ const unlockablesV2: UnlockableV2[] = [
     owner: "0x1337CC354AeAf15B0E98A609cd348DF171174e14",
     metadata: {
       name: "Web Game Example",
-      description: "An incredibly exclusive web game",
+      description: "An incredibly exclusive web game...",
       lastUpdated: "2023-03-13 16:05:23.481327",
     },
     content: {
