@@ -1,15 +1,21 @@
 import LoopGateLogo from "@/public/images/icon/icon.svg";
 import Image from "next/image";
 
-const ShinyLogo = () => (
-  <div className="w-full flex justify-center -mt-8 select-none">
-    <Image src={LoopGateLogo} alt="LoopGate Icon" height={60} />
+const Img = ({ className }: { className?: string }) => {
+  return (
     <Image
-      className="absolute blur-lg animate-pulse"
       src={LoopGateLogo}
       alt="LoopGate Icon"
-      height={60}
+      height={40}
+      className={className}
     />
+  );
+};
+
+const ShinyLogo = () => (
+  <div className="flex justify-center items-center select-none flex-shrink-0">
+    <Img />
+    <Img className="absolute blur-lg animate-pulse" />
   </div>
 );
 
