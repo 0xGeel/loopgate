@@ -30,11 +30,13 @@ const UnlockLink = ({ accessLink }: { accessLink: string }) => {
   );
 };
 
+// TODO: Extract to /utils/generic, add unit tests
 const formatRelativeDate = (date: Date | string) => {
   const ts = new Date(date);
   return formatDistance(ts, new Date(), { addSuffix: true });
 };
 
+// TODO: Extract to /utils/generic, add unit tests
 const truncate0x = (address: string) => {
   const len = address.length;
 
