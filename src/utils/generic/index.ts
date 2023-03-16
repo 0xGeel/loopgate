@@ -3,6 +3,7 @@ import findUnlockedCids from "./findUnlockedCids";
 import getCurrentYear from "./getCurrentYear";
 import findUnlockableByUuid from "./findUnlockableByUuid";
 import truncate0x from "./truncate0x";
+import formatRelativeDate from "./formatRelativeDate";
 import cn from "./cn";
 
 export {
@@ -11,5 +12,6 @@ export {
   findUnlockableByUuid,
   getCurrentYear,
   truncate0x,
+  formatRelativeDate,
   cn,
 };

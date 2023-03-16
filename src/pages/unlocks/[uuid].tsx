@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { findUnlockableByUuid } from "@/src/utils/generic";
 import Layout from "@/src/components/UnlockablePage/Layout";
 import FourOhFour from "@/src/components/UnlockablePage/404";
-import UnlockCard from "@/src/components/UnlockablePage/UnlockCard";
+import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
 
 const Page = () => {
   const router = useRouter();
