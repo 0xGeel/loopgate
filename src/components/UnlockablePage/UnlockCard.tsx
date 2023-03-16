@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { UnlockableV2 } from "@/src/config/types";
 import { formatDistance } from "date-fns";
+import { truncate0x } from "@/src/utils/generic";
 
 type Props = {
   unlockable: UnlockableV2;
@@ -36,17 +37,6 @@ const formatRelativeDate = (date: Date | string) => {
   return formatDistance(ts, new Date(), { addSuffix: true });
 };
 
-// TODO: Extract to /utils/generic, add unit tests
-const truncate0x = (address: string) => {
-  const len = address.length;
-
-  if (!address.startsWith("0x") || len != 42) {
-    return address;
-  }
-
-  return `${address.slice(0, 6)}…${address.slice(len - 4, len)}`;
-};
-
 const UnlockCard = ({ unlockable }: Props) => {
   const { signedIn } = useSIWE();
   const { address } = useAccount();
@@ -55,9 +45,9 @@ const UnlockCard = ({ unlockable }: Props) => {
 
   return (
     <div className="max-w-xl w-full rounded-md bg-slate-800/50 mx-8 border border-white/10">
-      <div className="flex items-start space-x-6 p-8">
+      <div className="md:flex items-start md:space-x-6 p-8">
         <ShinyLogo />
-        <div>
+        <div className="mt-4 md:mt-0">
           <h1 className="font-display text-lg">
             {unlockable.metadata.name
               ? unlockable.metadata.name
@@ -88,13 +78,13 @@ const UnlockCard = ({ unlockable }: Props) => {
         </div>
       </div>
       {!signedIn ? (
-        <div className="flex flex-col-reverse md:flex-row items-center border-t border-white/10 p-8 bg-gradient-to-b from-sky-500/10 to-transparent rounded-b relative">
+        <div className="flex flex-col md:flex-row items-center border-t border-white/10 p-8 bg-gradient-to-b from-sky-500/10 to-transparent rounded-b relative">
           <div className="w-full h-full border absolute top-0 left-0 rounded-b animate-pulse border-white/50 opacity-5 pointer-events-none" />
           <div className="relative md:mr-6">
             <ConnectKitButton />
             {address && <SignInHint />}
           </div>
-          <p className="text-sm text-white/60 max-w-sm text-center md:text-left mb-4 md:mb-0">
+          <p className="text-sm text-white/60 max-w-sm text-center md:text-left mt-4 mt:mb-0">
             Unlock this content by connecting with your wallet to verify you
             have the required NFT(s).
           </p>

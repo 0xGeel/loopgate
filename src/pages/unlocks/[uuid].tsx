@@ -8,14 +8,15 @@ const Page = () => {
   const router = useRouter();
   const { uuid } = router.query;
 
-  // 1️⃣: Check if UUID exists in config.ts (if not: —> 404)
+  // ✅: Check if UUID exists in config.ts (if not: —> 404)
   // 1️⃣B: Replace config.ts with Supabase
-  // 2️⃣: Show unlock title and description
+  // ✅: Show unlock title and description
   // 3️⃣: NFT ID => NFT Datas
-  // 4️⃣: [@TODO] Query NFT holders by looprings nftData
+  // 4️⃣: Query NFT holders by looprings nftData
   // 5️⃣: 0x address => Account ID
   // 6️⃣: Check if user owns the NFT
   // 7️⃣: If so: generate Pinata Unlock Link & display
+  // 7️⃣: If not: display no access.
 
   if (!uuid || Array.isArray(uuid)) {
     return;
