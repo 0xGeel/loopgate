@@ -4,22 +4,26 @@ export interface Unlockable {
   nftId: `0x${string}`[];
 }
 
+export interface Metadata {
+  name?: string;
+  description?: string;
+  lastUpdated: Date | string;
+}
+
+export interface UnlockCriteria {
+  unlockAmount: number;
+  nftId: `0x${string}`[];
+}
+
 export interface UnlockableV2 {
   id: string;
   owner: `0x${string}`;
-  metadata: {
-    name?: string;
-    description?: string;
-    lastUpdated: Date | string;
-  };
+  metadata: Metadata;
   content: {
     type: "IPFS";
     url: string;
   };
-  unlockCriteria: {
-    unlockAmount: number;
-    nftId: `0x${string}`[];
-  };
+  unlockCriteria: UnlockCriteria;
 }
 
 export class ConfigError extends Error {

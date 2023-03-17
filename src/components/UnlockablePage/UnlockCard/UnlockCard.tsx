@@ -3,10 +3,11 @@ import { ConnectKitButton, useSIWE } from "connectkit";
 import { useAccount } from "wagmi";
 import { SignInHint } from "@/src/components/ConnectPrompt/ConnectPrompt";
 import { UnlockableV2 } from "@/src/config/types";
-import UnlockLink from "./UnlockLink";
 import Metadata from "./Metadata";
 import Title from "./Title";
 import Description from "./Description";
+import UnlockSection from "./UnlockSection";
+import { fancyLog } from "@/src/utils/generic/fancyLog";
 
 type Props = {
   unlockable: UnlockableV2;
@@ -16,7 +17,7 @@ const UnlockCard = ({ unlockable }: Props) => {
   const { signedIn } = useSIWE();
   const { address } = useAccount();
 
-  console.log(unlockable);
+  fancyLog(unlockable.unlockCriteria.nftId.toString());
 
   return (
     <div className="max-w-xl w-full rounded-md bg-slate-800/50 mx-8 border border-white/10 shadow-2xl shadow-sky-500/10">
@@ -28,6 +29,7 @@ const UnlockCard = ({ unlockable }: Props) => {
           <Metadata
             lastUpdated={unlockable.metadata.lastUpdated}
             owner={unlockable.owner}
+            unlockCriteria={unlockable.unlockCriteria}
           />
         </div>
       </div>
@@ -44,8 +46,7 @@ const UnlockCard = ({ unlockable }: Props) => {
           </p>
         </div>
       ) : (
-        // Todo: check for access using backend API route
-        <UnlockLink accessLink="#!" />
+        <UnlockSection unlockable={unlockable} />
       )}
     </div>
   );

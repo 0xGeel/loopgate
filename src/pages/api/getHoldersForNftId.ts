@@ -1,9 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getMinterAndToken, getNftData } from "@/src/utils/loopring";
+import {
+  getMinterAndToken,
+  getNftData,
+  getNftHolders,
+} from "@/src/utils/loopring";
 
 const errorMessage = "Unable to find data for the NFT ID you supplied.";
 
-// Request NFTs Data for a Loopring NFT ID
+// Request holders for a NFT held on Loopring
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;
   const { nftId } = query;
@@ -30,7 +34,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ error: errorMessage });
   }
 
-  return res.status(200).json({ nftData: nftDataRes.nftData });
+  const holders = await getNftHolders(nftDataRes.nftData);
+
+  return holders
+    ? res.status(200).json(holders)
+    : res.status(400).json({
+        error: "Unable to find holders for the NFT ID.",
+        log: holders,
+      });
 };
 
 export default handler;

@@ -8,7 +8,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (!nftData || Array.isArray(nftData)) {
     // Check if multiple or no Account IDs are specified. If so: early return.
-    return res.status(400).json({ error: "Incorrect NFT Datas supplied." });
+    return res.status(400).json({ error: "Incorrect NFT Data supplied." });
   }
 
   // Call TheGraph API to find NFT Data for a NFT ID

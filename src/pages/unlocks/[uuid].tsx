@@ -22,6 +22,8 @@ const Page = () => {
     return;
   }
 
+  // Todo: Move unlockable to ISR
+  // Todo: update findUnlockableByUuid to retrieve content from DB instead of local config
   const unlockable = findUnlockableByUuid(uuid);
 
   if (!unlockable) {

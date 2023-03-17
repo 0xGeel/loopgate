@@ -2,6 +2,7 @@
 import getUserAddress from "./getUserAddress";
 import getUserNfts from "./getUserNfts";
 import getNftData from "./getNftData";
+import getNftHolders from "./getNftHolders";
 import getAllUserNftIds from "./getAllUserNftIds";
 import getMinterAndToken from "./getMinterAndToken";
 
@@ -16,5 +17,6 @@ export {
   getNftData,
   getMinterAndToken,
   getAllUserNftIds,
+  getNftHolders,
   headerOpts,
 };
