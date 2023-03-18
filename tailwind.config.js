@@ -1,5 +1,7 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
+const unlockSuccessDuration = "2s 1";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class", '[data-theme="dark"]'],
@@ -11,6 +13,23 @@ module.exports = {
         display: ["var(--font-unbounded)", ...fontFamily.sans],
       },
       keyframes: {
+        "unlock-success": {
+          "0%": { opacity: 0, transform: "scale(1)" },
+          "50%": { opacity: 0.8 },
+          "100%": { opacity: 0, transform: "scale(5)" },
+        },
+        "unlock-success-1": {
+          "0%": { opacity: 0.5, transform: "scale(1)" },
+          "100%": { opacity: 0, transform: "scale(1)" },
+        },
+        "unlock-success-2": {
+          "0%": { opacity: 0.2, transform: "scale(1)" },
+          "100%": { opacity: 0, transform: "scale(1.5)" },
+        },
+        "unlock-success-3": {
+          "0%": { opacity: 0.1, transform: "scale(1)" },
+          "100%": { opacity: 0, transform: "scale(2)" },
+        },
         "accordion-down": {
           from: { height: 0 },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -23,6 +42,10 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "unlock-success": `unlock-success ${unlockSuccessDuration}`,
+        "unlock-success-1": `unlock-success-1 ${unlockSuccessDuration}`,
+        "unlock-success-2": `unlock-success-2 ${unlockSuccessDuration}`,
+        "unlock-success-3": `unlock-success-3 ${unlockSuccessDuration}`,
       },
     },
   },
