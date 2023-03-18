@@ -20,7 +20,7 @@ const UnlockCard = ({ unlockable }: Props) => {
   fancyLog(unlockable.unlockCriteria.nftId.toString());
 
   return (
-    <div className="max-w-xl w-full rounded-md bg-slate-800/50 mx-8 border border-white/10 shadow-2xl shadow-sky-500/10">
+    <div className="max-w-xl w-full rounded-md bg-slate-800/50 mx-4 md:mx-8 border border-white/10 shadow-2xl shadow-sky-500/10">
       <div className="md:flex items-start md:space-x-6 p-8">
         <ShinyLogo />
         <div className="mt-4 md:mt-0">

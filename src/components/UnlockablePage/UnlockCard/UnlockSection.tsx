@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "../../Spinner";
 import UnlockLink from "./UnlockLink";
+import NoAccess from "./NoAccess";
 
 type Props = {
   unlockable: UnlockableV2;
@@ -51,9 +52,7 @@ const UnlockSection = ({ unlockable }: Props) => {
             // ~ UX delight: Confetti
             <UnlockLink accessLink={unlockedContent.accessLink} />
           ) : (
-            <div className="flex justify-center items-center font-display text-sm space-x-2 border-t border-white/10 px-8 py-5 bg-gradient-to-b from-sky-500/10 to-transparent rounded-b">
-              <p>(To do: write a cool unauthorized message)</p>
-            </div>
+            <NoAccess />
           )}
         </>
       )}

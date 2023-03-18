@@ -23,9 +23,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   //   Check if there is a session. Only connected users may call this endpoint.
-  //   if (!siweSesh.address || siweSesh.address !== address) {
-  //     return res.status(405).send({ message: "What are ye doin' in my swamp?!" });
-  //   }
+  if (!siweSesh.address || siweSesh.address !== address) {
+    return res.status(405).send({ message: "What are ye doin' in my swamp?!" });
+  }
 
   // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
   const accountId = await getUserAddress(address);
