@@ -5,7 +5,7 @@ type Props = {
 };
 
 const PulseAnimation = () => {
-  const circleBaseClass = "bg-sky-500 rounded-full absolute";
+  const circleBaseClass = "border-4 border-sky-500 rounded-full absolute";
   const animationBaseClass =
     "will-change-transform will-change-opacity fill-mode-forwards";
 
@@ -21,7 +21,7 @@ const PulseAnimation = () => {
           className={`w-40 h-40 animate-unlock-success-2 ${animationBaseClass} ${circleBaseClass}`}
         />
         <div
-          className={`w-64 h-64 animate-unlock-success-3 ${animationBaseClass} ${circleBaseClass}`}
+          className={`w-60 h-60 animate-unlock-success-3 ${animationBaseClass} ${circleBaseClass}`}
         />
       </div>
     </div>
