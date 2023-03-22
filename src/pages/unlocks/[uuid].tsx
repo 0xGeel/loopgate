@@ -1,5 +1,8 @@
 import { useRouter } from "next/router";
-import { findUnlockableByUuid } from "@/src/utils/generic";
+import {
+  fetchUnlockableByUuid,
+  findUnlockableByUuid,
+} from "@/src/utils/generic";
 import Layout from "@/src/components/UnlockablePage/Layout";
 import FourOhFour from "@/src/components/UnlockablePage/404";
 import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
@@ -25,6 +28,8 @@ const Page = () => {
   // Todo: Move unlockable to ISR
   // Todo: update findUnlockableByUuid to retrieve content from DB instead of local config
   const unlockable = findUnlockableByUuid(uuid);
+  const supabaseUnlockable = fetchUnlockableByUuid(uuid);
+  // console.log(supabaseUnlockable);
 
   if (!unlockable) {
     return <FourOhFour />;
