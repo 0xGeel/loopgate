@@ -13,7 +13,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "supabase:types": "npx supabase gen types typescript --project-id wyskjtopiuiwkkqclyho --schema public > src/utils/supabase/types.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
@@ -59,6 +60,7 @@
     "jest": "^29.4.2",
     "jest-environment-jsdom": "^29.4.2",
     "postcss": "^8.4.21",
+    "supabase": "^1.45.2",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.6.4"
   }
