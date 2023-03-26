@@ -12,7 +12,7 @@ export interface Metadata {
 
 export interface UnlockCriteria {
   unlockAmount: number;
-  nftId: `0x${string}`[];
+  nftId: string[];
 }
 
 export interface UnlockableV2 {

@@ -5,7 +5,7 @@ const fetchUnlockableByUuid = async (uuid: string) => {
     .from("unlockables_with_criteria")
     .select(`*`)
     .eq("id", uuid)
-    .single();
+    .maybeSingle();
 
   if (error) {
     throw error;
