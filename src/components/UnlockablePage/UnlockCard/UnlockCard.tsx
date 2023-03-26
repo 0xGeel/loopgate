@@ -17,8 +17,6 @@ const UnlockCard = ({ unlockable }: Props) => {
   const { signedIn } = useSIWE();
   const { address } = useAccount();
 
-  fancyLog(unlockable.unlockCriteria.nftId.toString());
-
   return (
     <div className="max-w-xl w-full rounded-md bg-slate-800/50 mx-4 md:mx-8 border border-white/10 shadow-2xl shadow-sky-500/10">
       <div className="md:flex items-start md:space-x-6 p-8">

@@ -6,10 +6,42 @@ import {
 import Layout from "@/src/components/UnlockablePage/Layout";
 import FourOhFour from "@/src/components/UnlockablePage/404";
 import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
+import { GetServerSideProps } from "next";
 
-const Page = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { query } = context;
+
+  if (!query.uuid || Array.isArray(query.uuid)) {
+    return {
+      props: { message: "Nothing found" },
+    };
+  }
+  const supabaseUnlockable = await fetchUnlockableByUuid(query.uuid);
+  // To do: make supabaseUnlockable / getServerSideProps an async function
+  // To do: make Supabase View of table to include NFT IDs in the response
+  // To do: transform Supabase response to Type
+  // To do: automatic Supabase Typescript types
+
+  // console.log(supabaseUnlockable);
+
+  if (!supabaseUnlockable) {
+    return {
+      props: { data: null },
+    };
+  }
+
+  // To do: Parse the response.
+
+  return {
+    props: { data: supabaseUnlockable },
+  };
+};
+
+const Page = ({ data }: { data: any }) => {
   const router = useRouter();
   const { uuid } = router.query;
+
+  console.log(data);
 
   // ✅: Check if UUID exists in config.ts (if not: —> 404)
   // 1️⃣B: Replace config.ts with Supabase
@@ -28,8 +60,7 @@ const Page = () => {
   // Todo: Move unlockable to ISR
   // Todo: update findUnlockableByUuid to retrieve content from DB instead of local config
   const unlockable = findUnlockableByUuid(uuid);
-  const supabaseUnlockable = fetchUnlockableByUuid(uuid);
-  // console.log(supabaseUnlockable);
+  // const supabaseUnlockable = fetchUnlockableByUuid(uuid);
 
   if (!unlockable) {
     return <FourOhFour />;

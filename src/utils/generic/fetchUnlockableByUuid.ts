@@ -2,10 +2,8 @@ import supabase from "../supabase";
 
 const fetchUnlockableByUuid = async (uuid: string) => {
   let { data: unlockables, error } = await supabase
-    .from("unlockables")
-    .select(
-      `id, name, description, owner, content_type_id, content_url, criteria_unlock_amount, updated_at`
-    )
+    .from("unlockables_with_criteria")
+    .select(`*`)
     .eq("id", uuid)
     .single();
 
@@ -14,7 +12,6 @@ const fetchUnlockableByUuid = async (uuid: string) => {
   }
 
   if (unlockables) {
-    console.log(unlockables);
     return unlockables;
   }
 };

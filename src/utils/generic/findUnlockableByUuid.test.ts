@@ -1,6 +1,5 @@
 import { findUnlockableByUuid } from "./";
-import { unlockablesV2 } from "@/src/config/config";
-import { UnlockableV2, ConfigError } from "../../config/types";
+import { ConfigError } from "../../config/types";
 
 describe("find unlockables based on UUID", () => {
   it("should return one result if the user meets the criteria for it", () => {
