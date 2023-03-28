@@ -13,9 +13,19 @@ description: >-
 Your app should now be running locally on your computer! 🚀&#x20;
 
 You can access it by opening a browser and going to the following URL: \
-[https://localhost:3000](https://localhost:3000)
+[http://localhost:3000](http://localhost:3000)
 
+!['It should look something like this](../../public/images/docs/loopgate-is-running.png)
 
+### **Verify your .env :**
+
+Now your LoopGate is running on your local machine, it's time to check the `.env` file.
+
+- Go to the following url: [http://localhost:3000/api/env-status](http://localhost:3000/api/env-status).
+
+This checks the secrets in your `.env` file: if these are misconfigured, LoopGate will not work.
+
+---
 
 ### **Publishing your changes:**
 
