@@ -8,8 +8,8 @@ const parseSqlUnlockable = (supabaseUnlockable: any): UnlockableV2 => {
     id: supabaseUnlockable.id,
     owner: supabaseUnlockable.owner,
     metadata: {
-      name: supabaseUnlockable.name,
-      description: supabaseUnlockable.description,
+      name: supabaseUnlockable?.name,
+      description: supabaseUnlockable?.description,
       lastUpdated: supabaseUnlockable.updated_at,
     },
     content: {

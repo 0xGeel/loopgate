@@ -3,7 +3,11 @@ import Layout from "@/src/components/UnlockablePage/Layout";
 import FourOhFour from "@/src/components/UnlockablePage/404";
 import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
 import { GetServerSideProps } from "next";
-import parseSqlUnlockable from "@/src/utils/supabase/helpers/parseSqlUnlockable";
+import {
+  parseSqlUnlockable,
+  isUnlockableValid,
+} from "@/src/utils/supabase/helpers";
+import { UnlockableV2 } from "@/src/config/types";
 
 // To do: automatic Supabase Typescript types
 
@@ -29,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
   const supabaseUnlockable = await fetchUnlockableByUuid(query.uuid);
 
-  if (!supabaseUnlockable) {
+  if (!supabaseUnlockable || !isUnlockableValid(supabaseUnlockable)) {
     return {
       props: { unlockable: null },
     };
@@ -42,7 +46,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const Page = ({ unlockable }: { unlockable: any }) => {
+type Props = {
+  unlockable: UnlockableV2 | undefined;
+};
+
+const Page = ({ unlockable }: Props) => {
   if (!unlockable) {
     return <FourOhFour />;
   }
