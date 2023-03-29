@@ -1,15 +1,13 @@
-import { fetchUnlockableByUuid } from "@/src/utils/generic";
+import {
+  fetchUnlockableByUuid,
+  findUnlockableByUuid,
+} from "@/src/utils/generic";
 import Layout from "@/src/components/UnlockablePage/Layout";
 import FourOhFour from "@/src/components/UnlockablePage/404";
 import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
 import { GetServerSideProps } from "next";
-import {
-  parseSqlUnlockable,
-  isUnlockableValid,
-} from "@/src/utils/supabase/helpers";
 import { UnlockableV2 } from "@/src/config/types";
-
-// To do: automatic Supabase Typescript types
+import { isUuid } from "@/src/utils/supabase/helpers";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   context.res.setHeader(
@@ -19,38 +17,33 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const { query } = context;
 
-  const uuidRegex =
-    /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
-
   if (
     !query.uuid ||
     Array.isArray(query.uuid) ||
-    !uuidRegex.test(query.uuid as string)
+    !isUuid(query.uuid as string)
   ) {
     return {
       props: { unlockable: null },
     };
   }
-  const supabaseUnlockable = await fetchUnlockableByUuid(query.uuid);
 
-  if (!supabaseUnlockable || !isUnlockableValid(supabaseUnlockable)) {
+  const unlockable =
+    process.env.LOOPGATE_MODE === "supabase"
+      ? await fetchUnlockableByUuid(query.uuid) // Use Supabase as the source for the Unlockables
+      : findUnlockableByUuid(query.uuid); // Use the 'config.ts' file as the source for the Unlockables
+
+  if (!unlockable) {
     return {
       props: { unlockable: null },
     };
   }
-
-  const unlockable = parseSqlUnlockable(supabaseUnlockable);
 
   return {
     props: { unlockable: unlockable },
   };
 };
 
-type Props = {
-  unlockable: UnlockableV2 | undefined;
-};
-
-const Page = ({ unlockable }: Props) => {
+const Page = ({ unlockable }: { unlockable: UnlockableV2 | undefined }) => {
   if (!unlockable) {
     return <FourOhFour />;
   }

@@ -1,5 +1,5 @@
 import parseNftIdString from "./parseNftIdString";
 import parseSqlUnlockable from "./parseSqlUnlockable";
-import isUnlockableValid from "./isUnlockableValid";
+import isUuid from "./isUuid";
 
-export { parseNftIdString, parseSqlUnlockable, isUnlockableValid };
+export { parseNftIdString, parseSqlUnlockable, isUuid };
