@@ -7,7 +7,6 @@ import Metadata from "./Metadata";
 import Title from "./Title";
 import Description from "./Description";
 import UnlockSection from "./UnlockSection";
-import { fancyLog } from "@/src/utils/generic/fancyLog";
 
 type Props = {
   unlockable: UnlockableV2;

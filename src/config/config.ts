@@ -46,26 +46,26 @@ const unlockables: Unlockable[] = [
  * database, to be edited with a GUI instead of the config
  *********************************************************/
 const unlockablesV2: UnlockableV2[] = [
-  // {
-  //   id: "ee3fd6ff-4718-4949-b621-f35ccad89ee4",
-  //   owner: "0x1337CC354AeAf15B0E98A609cd348DF171174e14",
-  //   metadata: {
-  //     name: "Token Gating with NFTs: Unlocking New Ways to Bring Value",
-  //     description:
-  //       "This exclusive article contains a primer on what Token Gating is, and provides four actionable prompts on how to implement it to bring value to members of your community.",
-  //     lastUpdated: "2023-03-13 16:05:23.481327",
-  //   },
-  //   content: {
-  //     type: "IPFS",
-  //     url: "bafybeiehgpaip4f7jafzf7imgannx3nnv3ubaiwp6ph56mlyzijpqxi45m",
-  //   },
-  //   unlockCriteria: {
-  //     unlockAmount: 1,
-  //     nftId: [
-  //       "0x3d483f631a391a3706446613929d253cfddcb47900a07593c5004c5e3827d9ee",
-  //     ],
-  //   },
-  // },
+  {
+    id: "ee3fd6ff-4718-4949-b621-f35ccad89ee4",
+    owner: "0x1337CC354AeAf15B0E98A609cd348DF171174e14",
+    metadata: {
+      name: "Token Gating with NFTs: Unlocking New Ways to Bring Value",
+      description:
+        "This exclusive article contains a primer on what Token Gating is, and provides four actionable prompts on how to implement it to bring value to members of your community.",
+      lastUpdated: "2023-03-13 16:05:23.481327",
+    },
+    content: {
+      type: "IPFS",
+      url: "bafybeiehgpaip4f7jafzf7imgannx3nnv3ubaiwp6ph56mlyzijpqxi45m",
+    },
+    unlockCriteria: {
+      unlockAmount: 1,
+      nftId: [
+        "0x3d483f631a391a3706446613929d253cfddcb47900a07593c5004c5e3827d9ee",
+      ],
+    },
+  },
   {
     id: "c9e21ebf-59cc-42dd-9dc4-fd427be153b9",
     owner: "0x1337CC354AeAf15B0E98A609cd348DF171174e14",
@@ -83,27 +83,27 @@ const unlockablesV2: UnlockableV2[] = [
       ],
     },
   },
-  // {
-  //   id: "3eade688-8839-4fd7-b97a-f7c5f5bfc6ad",
-  //   owner: "0x1337CC354AeAf15B0E98A609cd348DF171174e14",
-  //   metadata: {
-  //     name: "Flappy Bird: Origins",
-  //     description:
-  //       "An incredibly exclusive web game built in Godot 3, optimized for browsers. Dodge the obstacles, and fly for your life...",
-  //     lastUpdated: "2023-03-13 16:05:23.481327",
-  //   },
-  //   content: {
-  //     type: "IPFS",
-  //     url: "bafybeihhx5v3saq3b7n55ub5q3atuw2udbqc5ictkv2ih7vd3hxptu22nu",
-  //   },
-  //   unlockCriteria: {
-  //     unlockAmount: 2,
-  //     nftId: [
-  //       "0x8aa9d39f44b4b8488d0bbf04ea12bec99ddbe676a1b9a38d853701327437e78c",
-  //       "0x3d483f631a391a3706446613929d253cfddcb47900a07593c5004c5e3827d9ee",
-  //     ],
-  //   },
-  // },
+  {
+    id: "3eade688-8839-4fd7-b97a-f7c5f5bfc6ad",
+    owner: "0x1337CC354AeAf15B0E98A609cd348DF171174e14",
+    metadata: {
+      name: "Flappy Bird: Origins",
+      description:
+        "An incredibly exclusive web game built in Godot 3, optimized for browsers. Dodge the obstacles, and fly for your life...",
+      lastUpdated: "2023-03-13 16:05:23.481327",
+    },
+    content: {
+      type: "IPFS",
+      url: "bafybeihhx5v3saq3b7n55ub5q3atuw2udbqc5ictkv2ih7vd3hxptu22nu",
+    },
+    unlockCriteria: {
+      unlockAmount: 2,
+      nftId: [
+        "0x8aa9d39f44b4b8488d0bbf04ea12bec99ddbe676a1b9a38d853701327437e78c",
+        "0x3d483f631a391a3706446613929d253cfddcb47900a07593c5004c5e3827d9ee",
+      ],
+    },
+  },
 ];
 
 export { unlockables, unlockablesV2 };
