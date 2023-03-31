@@ -1,9 +1,10 @@
 import Header from "../Header";
 import Footer from "../Footer";
+import { ReactNode } from "react";
 
 type Props = {
   containerClass: string;
-  children: JSX.Element;
+  children: ReactNode | ReactNode[];
 };
 
 const Layout = ({ containerClass, children }: Props) => {

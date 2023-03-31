@@ -8,6 +8,7 @@ import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
 import { GetServerSideProps } from "next";
 import { UnlockableV2 } from "@/src/config/types";
 import { isUuid } from "@/src/utils/supabase/helpers";
+import NextHeadBase from "@/src/components/SEO/NextHeadBase";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   context.res.setHeader(
@@ -54,6 +55,14 @@ const Page = ({ unlockable }: { unlockable: UnlockableV2 | undefined }) => {
 
   return (
     <Layout containerClass="flex-grow flex items-center justify-center">
+      <NextHeadBase
+        title={`Unlock ${
+          unlockable.metadata.name
+            ? "'" + unlockable.metadata.name + "'"
+            : "This token-gated content"
+        } on LoopGate`}
+        ogImgUrl="/images/unlocks-og-image.png"
+      />
       <UnlockCard unlockable={unlockable} />
     </Layout>
   );
