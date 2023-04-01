@@ -1,7 +1,7 @@
 import ShinyLogo from "./ShinyLogo";
 import { ConnectKitButton, useSIWE } from "connectkit";
 import { useAccount } from "wagmi";
-import { SignInHint } from "@/src/components/ConnectPrompt/ConnectPrompt";
+import SignInHint from "./SignInHint";
 import { UnlockableV2 } from "@/src/config/types";
 import Metadata from "./Metadata";
 import Title from "./Title";

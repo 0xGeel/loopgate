@@ -49,7 +49,6 @@ const UnlockSection = ({ unlockable }: Props) => {
       ) : (
         <>
           {unlockedContent ? (
-            // ~ UX delight: Confetti
             <UnlockLink accessLink={unlockedContent.accessLink} />
           ) : (
             <NoAccess />
