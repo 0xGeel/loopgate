@@ -9,7 +9,7 @@ const List = ({ unlockables }: Props) => {
   return (
     <div className="flex flex-col max-w-3xl w-full">
       <h1 className="font-display border-b border-white/20 pb-2">
-        All Unlockables
+        Browse Unlockables
         <span className="text-xs text-white/60 w-full text-right ml-2">
           [ {unlockables.length} ]
         </span>

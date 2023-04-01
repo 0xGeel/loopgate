@@ -12,7 +12,7 @@ type Props = {
 
 const BrowseAllLink = () => (
   <Link
-    href="/unlocks/all"
+    href="/unlocks/browse"
     className="text-sky-500 hover:text-white hover:bg-sky-500/10 space-x-2 duration-150 flex items-center p-5 lg:p-8 w-full flex-grow border-t border-white/10"
   >
     <span>
@@ -44,7 +44,7 @@ const UnlockablesBlock = ({ unlockables }: Props) => {
   return (
     <div className="rounded-lg col-span-12 lg:col-span-5 self-stretch flex flex-col items-start bg-white/5">
       <div className="flex items-center space-x-2 font-display p-5 lg:p-10">
-        <h2 className="font-semibold">All Unlockables</h2>
+        <h2 className="font-semibold">Browse Unlockables</h2>
         <span className="font-light text-xs text-white/70">
           [ {unlockables.length} ]
         </span>

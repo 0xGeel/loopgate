@@ -91,7 +91,7 @@ const data: UseCase[] = [
 
 const UseCases = () => {
   const [selectedUseCase, setSelectedUseCase] = useState(0);
-  const [style, trigger] = useBoop({ scale: 1.05 });
+  const [boopStyle, boopTrigger] = useBoop({ scale: 1.05 });
 
   const onNextItem = () => {
     if (selectedUseCase + 1 >= data.length) {
@@ -99,7 +99,7 @@ const UseCases = () => {
     } else {
       setSelectedUseCase(selectedUseCase + 1);
     }
-    trigger();
+    boopTrigger();
   };
 
   return (
@@ -119,7 +119,7 @@ const UseCases = () => {
       </div>
       <animated.div
         className="rounded-lg bg-white/5 border border-white/10 mt-6 w-full shadow-2xl shadow-sky-500/10 overflow-hidden"
-        style={style}
+        style={boopStyle}
       >
         <div className="p-5 lg:p-12 lg:pb-5 max-w-lg space-y-4">
           <h3 className="font-display text-lg font-medium">
