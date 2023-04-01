@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import MarqueeRow from "./MarqueeRow";
-import { UseCase, IconNames, Direction, Content } from "./types";
+import { UseCase, IconNames, Direction } from "./types";
+import { animated } from "react-spring";
+import useBoop from "@/src/hooks/useBoop";
 
 const data: UseCase[] = [
   {
@@ -89,6 +91,7 @@ const data: UseCase[] = [
 
 const UseCases = () => {
   const [selectedUseCase, setSelectedUseCase] = useState(0);
+  const [style, trigger] = useBoop({ scale: 1.05 });
 
   const onNextItem = () => {
     if (selectedUseCase + 1 >= data.length) {
@@ -96,6 +99,7 @@ const UseCases = () => {
     } else {
       setSelectedUseCase(selectedUseCase + 1);
     }
+    trigger();
   };
 
   return (
@@ -113,7 +117,10 @@ const UseCases = () => {
           <ArrowLongRightIcon className="w-5 h-5" />
         </button>
       </div>
-      <div className="rounded-lg bg-white/5 border border-white/10 mt-6 w-full shadow-2xl shadow-sky-500/10 overflow-hidden">
+      <animated.div
+        className="rounded-lg bg-white/5 border border-white/10 mt-6 w-full shadow-2xl shadow-sky-500/10 overflow-hidden"
+        style={style}
+      >
         <div className="p-5 lg:p-12 lg:pb-5 max-w-lg space-y-4">
           <h3 className="font-display text-lg font-medium">
             For{" "}
@@ -135,7 +142,7 @@ const UseCases = () => {
             direction={Direction.RIGHT}
           />
         </div>
-      </div>
+      </animated.div>
     </div>
   );
 };
