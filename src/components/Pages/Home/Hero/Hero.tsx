@@ -21,7 +21,7 @@ const Hero = ({ title, subtitle, ctaText }: Props) => {
           {subtitle}
         </h2>
         <a
-          href="#ContentBlocks"
+          href="#Overview"
           className="inline-flex flex-col items-center text-sky-400 hover:text-sky-200 duration-150 space-y-4"
         >
           <p>{ctaText}</p>

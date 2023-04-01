@@ -1,6 +1,5 @@
 import RFMarquee from "react-fast-marquee";
 import Image from "next/image";
-import { cn } from "@/src/utils/generic";
 
 interface Logo {
   src: string;
@@ -13,10 +12,10 @@ interface Props {
   className?: string;
 }
 
-const Marquee = ({ logos, className }: Props) => {
+const LogoMarquee = ({ logos, className }: Props) => {
   return (
     <RFMarquee
-      className={cn(`pointer-eventss-none`, className)}
+      className={className}
       gradientColor={[29, 35, 53]}
       gradientWidth={75}
     >
@@ -42,4 +41,4 @@ const Marquee = ({ logos, className }: Props) => {
   );
 };
 
-export default Marquee;
+export default LogoMarquee;

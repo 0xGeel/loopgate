@@ -9,8 +9,8 @@ import {
 } from "@heroicons/react/24/outline";
 
 import Block from "./Block";
-import WaitlistBtn from "./BrowseAllBtn";
-import Marquee from "./Marquee";
+import CtaBtn from "./BrowseAllBtn";
+import LogoMarquee from "./LogoMarquee";
 import Links from "./Links";
 import UnlockablesBlock from "./UnlockablesBlock";
 
@@ -24,8 +24,8 @@ const ContentBlocks = ({ unlockables }: Props) => {
 
   return (
     <div
-      id="ContentBlocks"
-      className="max-w-7xl w-full relative grid grid-cols-12 gap-5 items-center mx-auto mt-32 px-4 md:px-8"
+      id="Overview"
+      className="max-w-7xl w-full relative grid grid-cols-12 gap-8 lg:gap-5 items-center mx-auto mt-32 px-4 md:px-8 scroll-m-8"
     >
       <Block
         title="Token-Gate any content"
@@ -37,7 +37,7 @@ const ContentBlocks = ({ unlockables }: Props) => {
         colourMode={ColourModes.ACCENT}
         className="lg:col-span-7"
       >
-        <WaitlistBtn />
+        <CtaBtn label="See use cases" url="#use-cases" />
       </Block>
       <UnlockablesBlock unlockables={unlockables} />
 
@@ -50,7 +50,7 @@ const ContentBlocks = ({ unlockables }: Props) => {
         colourMode={ColourModes.BASE}
         className="lg:col-span-5"
       >
-        <Marquee
+        <LogoMarquee
           className="mt-6 md:mt-10 py-2 items-center"
           logos={[
             {

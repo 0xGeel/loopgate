@@ -21,7 +21,7 @@ const HeroImage = () => {
   return (
     <>
       <Img size={imgSize.mobile} className="md:hidden" />
-      <Img size={imgSize.desktop} className="hidden md:block" />
+      <Img size={imgSize.desktop} className="hidden md:block animate-float" />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { ConnectKitButton } from "connectkit";
 import Image from "next/image";
-import LogoBrandLight from "@/public/images/logo/loopgate-brand-light.svg";
+import LogoSrc from "@/public/images/logo/logo.svg";
 import Link from "next/link";
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
         href="/"
         className="hover:opacity-80 duration-150 active:scale-95 active:opacity-70"
       >
-        <Image src={LogoBrandLight} alt="loopgate Logo" height={32} />
+        <Image src={LogoSrc} alt="LoopGate Logo" height={32} />
       </Link>
 
       <ConnectKitButton />
