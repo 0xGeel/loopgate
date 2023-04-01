@@ -1,12 +1,14 @@
+import { GetServerSideProps } from "next";
+import { fetchAllUnlockables, findAllUnlockables } from "../utils/generic";
+import { UnlockableV2 } from "../config/types";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Hero from "../components/Pages/Home/Hero";
 import ContentBlocks from "../components/Pages/Home/ContentBlocks";
 import UseCases from "../components/Pages/Home/UseCases";
+import CTABanner from "../components/Pages/Home/CTABanner";
 import { techPattern } from "../styles/inline-styles";
-import { GetServerSideProps } from "next";
-import { fetchAllUnlockables, findAllUnlockables } from "../utils/generic";
-import { UnlockableV2 } from "../config/types";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   context.res.setHeader(
@@ -44,6 +46,7 @@ const Page = ({ unlockables }: { unlockables: UnlockableV2[] | [] }) => {
       />
       <ContentBlocks unlockables={unlockables} />
       <UseCases />
+      <CTABanner />
       <Footer />
     </div>
   );

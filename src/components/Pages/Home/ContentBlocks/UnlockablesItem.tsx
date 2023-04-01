@@ -9,8 +9,8 @@ type Props = {
 
 const UnlockablesItem = ({ unlockable }: Props) => {
   const fallback = {
-    title: "An unnamed unlockable...",
-    description: "No description",
+    title: "An Unnamed Unlockable...",
+    description: "No description...",
   };
 
   return (

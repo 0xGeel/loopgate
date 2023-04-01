@@ -33,7 +33,7 @@ const LogoMarquee = ({ logos, className }: Props) => {
             quality={100}
             src={`/images/marquee/${item.src}`}
             alt={item.alt}
-            className="h-auto w-16 p-2 bg-white/5 rounded-md border border-white/10 shadow-lg hover:bg-white/10 duration-150"
+            className="h-auto w-16 p-2 bg-white/5 rounded-md border border-white/10 shadow-lg hover:bg-white/10 hover:scale-110 duration-200"
           />
         </a>
       ))}
