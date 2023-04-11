@@ -10,8 +10,6 @@ const fetchALlUnlockables = async () => {
     throw error;
   }
 
-  console.log(unlockables);
-
   if (unlockables) {
     const parsedUnlockables = unlockables.map((item) => {
       return parseSqlUnlockable(item);

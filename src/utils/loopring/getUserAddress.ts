@@ -8,6 +8,7 @@ const getUserAddress = async (address: string | string[]) => {
     );
     return response.data.accountId;
   } catch (error) {
+    console.error(error);
     return false;
   }
 };

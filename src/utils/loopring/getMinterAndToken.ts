@@ -29,6 +29,7 @@ const getMinterAndToken = async (nftId: string) => {
       tokenAddress: response.data.data.nonFungibleTokens[0].token,
     };
   } catch (error) {
+    console.error(error);
     return false;
   }
 };

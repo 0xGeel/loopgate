@@ -14,8 +14,6 @@ const getNftHolders = async (nftData: string) => {
     // Keep track of the total amount of holders
     const amountOfHolders = firstReq.data.totalNum;
 
-    console.log(amountOfHolders);
-
     // Determine if we need to do follow-up API calls
     if (amountOfHolders <= LIMIT) {
       // No need to. Parse the nft IDs from the response and early return
@@ -49,6 +47,7 @@ const getNftHolders = async (nftData: string) => {
 
     return nftApiResFlattened;
   } catch (error) {
+    console.error(error);
     return false;
   }
 };
