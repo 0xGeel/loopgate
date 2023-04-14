@@ -5,6 +5,7 @@ import UnlockLink from "./UnlockLink";
 import Spinner from "../Spinner";
 import { useAccount } from "wagmi";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const ConnectedPage = () => {
   const { address } = useAccount();
@@ -19,15 +20,15 @@ const ConnectedPage = () => {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log("Whoops. Something went wrong." + error);
+        toast.error(error.request.response);
         setIsLoading(false);
       });
   };
 
   // On render: make API calls to determine NFT holdings
-  // 1.: GET user's Loopring ID            (Loopring API)    ✅
-  // 2.: GET user's NFTs                   (Loopring API)    ✅
-  // 3.: Check config to compare NFTs and unlocks            ✅
+  // 1.: GET user's Loopring ID            (Loopring API)
+  // 2.: GET user's NFTs                   (Loopring API)
+  // 3.: Check config to compare NFTs and unlocks
   // 4.: GET submarined content            (Pinata API)
 
   useEffect(() => {

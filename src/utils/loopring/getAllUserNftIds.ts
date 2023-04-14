@@ -1,6 +1,14 @@
 import axios from "axios";
+import rateLimit from "axios-rate-limit";
 import { API } from "./_constants";
 import { headerOpts, extractNfts } from "./index";
+
+// Loopring API accepts 5 requests per second, max.
+// Although this seems to fluctuate. 20 / sec
+const rateLimitedAxios = rateLimit(axios.create(), {
+  maxRequests: 10,
+  perMilliseconds: 1000,
+});
 
 const getAllUserNftIds = async (accountId: string | string[]) => {
   // Gets all Loopring L2 NFTs for a specified Account ID
@@ -32,7 +40,7 @@ const getAllUserNftIds = async (accountId: string | string[]) => {
   // Call the API for all of these ^
   const followUpReqs = await Promise.all(
     amountOfCalls.map(async (index) => {
-      return await axios.get(
+      return await rateLimitedAxios.get(
         `${API.USER_NFT_BALANCE}?accountId=${accountId}&limit=${LIMIT}&offset=${
           LIMIT * index
         }`,

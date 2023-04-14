@@ -16,21 +16,31 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const siweSesh = await siwe.getSession(req, res);
 
   if (!address || Array.isArray(address)) {
-    return res.status(400).json({ error: "No 0x address specified." });
+    return res
+      .status(400)
+      .send(
+        "0x address not provided. Please provide a valid 0x address and try again."
+      );
   }
 
   // Check if there is a session. Only connected users may call this endpoint.
   if (!siweSesh.address || siweSesh.address !== address) {
-    return res.status(405).send({ message: "What are ye doin' in my swamp?!" });
+    return res
+      .status(401)
+      .send(
+        "You are not authorized to access this resource. Sign In With Ethereum, and try again."
+      );
   }
 
   // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
   const accountId = await getUserAddress(address);
 
   if (!accountId) {
-    return res.status(400).json({
-      error: "Could not find Loopring Account for the specified 0x address",
-    });
+    return res
+      .status(400)
+      .send(
+        "No Loopring Account could be found for the connected 0x address. Is your L2 account activated?"
+      );
   }
 
   // 2️⃣ Call the Loopring API to find the NFTs held by the user
@@ -38,8 +48,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (!allNftIds) {
     return res
-      .status(400)
-      .json({ error: "Unable to find any NFTs for the specified 0x address" });
+      .status(404)
+      .send("Unable to find any NFTs for the specified 0x address.");
   }
 
   // 3️⃣ Check the user's NFT IDs against the config.ts to determine unlocks
