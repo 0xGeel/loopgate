@@ -16,12 +16,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const siweSesh = await siwe.getSession(req, res);
 
   if (!address || Array.isArray(address)) {
-    return res.status(400).json({ error: "No 0x address specified." });
+    return res.status(400).json({
+      error:
+        "Invalid Request: 0x address not provided. Please provide a valid 0x address and try again.",
+    });
   }
 
   // Check if there is a session. Only connected users may call this endpoint.
   if (!siweSesh.address || siweSesh.address !== address) {
-    return res.status(405).send({ message: "What are ye doin' in my swamp?!" });
+    return res.status(401).send({
+      error:
+        "Invalid Request: you are not authorized to access this resource. Check your SIWE status, and try again.",
+    });
   }
 
   // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
@@ -29,7 +35,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (!accountId) {
     return res.status(400).json({
-      error: "Could not find Loopring Account for the specified 0x address",
+      error:
+        "Invalid Request: No Loopring Account could be found for the specified 0x address.",
     });
   }
 
@@ -37,9 +44,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const allNftIds = await getAllUserNftIds(accountId);
 
   if (!allNftIds) {
-    return res
-      .status(400)
-      .json({ error: "Unable to find any NFTs for the specified 0x address" });
+    return res.status(404).json({
+      error:
+        "Invalid Request: Unable to find any NFTs for the specified 0x address.",
+    });
   }
 
   // 3️⃣ Check the user's NFT IDs against the config.ts to determine unlocks
