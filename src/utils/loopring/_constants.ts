@@ -1,8 +1,14 @@
-const BASE_URL = "https://api3.loopring.io/api/v3";
+const LOOP_BASE_URL = "https://api3.loopring.io/api/v3";
 
-export const API = {
-  USER_ACCOUNT: `${BASE_URL}/account`,
-  USER_NFT_BALANCE: `${BASE_URL}/user/nft/balances`,
+export const LOOP_API = {
+  USER_ACCOUNT: `${LOOP_BASE_URL}/account`,
+  USER_NFT_BALANCE: `${LOOP_BASE_URL}/user/nft/balances`,
+  NFT_DATA: `${LOOP_BASE_URL}/nft/info/nftData`,
+  NFT_HOLDERS: `${LOOP_BASE_URL}/nft/info/nftHolders`,
+};
+
+export const THE_GRAPH = {
+  GATEWAY_URL: "https://api.thegraph.com/subgraphs/name/loopring/loopring",
 };
 
 export const CONTRACTS = {
