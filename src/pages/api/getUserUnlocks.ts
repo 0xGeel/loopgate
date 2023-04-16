@@ -15,6 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { address } = query;
   const siweSesh = await siwe.getSession(req, res);
 
+  // Check if multiple or no Account IDs are specified. If so: early return.
   if (!address || Array.isArray(address)) {
     return res
       .status(400)

@@ -14,14 +14,22 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (!nftId || Array.isArray(nftId)) {
     // Check if multiple or no Account IDs are specified. If so: early return.
-    return res.status(400).json({ error: "Incorrect NFT ID supplied." });
+    return res
+      .status(400)
+      .send(
+        "Invalid request. Please provide a valid Loopring NFT ID, and try again."
+      );
   }
 
   // Call TheGraph API to find NFT Datas for a NFT ID
   const theGraphRes = await getMinterAndToken(nftId);
 
   if (!theGraphRes) {
-    return res.status(400).json({ error: errorMessage });
+    return res
+      .status(400)
+      .send(
+        "Invalid request. Please provide a valid Loopring NFT ID, and try again."
+      );
   }
 
   const nftDataRes = await getNftData(
@@ -31,7 +39,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   if (!nftDataRes) {
-    return res.status(400).json({ error: errorMessage });
+    return res
+      .status(404)
+      .send(
+        "Unable to find data for this NFT ID. Please check the Loopring NFT ID, and try again."
+      );
   }
 
   const holders = await getNftHolders(nftDataRes.nftData);

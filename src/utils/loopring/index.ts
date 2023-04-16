@@ -9,6 +9,7 @@ import getMinterAndToken from "./getMinterAndToken";
 // Utils / general
 import extractNfts from "./extractNfts";
 import headerOpts from "./headerOpts";
+import rateLimitedAxios from "./rateLimitedAxios";
 
 export {
   extractNfts,
@@ -19,4 +20,5 @@ export {
   getAllUserNftIds,
   getNftHolders,
   headerOpts,
+  rateLimitedAxios,
 };

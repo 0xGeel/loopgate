@@ -6,9 +6,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;
   const { nftData } = query;
 
+  // Check if multiple or no Account IDs are specified. If so: early return.
   if (!nftData || Array.isArray(nftData)) {
-    // Check if multiple or no Account IDs are specified. If so: early return.
-    return res.status(400).json({ error: "Incorrect NFT Data supplied." });
+    return res
+      .status(400)
+      .send(
+        "Invalid request. Please provide a valid Loopring 'NFT Data', and try again."
+      );
   }
 
   // Call TheGraph API to find NFT Data for a NFT ID
@@ -16,10 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   return holders
     ? res.status(200).json(holders)
-    : res.status(400).json({
-        error: "Unable to find holders for the NFT Datas.",
-        log: holders,
-      });
+    : res.status(404).send(`Unable to find holders for NFT Data '${nftData}'`);
 };
 
 export default handler;

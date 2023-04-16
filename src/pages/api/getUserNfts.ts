@@ -6,8 +6,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;
   const { accountId } = query;
 
-  if (!accountId || Array.isArray(accountId[0])) {
-    // Check if multiple or no Account IDs are specified. If so: early return.
+  // Check if multiple or no Account IDs are specified. If so: early return.
+  if (!accountId || Array.isArray(accountId)) {
     return res
       .status(400)
       .send(
@@ -21,10 +21,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   return allNftIds
     ? res.status(200).json(allNftIds)
     : res
-        .status(400)
-        .send(
-          "Invalid Request: Unable to find any NFTs for the specified 0x address."
-        );
+        .status(404)
+        .send("Unable to find any NFTs for the specified 0x address.");
 };
 
 export default handler;

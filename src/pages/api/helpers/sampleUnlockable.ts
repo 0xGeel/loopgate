@@ -11,7 +11,7 @@ export default async function handler(
   const now = new Date();
   const dateObj = now.toISOString().replace("T", " ").split("Z")[0];
 
-  const sampleUnlockable = {
+  const sampleUnlockable: UnlockableV2 = {
     id: uuidv4(),
     owner: "0x000000000000000000000000000000000000dEaD",
     metadata: {
