@@ -1,6 +1,7 @@
 import headerOpts from "./headerOpts";
 import { LOOP_API } from "./_constants";
 import axios from "axios";
+import logger from "@/src/utils/logger";
 
 const getUserNfts = async (accountId: string) => {
   try {
@@ -10,7 +11,7 @@ const getUserNfts = async (accountId: string) => {
     );
     return response.data;
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return false;
   }
 };

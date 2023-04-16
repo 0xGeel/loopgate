@@ -6,6 +6,7 @@ import Spinner from "../../Spinner";
 import UnlockLink from "./UnlockLink";
 import NoAccess from "./NoAccess";
 import toast from "react-hot-toast";
+import logger from "@/src/utils/logger";
 
 type Props = {
   unlockable: UnlockableV2;
@@ -31,6 +32,7 @@ const UnlockSection = ({ unlockable }: Props) => {
       })
       .catch((error) => {
         setIsLoading(false);
+        logger.error(error.request.response);
         toast.error(error.request.response);
       });
   };

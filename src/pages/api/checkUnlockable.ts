@@ -4,6 +4,7 @@ import { getUserAddress, getAllUserNftIds } from "@/src/utils/loopring";
 import { findUnlockableByUuid } from "@/src/utils/generic";
 import { getPinataIndexLink } from "@/src/utils/pinata";
 import { withSessionRoute } from "@/src/utils/iron-session/withSession";
+import logger from "@/src/utils/logger";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;
@@ -17,47 +18,44 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     !unlockableId ||
     Array.isArray(unlockableId)
   ) {
-    return res
-      .status(400)
-      .send(
-        "Invalid Request: 0x address not provided. Please provide a valid 0x address and try again."
-      );
+    const errorMsg =
+      "Invalid Request: 0x address not provided. Please provide a valid 0x address and try again.";
+    logger.error(errorMsg);
+    return res.status(400).send(errorMsg);
   }
 
   //   Check if there is a session. Only connected users may call this endpoint.
   if (!siweSesh.address || siweSesh.address !== address) {
-    return res
-      .status(401)
-      .send(
-        "You are not authorized to access this resource. Sign In With Ethereum, and try again."
-      );
+    const errorMsg =
+      "You are not authorized to access this resource. Sign In With Ethereum, and try again.";
+    logger.error(errorMsg);
+    return res.status(401).send(errorMsg);
   }
 
   // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
   const accountId = await getUserAddress(address);
 
   if (!accountId) {
-    return res
-      .status(400)
-      .send(
-        "No Loopring Account could be found for the connected 0x address. Is your L2 account activated?"
-      );
+    const errorMsg =
+      "No Loopring Account could be found for the connected 0x address. Is your L2 account activated?";
+    logger.error(errorMsg);
+    return res.status(400).send(errorMsg);
   }
 
   const unlockable = findUnlockableByUuid(unlockableId);
   if (!unlockable) {
-    return res
-      .status(404)
-      .send("Unable to find the Unlockable for the specified UUID.");
+    const errorMsg = "Unable to find the Unlockable for the specified UUID.";
+    logger.error(errorMsg);
+    return res.status(404).send(errorMsg);
   }
 
   // 2️⃣ Call the Loopring API to find the NFTs held by the user
   const userNftIds = await getAllUserNftIds(accountId);
 
   if (!userNftIds) {
-    return res
-      .status(400)
-      .send("Unable to find any NFTs for the specified 0x address.");
+    const errorMsg = "Unable to find any NFTs for the specified 0x address.";
+    logger.error(errorMsg);
+    return res.status(400).send(errorMsg);
   }
 
   // 3️⃣ Check if the user meets the unlock criteria
@@ -66,20 +64,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   if (intersection.length < unlockable.unlockCriteria.unlockAmount) {
-    return res
-      .status(405)
-      .send("Your connected wallet does not meet the unlock requirements.");
+    const errorMsg =
+      "Your connected wallet does not meet the unlock requirements.";
+    logger.error(errorMsg);
+    return res.status(405).send(errorMsg);
   }
 
   // 4️⃣ Get access link for the unlockable
   const unlock = await getPinataIndexLink(unlockable.content.url);
 
   if (!unlock) {
-    return res
-      .status(404)
-      .send(
-        "Unable to find the submarined content on Pinata. It may be deleted."
-      );
+    const errorMsg =
+      "Unable to find the submarined content on Pinata. It may be deleted.";
+    logger.error(errorMsg);
+    return res.status(404).send(errorMsg);
   }
 
   return res.status(200).json({

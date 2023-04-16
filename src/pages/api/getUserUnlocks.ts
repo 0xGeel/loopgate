@@ -4,6 +4,7 @@ import { getAllUserNftIds, getUserAddress } from "../../utils/loopring";
 import { getPinataIndexLink } from "../../utils/pinata";
 import { withSessionRoute } from "@/src/utils/iron-session/withSession";
 import { siwe } from "@/src/utils/siwe";
+import logger from "@/src/utils/logger";
 
 // Summary of what happens:
 // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
@@ -17,40 +18,36 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Check if multiple or no Account IDs are specified. If so: early return.
   if (!address || Array.isArray(address)) {
-    return res
-      .status(400)
-      .send(
-        "0x address not provided. Please provide a valid 0x address and try again."
-      );
+    const errorMsg =
+      "0x address not provided. Please provide a valid 0x address and try again.";
+    logger.error(errorMsg);
+    return res.status(400).send(errorMsg);
   }
 
   // Check if there is a session. Only connected users may call this endpoint.
   if (!siweSesh.address || siweSesh.address !== address) {
-    return res
-      .status(401)
-      .send(
-        "You are not authorized to access this resource. Sign In With Ethereum, and try again."
-      );
+    const errorMsg =
+      "You are not authorized to access this resource. Sign In With Ethereum, and try again.";
+    logger.error(errorMsg);
+    return res.status(401).send(errorMsg);
   }
 
   // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
   const accountId = await getUserAddress(address);
 
   if (!accountId) {
-    return res
-      .status(400)
-      .send(
-        "No Loopring Account could be found for the connected 0x address. Is your L2 account activated?"
-      );
+    const errorMsg = `No Loopring Account could be found for ${address}. Is your L2 account activated?`;
+    logger.error(errorMsg);
+    return res.status(400).send(errorMsg);
   }
 
   // 2️⃣ Call the Loopring API to find the NFTs held by the user
   const allNftIds = await getAllUserNftIds(accountId);
 
   if (!allNftIds) {
-    return res
-      .status(404)
-      .send("Unable to find any NFTs for the specified 0x address.");
+    const errorMsg = `Unable to find any NFTs for ${address}.`;
+    logger.error(errorMsg);
+    return res.status(404).send(errorMsg);
   }
 
   // 3️⃣ Check the user's NFT IDs against the config.ts to determine unlocks
