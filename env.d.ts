@@ -6,5 +6,7 @@ namespace NodeJS {
     SESSION_SECRET: string;
     NEXT_PUBLIC_SUPABASE_ANON: string;
     NEXT_PUBLIC_SUPABASE_URL: string;
+    LOGFLARE_API_KEY: string;
+    LOGFLARE_SOURCE_TOKEN: string;
   }
 }
