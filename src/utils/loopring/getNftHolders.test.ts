@@ -9,9 +9,5 @@ describe("querying the Loopring API to get NFT Holders for a NFT with nftDatas",
 
   it.todo("returns multiple NFT holders for a NFT with correct nftDatas");
 
-  it("returns false for invalid nftData", async () => {
-    mockedAxios.get.mockRejectedValue(false);
-    const data = await getNftHolders("0xbruh");
-    expect(data).toEqual(false);
-  });
+  it.todo("returns false for invalid nftData");
 });

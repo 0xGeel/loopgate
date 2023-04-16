@@ -1,5 +1,6 @@
 import { LOOP_API } from "./_constants";
 import axios from "axios";
+import logger from "@/src/utils/logger";
 
 const getUserAddress = async (address: string | string[]) => {
   try {
@@ -8,7 +9,7 @@ const getUserAddress = async (address: string | string[]) => {
     );
     return response.data.accountId;
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return false;
   }
 };
