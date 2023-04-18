@@ -1,5 +1,8 @@
 # Guide: https://supabase.com/docs/guides/database/api/generating-types
 
+name: Update Supabase database types
+
+on:
   schedule:
     # sets the action to run daily. You can modify this to run the action more or less frequently
     - cron: "0 0 * * *"
