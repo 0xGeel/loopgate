@@ -1,6 +1,7 @@
 import { LOOP_API } from "./_constants";
 import axios from "axios";
 import headerOpts from "./headerOpts";
+import logger from "@/src/utils/logger";
 
 const getNftData = async (
   minter: string,
@@ -18,7 +19,7 @@ const getNftData = async (
     );
     return response.data;
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return false;
   }
 };

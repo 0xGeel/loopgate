@@ -9,6 +9,6 @@ export const siwe = configureSIWE({
   apiRoutePrefix: "/api/siwe",
   session: {
     cookieName: "LG_SIWE",
-    password: `${process.env.SESSION_SECRET}`,
+    password: process.env.SESSION_SECRET || "Undefined Session Secret",
   },
 });

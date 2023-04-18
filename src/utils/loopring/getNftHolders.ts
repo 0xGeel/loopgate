@@ -1,6 +1,7 @@
 import { LOOP_API } from "./_constants";
 import axios from "axios";
-import headerOpts from "./headerOpts";
+import { headerOpts, rateLimitedAxios } from "./index";
+import logger from "@/src/utils/logger";
 
 const getNftHolders = async (nftData: string) => {
   const LIMIT = 500; // API can handle up to 500 per call
@@ -30,7 +31,7 @@ const getNftHolders = async (nftData: string) => {
     // Call the API for all of these ^
     const followUpReqs = await Promise.all(
       amountOfCalls.map(async (index) => {
-        return await axios.get(
+        return await rateLimitedAxios.get(
           `${LOOP_API.NFT_HOLDERS}?nftData=${nftData}&limit=${LIMIT}&offset=${
             LIMIT * index
           }`,
@@ -47,7 +48,7 @@ const getNftHolders = async (nftData: string) => {
 
     return nftApiResFlattened;
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return false;
   }
 };
