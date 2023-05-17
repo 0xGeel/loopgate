@@ -31,7 +31,6 @@
     "@radix-ui/react-tabs": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.3",
     "@supabase/supabase-js": "^2.11.0",
-    "@uploadthing/react": "^2.0.1",
     "axios": "^1.2.3",
     "axios-rate-limit": "^1.3.0",
     "class-variance-authority": "^0.4.0",
@@ -41,6 +40,7 @@
     "date-fns": "^2.29.3",
     "ethers": "^5.7.2",
     "iron-session": "^6.3.1",
+    "jszip": "^3.10.1",
     "next": "^13.0.0",
     "pinata-submarine": "^0.1.6",
     "pino": "^8.11.0",
@@ -55,7 +55,6 @@
     "siwe": "^2.1.3",
     "tailwind-merge": "^1.9.0",
     "tailwindcss-animate": "^1.0.5",
-    "uploadthing": "^2.0.1",
     "uuid": "^9.0.0",
     "wagmi": "~0.10.0"
   },

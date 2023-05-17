@@ -37,7 +37,6 @@ const App = ({ Component, pageProps }: AppProps) => {
                   fontSize: "14px",
                   border: "1px solid rgba(255,255,255,.2)",
                   maxWidth: "420px",
-                  width: "100%",
                   lineHeight: 1.5,
                 },
               }}
