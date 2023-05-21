@@ -1,5 +1,5 @@
-import supabase from "./supabase";
+import Supabase from "./supabase";
 import * as helpers from "./helpers";
 
 export { helpers };
-export default supabase;
+export default Supabase;

@@ -11,10 +11,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     "public, s-maxage=3000, stale-while-revalidate=5000"
   );
 
+  const getOwner = () => {
+    if (!context.query.owner) {
+      return;
+    }
+
+    return context.query.owner[0];
+  };
+
+  const owner = getOwner();
+
   const unlockables =
     process.env.LOOPGATE_MODE === "supabase"
-      ? await fetchAllUnlockables() // Use Supabase as the source for the Unlockables
-      : findAllUnlockables(); // Use the 'config.ts' file as the source for the Unlockables
+      ? await fetchAllUnlockables(owner) // Use Supabase as the source for the Unlockables
+      : findAllUnlockables(owner); // Use the 'config.ts' file as the source for the Unlockables
 
   if (!unlockables) {
     return {
@@ -23,15 +33,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   return {
-    props: { unlockables: unlockables },
+    props: { unlockables: unlockables, query: context.query.owner },
   };
 };
 
-const Page = ({ unlockables }: { unlockables: UnlockableV2[] | [] }) => {
+const Page = ({
+  unlockables,
+  query,
+}: {
+  unlockables: UnlockableV2[];
+  query?: string;
+}) => {
   if (unlockables.length === 0) {
     return (
       <FourOhFour
-        label={"This LoopGate Instance does not have any Unlockables yet."}
+        label={
+          query
+            ? `No Unlockables by '${query}' could be found on this LoopGate Instance.`
+            : "This LoopGate Instance does not have any Unlockables yet."
+        }
       />
     );
   }

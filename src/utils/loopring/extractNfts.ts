@@ -1,7 +1,9 @@
+import { NftBalanceResponse } from "./_types";
+
 // Parses a Loopring API response to extract the NFT IDs
-const extractNfts = (res: any) => {
+const extractNfts = (apiRes: any) => {
   let nfts: string[] = [];
-  res.forEach((item: any) => {
+  apiRes.forEach((item: any) => {
     nfts.push(item.nftId);
   });
 

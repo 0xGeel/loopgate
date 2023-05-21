@@ -1,22 +1,24 @@
-import supabase from "../supabase";
+import Supabase from "../supabase";
 import { parseSqlUnlockable } from "../supabase/helpers";
 
-const fetchALlUnlockables = async () => {
-  let { data: unlockables, error } = await supabase
-    .from("unlockables_with_criteria")
-    .select(`*`);
+const fetchAllUnlockables = async (owner?: string) => {
+  let { data: unlockables, error } = await Supabase.from(
+    "unlockables_with_criteria"
+  )
+    .select(`*`)
+    .eq("owner", owner ? owner : "*");
 
   if (error) {
     throw error;
   }
 
   if (unlockables) {
-    const parsedUnlockables = unlockables.map((item) => {
-      return parseSqlUnlockable(item);
-    });
+    const parsedUnlockables = unlockables.map((item) =>
+      parseSqlUnlockable(item)
+    );
 
     return parsedUnlockables;
   }
 };
 
-export default fetchALlUnlockables;
+export default fetchAllUnlockables;
