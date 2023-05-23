@@ -41,7 +41,7 @@ export async function checkAuthentication(
   const siweSesh = await getSiweSesh();
 
   try {
-    const { data } = await Supabase.from("calcium-crew-holders")
+    const { data } = await Supabase.from("calcium_crew_holders")
       .select("*")
       .eq("eth_address", siweSesh.address?.toLowerCase())
       .single();
