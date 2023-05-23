@@ -2,11 +2,11 @@ import Supabase from "../supabase";
 import { parseSqlUnlockable } from "../supabase/helpers";
 
 const fetchAllUnlockables = async (owner?: string) => {
-  let { data: unlockables, error } = await Supabase.from(
+  const { data: unlockables, error } = await Supabase.from(
     "unlockables_with_criteria"
   )
     .select(`*`)
-    .eq("owner", owner ? owner : "*");
+    .eq(owner ? "owner" : "", owner);
 
   if (error) {
     throw error;

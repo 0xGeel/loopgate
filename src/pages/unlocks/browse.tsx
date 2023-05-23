@@ -1,4 +1,8 @@
-import { findAllUnlockables, fetchAllUnlockables } from "@/src/utils/generic";
+import {
+  findAllUnlockables,
+  fetchAllUnlockables,
+  truncate0x,
+} from "@/src/utils/generic";
 import Layout from "@/src/components/UnlockablePage/Layout";
 import FourOhFour from "@/src/components/UnlockablePage/404";
 import { GetServerSideProps } from "next";
@@ -16,7 +20,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return;
     }
 
-    return context.query.owner[0];
+    return Array.isArray(context.query.owner)
+      ? context.query.owner[0]
+      : context.query.owner;
   };
 
   const owner = getOwner();
@@ -33,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   return {
-    props: { unlockables: unlockables, query: context.query.owner },
+    props: { unlockables: unlockables, query: owner ? owner : "" },
   };
 };
 
@@ -49,7 +55,7 @@ const Page = ({
       <FourOhFour
         label={
           query
-            ? `No Unlockables by '${query}' could be found on this LoopGate Instance.`
+            ? `No Unlockables by '${truncate0x(query)}' could be found.`
             : "This LoopGate Instance does not have any Unlockables yet."
         }
       />

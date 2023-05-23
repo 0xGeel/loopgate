@@ -121,6 +121,9 @@ const verifyRoute = async (
         if (fields.data.nonce !== session.nonce) {
           return res.status(422).end("Invalid nonce.");
         }
+
+        // @GEEL TODO: See if siweMessage.verify({sig, provider}) can be extended
+        // to persist the user's Loop API key for API requests on their behalf
         session.address = fields.data.address;
         session.chainId = fields.data.chainId;
         await session.save();

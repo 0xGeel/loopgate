@@ -6,8 +6,10 @@ namespace NodeJS {
     SESSION_SECRET: string;
     NEXT_PUBLIC_SUPABASE_ANON: string;
     NEXT_PUBLIC_SUPABASE_URL: string;
+    SUPABASE_SERVICE_ROLE: string;
     NEXT_PUBLIC_LOGFLARE_API_KEY: string;
     NEXT_PUBLIC_LOGFLARE_SOURCE_TOKEN: string;
     LOOPGATE_API_KEY: string;
+    LOOPGATE_CC_THRESHOLD: string;
   }
 }
