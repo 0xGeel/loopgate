@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 // Checks the .env file to spot undefined values. Helps prevent issues.
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const envsToCheck = [
     "NEXT_PUBLIC_PINATA_GATEWAY_URL",
     "PINATA_SUBMARINE_KEY",

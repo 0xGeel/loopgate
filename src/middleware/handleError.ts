@@ -4,5 +4,5 @@ import { Error } from "./loopgateError";
 
 export const handleError = (res: NextApiResponse, error: Error) => {
   logger.error(error[1]);
-  return res.status(error[0]).send(error[1]);
+  return res.status(error[0]).send({ message: error[1] });
 };

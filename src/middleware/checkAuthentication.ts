@@ -46,6 +46,8 @@ export async function checkAuthentication(
       .eq("eth_address", siweSesh.address?.toLowerCase())
       .single();
 
+    console.log(data);
+
     if (
       !data?.amount ||
       data.amount < parseInt(process.env.LOOPGATE_CC_THRESHOLD, 10)

@@ -50,13 +50,10 @@ const FormPage = ({ isAuthenticated }: { isAuthenticated: true }) => {
           "Successfully submarined your file! Now let's create an entry in the DB..."
         );
 
-        const createUnlockableRes = await axios.post(
-          "/api/upload/createUnlockable",
-          {
-            uuid: submarineRes.data.uuid,
-            cid: submarineRes.data.cid,
-          }
-        );
+        const createUnlockableRes = await axios.post("/api/unlockable/create", {
+          uuid: submarineRes.data.uuid,
+          cid: submarineRes.data.cid,
+        });
 
         if (!createUnlockableRes) {
           console.error("Unable to add the Unlockable to the DB...");

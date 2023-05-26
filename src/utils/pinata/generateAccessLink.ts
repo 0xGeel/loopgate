@@ -1,15 +1,15 @@
-import sub from "./sub";
+import Submarine from "./submarine";
 
 // Checks a submarined CID. If valid, generates an access link that is accessible for a set amount of time
 const generateAccessLink = async (
   cid: string,
   unlockTimeInSec: number = 60 * 3
 ) => {
-  const foundContent = await sub.getSubmarinedContentByCid(cid);
+  const foundContent = await Submarine.getSubmarinedContentByCid(cid);
   const folder = foundContent.items[0];
 
   if (folder) {
-    const accessLink = await sub.generateAccessLink(
+    const accessLink = await Submarine.generateAccessLink(
       unlockTimeInSec,
       folder.id,
       cid

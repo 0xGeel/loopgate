@@ -4,9 +4,12 @@
  * Output: ["0x00...00", 1x11.11]
  */
 
-const parseNftIdString = (nftIdString: string): string[] => {
-  const spacesRemoved = nftIdString.replaceAll(" ", "");
-  return spacesRemoved.split(",");
+const parseNftIdString = (nftIdString?: string): string[] => {
+  if (!nftIdString) {
+    return [];
+  }
+
+  return nftIdString.replaceAll(" ", "").split(",");
 };
 
 export default parseNftIdString;

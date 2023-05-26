@@ -1,7 +1,7 @@
-import sub from "./sub";
+import Submarine from "./submarine";
 
 const listFolderContent = async (folderId: string) => {
-  return await sub.listFolderContent(folderId);
+  return await Submarine.listFolderContent(folderId);
 };
 
 export default listFolderContent;

@@ -24,7 +24,7 @@ const UnlockSection = ({ unlockable }: Props) => {
   ) => {
     axios
       .get(
-        `/api/checkUnlockable?address=${address}&unlockableId=${unlockable.id}`
+        `/api/unlockable/verify-access?address=${address}&unlockableId=${unlockable.id}`
       )
       .then((data) => {
         setUnlockedContent(data.data.unlock);
@@ -32,8 +32,8 @@ const UnlockSection = ({ unlockable }: Props) => {
       })
       .catch((error) => {
         setIsLoading(false);
-        logger.error(error.request.response);
-        toast.error(error.request.response);
+        logger.error(error.response.data.message);
+        toast.error(error.response.data.message);
       });
   };
 

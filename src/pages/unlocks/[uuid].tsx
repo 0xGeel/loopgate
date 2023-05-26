@@ -44,7 +44,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const Page = ({ unlockable }: { unlockable: UnlockableV2 | undefined }) => {
+const Page = ({ unlockable }: { unlockable: UnlockableV2 | null }) => {
   if (!unlockable) {
     return (
       <FourOhFour
