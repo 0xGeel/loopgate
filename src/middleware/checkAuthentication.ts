@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from "next";
-import { siwe } from "@/src/utils/siwe";
-import Supabase from "@/src/utils/supabase";
+import { siwe } from "@/src/middleware/siwe";
+import Supabase from "@/src/services/supabase";
 import logger from "@/src/utils/logger";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -45,8 +45,6 @@ export async function checkAuthentication(
       .select("*")
       .eq("eth_address", siweSesh.address?.toLowerCase())
       .single();
-
-    console.log(data);
 
     if (
       !data?.amount ||

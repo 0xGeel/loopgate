@@ -1,13 +1,13 @@
 import {
   fetchUnlockableByUuid,
   findUnlockableByUuid,
-} from "@/src/utils/generic";
+} from "@/src/services/loopgate/unlockable";
 import Layout from "@/src/components/UnlockablePage/Layout";
 import FourOhFour from "@/src/components/UnlockablePage/404";
 import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
 import { GetServerSideProps } from "next";
 import { UnlockableV2 } from "@/src/config/types";
-import { isUuid } from "@/src/utils/supabase/helpers";
+import { isUuid } from "@/src/utils/generic";
 import NextHeadBase from "@/src/components/SEO/NextHeadBase";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

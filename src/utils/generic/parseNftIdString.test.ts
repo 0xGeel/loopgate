@@ -1,4 +1,4 @@
-import parseNftIdString from "./parseNftIdString";
+import { parseNftIdString } from "./parseNftIdString";
 
 describe("parseNftIdString", () => {
   it("should parse a single NFT ID", () => {

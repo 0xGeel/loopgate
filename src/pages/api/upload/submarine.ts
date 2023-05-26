@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { withSessionRoute } from "@/src/utils/iron-session/withSession";
+import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
 import {
   checkAuthentication,
   handleError,

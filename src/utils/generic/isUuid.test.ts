@@ -1,4 +1,4 @@
-import isUuid from "./isUuid";
+import { isUuid } from "./isUuid";
 
 describe("isUuid", () => {
   it("returns true for valid UUIDs", () => {

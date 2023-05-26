@@ -1,6 +1,6 @@
-import { unlockables } from "../../config/config";
-import { checkIfContainsAll } from "./index";
-import { Unlockable, ConfigError } from "../../config/types";
+import { unlockables } from "../../../config/config";
+import { checkIfContainsAll } from "../../../utils/generic/index";
+import { Unlockable, ConfigError } from "../../../config/types";
 
 // Compare NFTs owned by an individual to the configurated combinations to find unlockable content
 /**
@@ -9,7 +9,7 @@ import { Unlockable, ConfigError } from "../../config/types";
  * @param unlockablesArray
  * @returns CIDs of files unlocked by the user
  */
-const findUnlockedCids = (
+export const findUnlockedCids = (
   nfts: string[],
   unlockablesArray: Unlockable[] = unlockables
 ) => {
@@ -27,5 +27,3 @@ const findUnlockedCids = (
 
   return cids;
 };
-
-export default findUnlockedCids;

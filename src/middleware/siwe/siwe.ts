@@ -1,4 +1,4 @@
-import { configureSIWE } from "./configureSIWE";
+import { configureSIWE } from "./configure";
 // import { configureSIWE } from "connectkit-next-siwe";
 
 // Replaced with an edited version on 06-02-2023 to circumvent a 'connectkit-next-siwe' WalletConnect through a Smart Wallet issue (Loopring Wallet).

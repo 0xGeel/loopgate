@@ -10,7 +10,7 @@ const { provider, chains } = configureChains(
   [publicProvider()]
 );
 
-const WagmiClient = createClient({
+export const WagmiClient = createClient({
   autoConnect: true,
   connectors: [
     new InjectedConnector({
@@ -32,5 +32,3 @@ const WagmiClient = createClient({
   ],
   provider,
 });
-
-export default WagmiClient;

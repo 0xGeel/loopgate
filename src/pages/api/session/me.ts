@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { siwe } from "@/src/utils/siwe";
-import { withSessionRoute } from "@/src/utils/iron-session/withSession";
+import { siwe } from "@/src/middleware/siwe";
+import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;

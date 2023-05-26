@@ -1,12 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { withSessionRoute } from "@/src/utils/iron-session/withSession";
+import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
 import {
   checkAuthentication,
   handleError,
   LoopgateError,
 } from "@/src/middleware";
 import { createClient } from "@supabase/supabase-js";
-import { Database } from "@/src/utils/supabase/types";
+import { Database } from "@/src/services/supabase/types";
 
 type UUID = string;
 
@@ -55,6 +55,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       criteria_unlock_amount: req.body.unlockable?.criteria_unlock_amount,
       description: req.body.unlockable?.description,
       name: req.body.unlockable?.name,
+      unlisted: req.body.unlockable?.unlisted,
     })
     .eq("id", req.body.unlockable.uuid);
 
@@ -70,17 +71,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return handleError(res, [500, deleteCriteriaError.message]);
   }
 
-  const unlockCriteria: {
-    unlockable_id: UUID;
-    nft_id: string;
-    owner: string;
-  }[] = req.body.unlockCriteria.map((x: UnlockCriterion) => {
-    return { ...x, owner: auth.address };
-  });
-
   const { error: insertCriteriaError } = await Supabase.from(
     "unlock_criteria"
-  ).insert(unlockCriteria);
+  ).insert(
+    req.body.unlockCriteria.map((x: UnlockCriterion) => ({
+      ...x,
+      owner: auth.address,
+    }))
+  );
 
   if (insertCriteriaError) {
     return handleError(res, [500, insertCriteriaError.message]);

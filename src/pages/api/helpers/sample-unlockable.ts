@@ -2,12 +2,11 @@ import { v4 as uuidv4 } from "uuid";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { UnlockableV2 } from "@/src/config/types";
 
+// This API Endpoint generates a sample UnlockableV2 object you can use for your `config.ts` file.
 export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // This API Endpoint generates a sample UnlockableV2 object you can use for your `config.ts` file.
-
   const now = new Date();
   const dateObj = now.toISOString().replace("T", " ").split("Z")[0];
 

@@ -78,6 +78,7 @@ export interface Database {
           id: string
           name: string | null
           owner: string
+          unlisted: boolean
           updated_at: string | null
         }
         Insert: {
@@ -88,6 +89,7 @@ export interface Database {
           id?: string
           name?: string | null
           owner: string
+          unlisted?: boolean
           updated_at?: string | null
         }
         Update: {
@@ -98,6 +100,7 @@ export interface Database {
           id?: string
           name?: string | null
           owner?: string
+          unlisted?: boolean
           updated_at?: string | null
         }
       }

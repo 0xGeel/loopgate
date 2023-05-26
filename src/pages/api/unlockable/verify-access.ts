@@ -1,13 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { siwe } from "@/src/utils/siwe";
-import { getUserAddress, getAllUserNftIds } from "@/src/utils/loopring";
+import { siwe } from "@/src/middleware/siwe";
+import { getUserAddress, getAllUserNftIds } from "@/src/services/loopring";
 import { handleError, LoopgateError } from "@/src/middleware";
 import {
   findUnlockableByUuid,
   fetchUnlockableByUuid,
-} from "@/src/utils/generic";
-import { getPinataIndexLink } from "@/src/utils/pinata";
-import { withSessionRoute } from "@/src/utils/iron-session/withSession";
+} from "@/src/services/loopgate/unlockable";
+import { getPinataIndexLink } from "@/src/services/pinata";
+import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;

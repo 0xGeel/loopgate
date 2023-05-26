@@ -1,7 +1,7 @@
-import { unlockablesV2 } from "../../config/config";
-import { UnlockableV2, ConfigError } from "../../config/types";
+import { unlockablesV2 } from "../../../config/config";
+import { UnlockableV2, ConfigError } from "../../../config/types";
 
-const findAllUnlockables = (
+export const findAllUnlockables = (
   owner?: string,
   unlockablesArray: UnlockableV2[] = unlockablesV2
 ) => {
@@ -15,5 +15,3 @@ const findAllUnlockables = (
 
   return unlockablesArray;
 };
-
-export default findAllUnlockables;

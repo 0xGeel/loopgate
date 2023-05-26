@@ -3,7 +3,7 @@ import {
   getMinterAndToken,
   getNftData,
   getNftHolders,
-} from "@/src/utils/loopring";
+} from "@/src/services/loopring";
 import { handleError, LoopgateError } from "@/src/middleware";
 
 // Request holders for a NFT held on Loopring by querying NFT ID

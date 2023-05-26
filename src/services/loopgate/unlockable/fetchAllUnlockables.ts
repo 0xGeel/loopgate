@@ -1,7 +1,7 @@
-import Supabase from "../supabase";
-import { parseSqlUnlockable } from "../supabase/helpers";
+import Supabase from "../../supabase";
+import { parseSqlUnlockable } from "../../supabase/helpers";
 
-const fetchAllUnlockables = async (owner?: string) => {
+export const fetchAllUnlockables = async (owner?: string) => {
   const { data: unlockables, error } = await Supabase.from(
     "unlockables_with_criteria"
   )
@@ -20,5 +20,3 @@ const fetchAllUnlockables = async (owner?: string) => {
     return parsedUnlockables;
   }
 };
-
-export default fetchAllUnlockables;

@@ -14,7 +14,7 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "supabase:types": "npx supabase gen types typescript --project-id wyskjtopiuiwkkqclyho --schema public > src/utils/supabase/types.ts"
+    "supabase:types": "npx supabase gen types typescript --project-id wyskjtopiuiwkkqclyho --schema public > src/services/supabase/types.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",

@@ -1,8 +1,8 @@
+import { truncate0x } from "@/src/utils/generic";
 import {
   findAllUnlockables,
   fetchAllUnlockables,
-  truncate0x,
-} from "@/src/utils/generic";
+} from "@/src/services/loopgate/unlockable";
 import Layout from "@/src/components/UnlockablePage/Layout";
 import FourOhFour from "@/src/components/UnlockablePage/404";
 import { GetServerSideProps } from "next";

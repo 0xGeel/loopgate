@@ -1,7 +1,4 @@
-// Get the current year
-const getCurrentYear = (): number => {
+export const getCurrentYear = (): number => {
   const currentTime = new Date();
   return currentTime.getFullYear();
 };
-
-export default getCurrentYear;

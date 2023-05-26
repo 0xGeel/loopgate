@@ -1,7 +1,7 @@
 import { UnlockableV2 } from "@/src/config/types";
-import parseNftIdString from "./parseNftIdString";
+import { parseNftIdString } from "@/src/utils/generic";
 
-const parseSqlUnlockable = (supabaseUnlockable: any): UnlockableV2 => {
+export const parseSqlUnlockable = (supabaseUnlockable: any): UnlockableV2 => {
   const nftIds = parseNftIdString(supabaseUnlockable.nft_ids);
 
   const unlockable = {
@@ -24,5 +24,3 @@ const parseSqlUnlockable = (supabaseUnlockable: any): UnlockableV2 => {
 
   return unlockable;
 };
-
-export default parseSqlUnlockable;

@@ -4,8 +4,8 @@ import { WagmiConfig } from "wagmi";
 import { ConnectKitProvider } from "connectkit";
 
 import "../styles/globals.css";
-import { WagmiClient } from "../utils/wagmi";
-import { siwe } from "../utils/siwe";
+import { WagmiClient } from "../services/wagmi";
+import { siwe } from "../middleware/siwe";
 import { overrides } from "../styles/ConnectKit/overrides";
 import NextHeadBase from "../components/SEO/NextHeadBase";
 import { inter, unbounded } from "../components/Fonts";

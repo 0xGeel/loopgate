@@ -1,5 +1,8 @@
 import { GetServerSideProps } from "next";
-import { fetchAllUnlockables, findAllUnlockables } from "../utils/generic";
+import {
+  fetchAllUnlockables,
+  findAllUnlockables,
+} from "../services/loopgate/unlockable";
 import { UnlockableV2 } from "../config/types";
 
 import Header from "../components/Header";
@@ -8,7 +11,7 @@ import Hero from "../components/Pages/Home/Hero";
 import ContentBlocks from "../components/Pages/Home/ContentBlocks";
 import UseCases from "../components/Pages/Home/UseCases";
 import CTABanner from "../components/Pages/Home/CTABanner";
-import { techPattern } from "../styles/inline-styles";
+import { techPattern } from "../styles/inlineStyles";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   context.res.setHeader(

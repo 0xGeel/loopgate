@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { withSessionRoute } from "@/src/utils/iron-session/withSession";
+import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
 import {
   checkAuthentication,
   handleError,
   LoopgateError,
 } from "@/src/middleware";
 import { createClient } from "@supabase/supabase-js";
-import { Database } from "@/src/utils/supabase/types";
-import { Submarine } from "@/src/utils/pinata";
+import { Database } from "@/src/services/supabase/types";
+import { Submarine } from "@/src/services/pinata";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {

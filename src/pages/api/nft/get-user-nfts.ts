@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getAllUserNftIds } from "../../../utils/loopring";
+import { getAllUserNftIds } from "../../../services/loopring";
 import { handleError, LoopgateError } from "@/src/middleware";
 
 // Request NFTs on Loopring held by a user

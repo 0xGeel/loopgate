@@ -1,5 +1,5 @@
-import Supabase from "../supabase";
-import { parseSqlUnlockable } from "../supabase/helpers";
+import Supabase from "../../supabase";
+import { parseSqlUnlockable } from "../../supabase/helpers";
 
 // TODO: Inserting data https://supabase.com/docs/reference/javascript/insert
 // TODO: Updating data https://supabase.com/docs/reference/javascript/update
@@ -7,7 +7,7 @@ import { parseSqlUnlockable } from "../supabase/helpers";
 // TODO: Deleting data https://supabase.com/docs/reference/javascript/delete
 // RLS Policies: Only auth users can mutate
 
-const fetchUnlockableByUuid = async (uuid: string) => {
+export const fetchUnlockableByUuid = async (uuid: string) => {
   let { data: unlockables, error } = await Supabase.from(
     "unlockables_with_criteria"
   )
@@ -23,5 +23,3 @@ const fetchUnlockableByUuid = async (uuid: string) => {
     return parseSqlUnlockable(unlockables);
   }
 };
-
-export default fetchUnlockableByUuid;
