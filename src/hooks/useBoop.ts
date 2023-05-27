@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
-import { useSpring, SpringConfig } from "react-spring";
+import { useCallback,useEffect, useState } from "react";
+import { SpringConfig,useSpring } from "react-spring";
+
 import usePrefersReducedMotion from "./usePrefersReducedMotion";
 
 interface BoopProps {

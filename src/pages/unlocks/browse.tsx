@@ -1,20 +1,37 @@
-import { findAllUnlockables, fetchAllUnlockables } from "@/src/utils/generic";
-import Layout from "@/src/components/UnlockablePage/Layout";
-import FourOhFour from "@/src/components/UnlockablePage/404";
 import { GetServerSideProps } from "next";
-import { UnlockableV2 } from "@/src/config/types";
-import List from "@/src/components/UnlockablePage/List";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+import FourOhFour from "@/src/components/UnlockablePage/404";
+import Layout from "@/src/components/UnlockablePage/Layout";
+import List from "@/src/components/UnlockablePage/List";
+import { UnlockableV2 } from "@/src/config/types";
+import {
+  fetchAllUnlockables,
+  findAllUnlockables,
+} from "@/src/services/loopgate/unlockable";
+import { truncate0x } from "@/src/utils/generic";
+
+export const getServerSideProps: GetServerSideProps = async context => {
   context.res.setHeader(
     "Cache-Control",
     "public, s-maxage=3000, stale-while-revalidate=5000"
   );
 
+  const getOwner = () => {
+    if (!context.query.owner) {
+      return;
+    }
+
+    return Array.isArray(context.query.owner)
+      ? context.query.owner[0]
+      : context.query.owner;
+  };
+
+  const owner = getOwner();
+
   const unlockables =
     process.env.LOOPGATE_MODE === "supabase"
-      ? await fetchAllUnlockables() // Use Supabase as the source for the Unlockables
-      : findAllUnlockables(); // Use the 'config.ts' file as the source for the Unlockables
+      ? await fetchAllUnlockables(owner) // Use Supabase as the source for the Unlockables
+      : findAllUnlockables(owner); // Use the 'config.ts' file as the source for the Unlockables
 
   if (!unlockables) {
     return {
@@ -23,15 +40,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   return {
-    props: { unlockables: unlockables },
+    props: { unlockables: unlockables, query: owner ? owner : "" },
   };
 };
 
-const Page = ({ unlockables }: { unlockables: UnlockableV2[] | [] }) => {
+const Page = ({
+  unlockables,
+  query,
+}: {
+  unlockables: UnlockableV2[];
+  query?: string;
+}) => {
   if (unlockables.length === 0) {
     return (
       <FourOhFour
-        label={"This LoopGate Instance does not have any Unlockables yet."}
+        label={
+          query
+            ? `No Unlockables by '${truncate0x(query)}' could be found.`
+            : "This LoopGate Instance does not have any Unlockables yet."
+        }
       />
     );
   }

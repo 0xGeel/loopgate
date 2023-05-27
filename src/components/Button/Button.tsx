@@ -1,9 +1,9 @@
-interface IButton {
-  onClick: any;
+interface Props {
+  onClick: () => void;
   children: JSX.Element | JSX.Element[];
 }
 
-const Button = ({ onClick, children }: IButton): React.ReactElement => {
+const Button = ({ onClick, children }: Props): React.ReactElement => {
   return (
     <button
       onClick={onClick}

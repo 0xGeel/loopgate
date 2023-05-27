@@ -1,16 +1,19 @@
 import { GetServerSideProps } from "next";
-import { fetchAllUnlockables, findAllUnlockables } from "../utils/generic";
-import { UnlockableV2 } from "../config/types";
 
-import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Hero from "../components/Pages/Home/Hero";
+import Header from "../components/Header";
 import ContentBlocks from "../components/Pages/Home/ContentBlocks";
-import UseCases from "../components/Pages/Home/UseCases";
 import CTABanner from "../components/Pages/Home/CTABanner";
-import { techPattern } from "../styles/inline-styles";
+import Hero from "../components/Pages/Home/Hero";
+import UseCases from "../components/Pages/Home/UseCases";
+import { UnlockableV2 } from "../config/types";
+import {
+  fetchAllUnlockables,
+  findAllUnlockables,
+} from "../services/loopgate/unlockable";
+import { techPattern } from "../styles/inlineStyles";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   context.res.setHeader(
     "Cache-Control",
     "public, s-maxage=3000, stale-while-revalidate=5000"

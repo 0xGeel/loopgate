@@ -1,4 +1,4 @@
-import getCurrentYear from "./getCurrentYear";
+import { getCurrentYear } from "./getCurrentYear";
 
 beforeEach(() => {
   jest.spyOn(Date.prototype, "getFullYear").mockReturnValue(2023);

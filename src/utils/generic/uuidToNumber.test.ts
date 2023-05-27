@@ -1,4 +1,4 @@
-import uuidToNumber from "./uuidToNumber";
+import { uuidToNumber } from "./uuidToNumber";
 
 describe("uuidToNumber", () => {
   it("should generate a number between 0 and 133742069", () => {

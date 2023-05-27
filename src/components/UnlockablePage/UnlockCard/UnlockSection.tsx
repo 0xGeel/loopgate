@@ -1,12 +1,14 @@
-import { UnlockableV2 } from "@/src/config/types";
-import { useAccount } from "wagmi";
-import { useState, useEffect } from "react";
 import axios from "axios";
-import Spinner from "../../Spinner";
-import UnlockLink from "./UnlockLink";
-import NoAccess from "./NoAccess";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useAccount } from "wagmi";
+
+import { UnlockableV2 } from "@/src/config/types";
 import logger from "@/src/utils/logger";
+
+import Spinner from "../../Spinner";
+import NoAccess from "./NoAccess";
+import UnlockLink from "./UnlockLink";
 
 type Props = {
   unlockable: UnlockableV2;
@@ -16,6 +18,8 @@ const UnlockSection = ({ unlockable }: Props) => {
   const { address } = useAccount();
 
   const [isLoading, setIsLoading] = useState(false);
+  // TODO: Type the 'PinataIndexLink' so that this 'any' can be removed.
+  // eslint-disable-next-line
   const [unlockedContent, setUnlockedContent] = useState<any>(null);
 
   const checkUnlock = (
@@ -24,16 +28,16 @@ const UnlockSection = ({ unlockable }: Props) => {
   ) => {
     axios
       .get(
-        `/api/checkUnlockable?address=${address}&unlockableId=${unlockable.id}`
+        `/api/unlockable/verify-access?address=${address}&unlockableId=${unlockable.id}`
       )
-      .then((data) => {
+      .then(data => {
         setUnlockedContent(data.data.unlock);
         setIsLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         setIsLoading(false);
-        logger.error(error.request.response);
-        toast.error(error.request.response);
+        logger.error(error.response.data.message);
+        toast.error(error.response.data.message);
       });
   };
 

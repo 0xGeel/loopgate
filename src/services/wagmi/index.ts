@@ -1,0 +1,1 @@
+export { WagmiClient } from "./wagmi";

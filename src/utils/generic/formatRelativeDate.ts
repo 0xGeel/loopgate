@@ -1,8 +1,6 @@
 import { formatDistance } from "date-fns";
 
-const formatRelativeDate = (date: Date | string) => {
-  const ts = new Date(date);
-  return formatDistance(ts, new Date(), { addSuffix: true });
+export const formatRelativeDate = (date: Date | string) => {
+  const timestamp = new Date(date);
+  return formatDistance(timestamp, new Date(), { addSuffix: true });
 };
-
-export default formatRelativeDate;

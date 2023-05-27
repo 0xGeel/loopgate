@@ -1,16 +1,17 @@
+import { GetServerSideProps } from "next";
+
+import NextHeadBase from "@/src/components/SEO/NextHeadBase";
+import FourOhFour from "@/src/components/UnlockablePage/404";
+import Layout from "@/src/components/UnlockablePage/Layout";
+import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
+import { UnlockableV2 } from "@/src/config/types";
 import {
   fetchUnlockableByUuid,
   findUnlockableByUuid,
-} from "@/src/utils/generic";
-import Layout from "@/src/components/UnlockablePage/Layout";
-import FourOhFour from "@/src/components/UnlockablePage/404";
-import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
-import { GetServerSideProps } from "next";
-import { UnlockableV2 } from "@/src/config/types";
-import { isUuid } from "@/src/utils/supabase/helpers";
-import NextHeadBase from "@/src/components/SEO/NextHeadBase";
+} from "@/src/services/loopgate/unlockable";
+import { isUuid } from "@/src/utils/generic";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   context.res.setHeader(
     "Cache-Control",
     "public, s-maxage=3000, stale-while-revalidate=5000"
@@ -44,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const Page = ({ unlockable }: { unlockable: UnlockableV2 | undefined }) => {
+const Page = ({ unlockable }: { unlockable: UnlockableV2 | null }) => {
   if (!unlockable) {
     return (
       <FourOhFour

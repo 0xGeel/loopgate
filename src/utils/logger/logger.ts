@@ -7,7 +7,7 @@ const pinoCredentials = {
 };
 
 const checkCredentials = (credentials: string[]): boolean =>
-  credentials.every((x) => typeof x !== "undefined");
+  credentials.every(x => typeof x !== "undefined");
 
 const credentialsDefined = checkCredentials([
   pinoCredentials.apiKey,
@@ -16,7 +16,9 @@ const credentialsDefined = checkCredentials([
 
 // Include a mock logger in case no LogFlare credentials are present
 const mockLogger = {
-  error: () => {},
+  error: () => {
+    console.log("");
+  },
 };
 
 const logger = credentialsDefined

@@ -21,7 +21,7 @@ You can access it by opening a browser and going to the following URL: \
 
 Now your LoopGate is running on your local machine, it's time to check the `.env` file.
 
-- Go to the following url: [http://localhost:3000/api/helpers/checkEnvStatus](http://localhost:3000/api/helpers/checkEnvStatus).
+- Go to the following url: [http://localhost:3000/api/helpers/check-env-status](http://localhost:3000/api/helpers/checkEnvStatus).
 
 This checks the secrets in your `.env` file: if these are misconfigured, LoopGate will not work.
 
