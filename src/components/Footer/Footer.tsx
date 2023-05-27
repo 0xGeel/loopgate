@@ -12,7 +12,7 @@ const Footer = () => {
     <div className="py-4 px-8 w-full flex flex-col md:flex-row items-center justify-between space-y-1 md:space-y-0 mt-auto text-center">
       <p className="text-white/40">
         {currentYear},{" "}
-        <FooterLink href="https://twitter.com/0xgeel">geel.eth</FooterLink> — 
+        <FooterLink href="https://twitter.com/0xgeel">geel.eth</FooterLink> —
         Made for the L2 community.
       </p>
       <div className="space-x-4">

@@ -1,6 +1,6 @@
 interface IFooterLink {
   href: string;
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[] | string;
 }
 
 const FooterLink = ({ href, children }: IFooterLink) => {

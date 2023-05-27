@@ -3,7 +3,7 @@ import { getDefaultProvider } from "ethers";
 import type { IncomingMessage, ServerResponse } from "http";
 import { getIronSession, IronSession, IronSessionOptions } from "iron-session";
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
-import { ComponentProps,FunctionComponent } from "react";
+import { ComponentProps, FunctionComponent } from "react";
 import { generateNonce, SiweMessage } from "siwe";
 
 type NextSIWEConfig = {
