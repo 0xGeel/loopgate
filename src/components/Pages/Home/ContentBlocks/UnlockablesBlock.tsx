@@ -53,7 +53,7 @@ const UnlockablesBlock = ({ unlockables }: Props) => {
         <EmptyState />
       ) : (
         <>
-          {unlockables.slice(0, 3).map((item) => (
+          {unlockables.slice(0, 3).map(item => (
             <UnlockablesItem key={item.id} unlockable={item} />
           ))}
           <BrowseAllLink />

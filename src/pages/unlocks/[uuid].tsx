@@ -10,7 +10,7 @@ import { UnlockableV2 } from "@/src/config/types";
 import { isUuid } from "@/src/utils/generic";
 import NextHeadBase from "@/src/components/SEO/NextHeadBase";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   context.res.setHeader(
     "Cache-Control",
     "public, s-maxage=3000, stale-while-revalidate=5000"

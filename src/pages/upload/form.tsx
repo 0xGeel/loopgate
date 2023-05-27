@@ -12,7 +12,7 @@ interface FileUploadState {
   files: FileList | null;
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) =>
+export const getServerSideProps: GetServerSideProps = async context =>
   (await checkAuthentication(context))
     ? { props: { isAuthenticated: true } }
     : redirectTo("/");

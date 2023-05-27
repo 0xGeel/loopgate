@@ -9,7 +9,7 @@ import { GetServerSideProps } from "next";
 import { UnlockableV2 } from "@/src/config/types";
 import List from "@/src/components/UnlockablePage/List";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   context.res.setHeader(
     "Cache-Control",
     "public, s-maxage=3000, stale-while-revalidate=5000"

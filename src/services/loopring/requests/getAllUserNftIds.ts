@@ -31,7 +31,7 @@ export const getAllUserNftIds = async (accountId: string | string[]) => {
 
   // Call the API for all of these ^
   const followUpReqs = await Promise.all(
-    amountOfCalls.map(async (index) => {
+    amountOfCalls.map(async index => {
       const followUpResponse: AxiosNftBalanceResponse =
         await rateLimitedAxios.get(
           `${LOOP_API_URL}/user/nft/balances?accountId=${accountId}&limit=${LIMIT}&offset=${
@@ -46,7 +46,7 @@ export const getAllUserNftIds = async (accountId: string | string[]) => {
 
   // Parse the API response, merge with the first API Call and flatten the array
   const nftApiResFlattened = followUpReqs
-    .map((item) => item.data.data)
+    .map(item => item.data.data)
     .concat(firstReq.data.data)
     .flat();
 

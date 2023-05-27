@@ -50,7 +50,7 @@ const Block = ({
         {icon}
       </div>
       <h2 className="font-display font-semibold mt-6">{title}</h2>
-      {description.map((item) => (
+      {description.map(item => (
         <p
           className={cn(
             `mt-3 leading-relaxed`,

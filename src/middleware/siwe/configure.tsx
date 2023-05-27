@@ -217,7 +217,7 @@ export const configureSIWE = <TSessionData extends Object = {}>({
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ message, signature }),
-          }).then((res) => res.ok)
+          }).then(res => res.ok)
         }
         getSession={async () => {
           const res = await fetch(`${apiRoutePrefix}/session`);
@@ -227,7 +227,7 @@ export const configureSIWE = <TSessionData extends Object = {}>({
           const { address, chainId } = await res.json();
           return address && chainId ? { address, chainId } : null;
         }}
-        signOut={() => fetch(`${apiRoutePrefix}/logout`).then((res) => res.ok)}
+        signOut={() => fetch(`${apiRoutePrefix}/logout`).then(res => res.ok)}
         {...props}
       />
     );

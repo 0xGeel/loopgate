@@ -11,9 +11,9 @@ export const findAllUnlockables = (
 
   if (owner) {
     return unlockablesArray.filter(
-      (unlockable) => unlockable.owner === owner && !unlockable.unlisted
+      unlockable => unlockable.owner === owner && !unlockable.unlisted
     );
   }
 
-  return unlockablesArray.filter((unlockable) => !unlockable.unlisted);
+  return unlockablesArray.filter(unlockable => !unlockable.unlisted);
 };

@@ -14,7 +14,7 @@ export const fetchAllUnlockables = async (owner?: string) => {
   }
 
   if (unlockables) {
-    const parsedUnlockables = unlockables.map((item) => mapUnlockable(item));
+    const parsedUnlockables = unlockables.map(item => mapUnlockable(item));
 
     return parsedUnlockables;
   }

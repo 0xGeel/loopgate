@@ -3,7 +3,7 @@ import { PinataFolderRes, PinataFolderItem } from "./_types";
 const checkPinataFolderForHtml = (pinataFolder: PinataFolderRes) => {
   if (pinataFolder.hasIndexHtml) {
     // Content has a file named 'index.html'. It's fairly safe to assume that we want to use this file.
-    const htmlIndex = pinataFolder.childContent.filter((item) =>
+    const htmlIndex = pinataFolder.childContent.filter(item =>
       item.uri.endsWith("index.html")
     );
 

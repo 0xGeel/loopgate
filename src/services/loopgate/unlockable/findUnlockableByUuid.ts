@@ -9,5 +9,5 @@ export const findUnlockableByUuid = (
     throw new ConfigError("Empty config file");
   }
 
-  return unlockablesArray.filter((item) => item.id === uuid)[0];
+  return unlockablesArray.filter(item => item.id === uuid)[0];
 };

@@ -10,5 +10,5 @@ export const checkIfContainsAll = (config: string[], target: string[]) => {
   if (config.length === 0) {
     throw new ConfigError("Empty config file");
   }
-  return config.every((x) => target.includes(x));
+  return config.every(x => target.includes(x));
 };

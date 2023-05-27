@@ -18,12 +18,12 @@ export const findUnlockedCids = (
   }
 
   // For each row in the config, check if the user holds all NFTs necessary to unlock them.
-  const unlocks = unlockablesArray.filter((item) =>
+  const unlocks = unlockablesArray.filter(item =>
     checkIfContainsAll(item.nftId, nfts)
   );
 
   // We're only interested in the CIDs
-  const cids = unlocks.map((item) => item.cid);
+  const cids = unlocks.map(item => item.cid);
 
   return cids;
 };

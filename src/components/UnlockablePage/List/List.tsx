@@ -15,7 +15,7 @@ const List = ({ unlockables }: Props) => {
         </span>
       </h1>
       <div className="divide-y divide-white/20">
-        {unlockables.map((item) => (
+        {unlockables.map(item => (
           <ListItem key={item.id} unlockable={item} />
         ))}
       </div>

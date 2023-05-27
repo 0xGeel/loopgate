@@ -30,7 +30,7 @@ export const getNftHolders = async (nftData: string) => {
 
     // Call the API for all of these ^
     const followUpReqs = await Promise.all(
-      amountOfCalls.map(async (index) => {
+      amountOfCalls.map(async index => {
         return await rateLimitedAxios.get(
           `${LOOP_API_URL}/nft/info/nftHolders?nftData=${nftData}&limit=${LIMIT}&offset=${
             LIMIT * index
@@ -42,7 +42,7 @@ export const getNftHolders = async (nftData: string) => {
 
     // Parse the API response, merge with the first API Call and flatten the array
     const nftApiResFlattened = followUpReqs
-      .map((item) => item.data)
+      .map(item => item.data)
       .concat(firstReq.data.nftHolders)
       .flat();
 

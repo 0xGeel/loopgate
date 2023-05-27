@@ -7,7 +7,7 @@ const pinoCredentials = {
 };
 
 const checkCredentials = (credentials: string[]): boolean =>
-  credentials.every((x) => typeof x !== "undefined");
+  credentials.every(x => typeof x !== "undefined");
 
 const credentialsDefined = checkCredentials([
   pinoCredentials.apiKey,

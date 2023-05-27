@@ -28,11 +28,11 @@ const UnlockSection = ({ unlockable }: Props) => {
       .get(
         `/api/unlockable/verify-access?address=${address}&unlockableId=${unlockable.id}`
       )
-      .then((data) => {
+      .then(data => {
         setUnlockedContent(data.data.unlock);
         setIsLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         setIsLoading(false);
         logger.error(error.response.data.message);
         toast.error(error.response.data.message);

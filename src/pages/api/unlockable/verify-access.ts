@@ -46,14 +46,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   // 2️⃣ Call the Loopring API to find the NFTs held by the user
-  const userNftIds = await getAllUserNftIds(accountId);
+  const userNftIds = await getAllUserNftIds(accountId.toString());
 
   if (!userNftIds) {
     return handleError(res, LoopgateError.noNftsFound);
   }
 
   // 3️⃣ Check if the user meets the unlock criteria
-  const intersection = unlockable.unlockCriteria.nftId.filter((value) =>
+  const intersection = unlockable.unlockCriteria.nftId.filter(value =>
     userNftIds.includes(value)
   );
 

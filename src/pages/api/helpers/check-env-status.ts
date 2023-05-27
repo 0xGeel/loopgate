@@ -11,7 +11,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
 
   const undefinedEnvs: string[] = [];
 
-  envsToCheck.forEach((item) => {
+  envsToCheck.forEach(item => {
     if (process.env[item] === undefined) {
       undefinedEnvs.push(item);
     }
