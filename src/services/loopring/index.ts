@@ -1,6 +1,5 @@
 // Requests
 export { getUserAddress } from "./requests/getUserAddress";
-export { getUserNfts } from "./requests/getUserNfts";
 export { getNftData } from "./requests/getNftData";
 export { getNftHolders } from "./requests/getNftHolders";
 export { getMinterAndToken } from "./requests/getMinterAndToken";
