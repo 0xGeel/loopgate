@@ -1,6 +1,7 @@
+import { ArrowLongDownIcon } from "@heroicons/react/24/outline";
+
 import HeroGlow from "./HeroGlow";
 import HeroImage from "./HeroImage";
-import { ArrowLongDownIcon } from "@heroicons/react/24/outline";
 
 type Props = {
   title: string;

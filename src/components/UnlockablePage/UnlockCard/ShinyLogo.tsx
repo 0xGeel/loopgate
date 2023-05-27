@@ -1,5 +1,6 @@
-import LoopGateLogo from "@/public/images/icon/icon.svg";
 import Image from "next/image";
+
+import LoopGateLogo from "@/public/images/icon/icon.svg";
 
 const Img = ({ className }: { className?: string }) => {
   return (

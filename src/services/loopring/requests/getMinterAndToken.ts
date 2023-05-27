@@ -1,6 +1,8 @@
 import axios from "axios";
-import { THE_GRAPH_URL } from "../helpers/_constants";
+
 import logger from "@/src/utils/logger";
+
+import { THE_GRAPH_URL } from "../helpers/_constants";
 
 // Queries Loopring TheGraph to find Minter and Token Address from NFT ID
 // Example input: `0x271d3a38c3572ab21225fbb7f97468051ca9c631f002bf2dde82aee9b8511ac0`

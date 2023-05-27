@@ -1,8 +1,7 @@
-import { createClient, configureChains, mainnet, goerli } from "wagmi";
-
+import { configureChains, createClient, goerli,mainnet } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
-import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { publicProvider } from "wagmi/providers/public";
 
 const { provider, chains } = configureChains(

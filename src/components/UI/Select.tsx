@@ -1,9 +1,9 @@
 // Reference: https://ui.shadcn.com/docs/primitives/select
 "use client";
 
-import * as React from "react";
-import * as SelectPrimitive from "@radix-ui/react-select";
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import * as React from "react";
 
 import { cn } from "@/src/utils/generic";
 

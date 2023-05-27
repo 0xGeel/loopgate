@@ -1,7 +1,9 @@
-import { LOOP_API_URL } from "../helpers/_constants";
 import axios from "axios";
-import { headerOpts, rateLimitedAxios } from "../index";
+
 import logger from "@/src/utils/logger";
+
+import { LOOP_API_URL } from "../helpers/_constants";
+import { headerOpts, rateLimitedAxios } from "../index";
 
 export const getNftHolders = async (nftData: string) => {
   const LIMIT = 500; // API can handle up to 500 per call

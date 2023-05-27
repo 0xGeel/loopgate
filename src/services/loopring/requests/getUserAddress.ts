@@ -1,6 +1,8 @@
-import { LOOP_API_URL } from "../helpers/_constants";
 import axios from "axios";
+
 import logger from "@/src/utils/logger";
+
+import { LOOP_API_URL } from "../helpers/_constants";
 import { AccountResponse } from "../helpers/_types";
 
 export const getUserAddress = async (address: string | string[]) => {

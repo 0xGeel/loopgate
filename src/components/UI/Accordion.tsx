@@ -1,9 +1,9 @@
 // Reference:  https://ui.shadcn.com/docs/primitives/accordion
 "use client";
 
-import * as React from "react";
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import * as React from "react";
 
 import { cn } from "@/src/utils/generic";
 

@@ -1,5 +1,6 @@
-import Layout from "./Layout";
 import Link from "next/link";
+
+import Layout from "./Layout";
 
 type Props = {
   label?: string;

@@ -1,5 +1,6 @@
 import { UnlockableV2 } from "@/src/config/types";
 import { parseNftIdString } from "@/src/utils/generic";
+
 import { SupabaseUnlockable } from "../typeExtenstions";
 
 // Mapping function for Supabase Unlockable -> LoopGate Unlockable Type

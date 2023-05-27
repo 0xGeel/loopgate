@@ -1,12 +1,13 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
-import { cn } from "@/src/utils/generic";
 import { GetServerSideProps } from "next";
+import React, { ChangeEvent, FormEvent,useState } from "react";
+import { toast } from "react-hot-toast";
+import { v4 as uuidv4 } from "uuid";
+
 import Spinner from "@/src/components/Spinner";
 import { checkAuthentication, redirectTo } from "@/src/middleware";
 import { UploadResponse } from "@/src/pages/api/upload/submarine";
-import { toast } from "react-hot-toast";
-import { v4 as uuidv4 } from "uuid";
+import { cn } from "@/src/utils/generic";
 
 interface FileUploadState {
   files: FileList | null;

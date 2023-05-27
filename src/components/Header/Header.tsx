@@ -1,7 +1,8 @@
 import { ConnectKitButton } from "connectkit";
 import Image from "next/image";
-import LogoSrc from "@/public/images/logo/logo.svg";
 import Link from "next/link";
+
+import LogoSrc from "@/public/images/logo/logo.svg";
 
 const Header = () => {
   return (

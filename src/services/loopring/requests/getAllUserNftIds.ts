@@ -1,6 +1,7 @@
 import axios from "axios";
+
+import { extractNfts, headerOpts, rateLimitedAxios } from "../";
 import { LOOP_API_URL } from "../helpers/_constants";
-import { headerOpts, extractNfts, rateLimitedAxios } from "../";
 import { NftBalanceResponse } from "../helpers/_types";
 
 type AxiosNftBalanceResponse = { data: NftBalanceResponse };

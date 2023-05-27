@@ -1,13 +1,14 @@
-import { truncate0x } from "@/src/utils/generic";
-import {
-  findAllUnlockables,
-  fetchAllUnlockables,
-} from "@/src/services/loopgate/unlockable";
-import Layout from "@/src/components/UnlockablePage/Layout";
-import FourOhFour from "@/src/components/UnlockablePage/404";
 import { GetServerSideProps } from "next";
-import { UnlockableV2 } from "@/src/config/types";
+
+import FourOhFour from "@/src/components/UnlockablePage/404";
+import Layout from "@/src/components/UnlockablePage/Layout";
 import List from "@/src/components/UnlockablePage/List";
+import { UnlockableV2 } from "@/src/config/types";
+import {
+  fetchAllUnlockables,
+  findAllUnlockables,
+} from "@/src/services/loopgate/unlockable";
+import { truncate0x } from "@/src/utils/generic";
 
 export const getServerSideProps: GetServerSideProps = async context => {
   context.res.setHeader(

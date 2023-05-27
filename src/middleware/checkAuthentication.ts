@@ -1,8 +1,9 @@
 import { GetServerSidePropsContext } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
+
 import { siwe } from "@/src/middleware/siwe";
 import Supabase from "@/src/services/supabase";
 import logger from "@/src/utils/logger";
-import { NextApiRequest, NextApiResponse } from "next";
 
 interface AuthSuccess {
   authenticated: true;

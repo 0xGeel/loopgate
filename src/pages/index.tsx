@@ -1,16 +1,16 @@
 import { GetServerSideProps } from "next";
+
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import ContentBlocks from "../components/Pages/Home/ContentBlocks";
+import CTABanner from "../components/Pages/Home/CTABanner";
+import Hero from "../components/Pages/Home/Hero";
+import UseCases from "../components/Pages/Home/UseCases";
+import { UnlockableV2 } from "../config/types";
 import {
   fetchAllUnlockables,
   findAllUnlockables,
 } from "../services/loopgate/unlockable";
-import { UnlockableV2 } from "../config/types";
-
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Hero from "../components/Pages/Home/Hero";
-import ContentBlocks from "../components/Pages/Home/ContentBlocks";
-import UseCases from "../components/Pages/Home/UseCases";
-import CTABanner from "../components/Pages/Home/CTABanner";
 import { techPattern } from "../styles/inlineStyles";
 
 export const getServerSideProps: GetServerSideProps = async context => {

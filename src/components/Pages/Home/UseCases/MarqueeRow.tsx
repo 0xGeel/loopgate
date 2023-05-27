@@ -1,6 +1,7 @@
-import { Content, Direction } from "./types";
 import Marquee from "react-fast-marquee";
+
 import ContentItem from "./ContentItem";
+import { Content, Direction } from "./types";
 
 type Props = {
   content: Content[];

@@ -1,7 +1,7 @@
 import {
-  generateAccessLink,
-  formatAccessLink,
   checkPinataFolderForHtml,
+  formatAccessLink,
+  generateAccessLink,
   listFolderContent,
 } from "./index";
 

@@ -1,17 +1,18 @@
-import { UnlockableV2 } from "@/src/config/types";
-import { ColourModes } from "./Block";
 import {
-  SparklesIcon,
-  ShieldCheckIcon,
-  RocketLaunchIcon,
   CodeBracketIcon,
   DocumentTextIcon,
+  RocketLaunchIcon,
+  ShieldCheckIcon,
+  SparklesIcon,
 } from "@heroicons/react/24/outline";
 
+import { UnlockableV2 } from "@/src/config/types";
+
+import { ColourModes } from "./Block";
 import Block from "./Block";
 import CtaBtn from "./BrowseAllBtn";
-import LogoMarquee from "./LogoMarquee";
 import Links from "./Links";
+import LogoMarquee from "./LogoMarquee";
 import UnlockablesBlock from "./UnlockablesBlock";
 
 type Props = {

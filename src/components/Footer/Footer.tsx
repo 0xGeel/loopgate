@@ -1,6 +1,6 @@
-import FooterLink from "./FooterLink";
-import { TwitterIcon, GithubIcon } from "../Icons/Icons";
 import { getCurrentYear } from "../../utils/generic";
+import { GithubIcon, TwitterIcon } from "../Icons/Icons";
+import FooterLink from "./FooterLink";
 
 const Footer = () => {
   const currentYear = getCurrentYear();

@@ -1,8 +1,10 @@
-import Header from "../Header";
-import Footer from "../Footer";
 import { ReactNode } from "react";
+
 import { techPattern } from "@/src/styles/inlineStyles";
 import { cn } from "@/src/utils/generic";
+
+import Footer from "../Footer";
+import Header from "../Header";
 
 type Props = {
   containerClass: string;

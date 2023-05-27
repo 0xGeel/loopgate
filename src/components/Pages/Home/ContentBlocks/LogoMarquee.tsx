@@ -1,5 +1,5 @@
-import RFMarquee from "react-fast-marquee";
 import Image from "next/image";
+import RFMarquee from "react-fast-marquee";
 
 interface Logo {
   src: string;

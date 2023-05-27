@@ -1,15 +1,16 @@
+import "../styles/globals.css";
+
+import { ConnectKitProvider } from "connectkit";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import { WagmiConfig } from "wagmi";
-import { ConnectKitProvider } from "connectkit";
-
-import "../styles/globals.css";
-import { WagmiClient } from "../services/wagmi";
-import { siwe } from "../middleware/siwe";
-import { overrides } from "../styles/ConnectKit/overrides";
-import NextHeadBase from "../components/SEO/NextHeadBase";
-import { inter, unbounded } from "../components/Fonts";
 import { Toaster } from "react-hot-toast";
+import { WagmiConfig } from "wagmi";
+
+import { inter, unbounded } from "../components/Fonts";
+import NextHeadBase from "../components/SEO/NextHeadBase";
+import { siwe } from "../middleware/siwe";
+import { WagmiClient } from "../services/wagmi";
+import { overrides } from "../styles/ConnectKit/overrides";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [mounted, setMounted] = useState(false);

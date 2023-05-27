@@ -1,14 +1,15 @@
+import { GetServerSideProps } from "next";
+
+import NextHeadBase from "@/src/components/SEO/NextHeadBase";
+import FourOhFour from "@/src/components/UnlockablePage/404";
+import Layout from "@/src/components/UnlockablePage/Layout";
+import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
+import { UnlockableV2 } from "@/src/config/types";
 import {
   fetchUnlockableByUuid,
   findUnlockableByUuid,
 } from "@/src/services/loopgate/unlockable";
-import Layout from "@/src/components/UnlockablePage/Layout";
-import FourOhFour from "@/src/components/UnlockablePage/404";
-import UnlockCard from "@/src/components/UnlockablePage/UnlockCard/UnlockCard";
-import { GetServerSideProps } from "next";
-import { UnlockableV2 } from "@/src/config/types";
 import { isUuid } from "@/src/utils/generic";
-import NextHeadBase from "@/src/components/SEO/NextHeadBase";
 
 export const getServerSideProps: GetServerSideProps = async context => {
   context.res.setHeader(

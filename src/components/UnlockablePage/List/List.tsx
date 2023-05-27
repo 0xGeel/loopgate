@@ -1,5 +1,6 @@
-import ListItem from "./ListItem";
 import { UnlockableV2 } from "@/src/config/types";
+
+import ListItem from "./ListItem";
 
 type Props = {
   unlockables: UnlockableV2[];

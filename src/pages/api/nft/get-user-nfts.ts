@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getAllUserNftIds } from "../../../services/loopring";
+
 import { handleError, LoopgateError } from "@/src/middleware";
+
+import { getAllUserNftIds } from "../../../services/loopring";
 
 // Request NFTs on Loopring held by a user
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

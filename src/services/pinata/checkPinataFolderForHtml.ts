@@ -1,4 +1,4 @@
-import { PinataFolderRes, PinataFolderItem } from "./_types";
+import { PinataFolderItem,PinataFolderRes } from "./_types";
 
 const checkPinataFolderForHtml = (pinataFolder: PinataFolderRes) => {
   if (pinataFolder.hasIndexHtml) {

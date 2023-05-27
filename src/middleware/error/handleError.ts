@@ -1,5 +1,7 @@
-import logger from "@/src/utils/logger";
 import { NextApiResponse } from "next";
+
+import logger from "@/src/utils/logger";
+
 import { Error } from "./loopgateError";
 
 export const handleError = (res: NextApiResponse, error: Error) => {

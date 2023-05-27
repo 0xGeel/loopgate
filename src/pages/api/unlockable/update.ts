@@ -1,11 +1,12 @@
+import { createClient } from "@supabase/supabase-js";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
+
 import {
   checkAuthentication,
   handleError,
   LoopgateError,
 } from "@/src/middleware";
-import { createClient } from "@supabase/supabase-js";
+import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
 import { Database } from "@/src/services/supabase/types";
 
 type UUID = string;

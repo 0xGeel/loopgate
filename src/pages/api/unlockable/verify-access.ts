@@ -1,13 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { siwe } from "@/src/middleware/siwe";
-import { getUserAddress, getAllUserNftIds } from "@/src/services/loopring";
+
 import { handleError, LoopgateError } from "@/src/middleware";
-import {
-  findUnlockableByUuid,
-  fetchUnlockableByUuid,
-} from "@/src/services/loopgate/unlockable";
-import { getPinataIndexLink } from "@/src/services/pinata";
 import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
+import { siwe } from "@/src/middleware/siwe";
+import {
+  fetchUnlockableByUuid,
+  findUnlockableByUuid,
+} from "@/src/services/loopgate/unlockable";
+import { getAllUserNftIds, getUserAddress } from "@/src/services/loopring";
+import { getPinataIndexLink } from "@/src/services/pinata";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;

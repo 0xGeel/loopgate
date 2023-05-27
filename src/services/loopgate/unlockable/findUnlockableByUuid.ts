@@ -1,5 +1,5 @@
 import { unlockablesV2 } from "../../../config/config";
-import { UnlockableV2, ConfigError } from "../../../config/types";
+import { ConfigError,UnlockableV2 } from "../../../config/types";
 
 export const findUnlockableByUuid = (
   uuid: string,

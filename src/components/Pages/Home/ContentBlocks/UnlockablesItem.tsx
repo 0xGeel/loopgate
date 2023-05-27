@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { UnlockableV2 } from "@/src/config/types";
 import Jazzicon from "react-jazzicon";
+
+import { UnlockableV2 } from "@/src/config/types";
 import { uuidToNumber } from "@/src/utils/generic";
 
 type Props = {

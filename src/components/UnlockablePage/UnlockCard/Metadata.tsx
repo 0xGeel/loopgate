@@ -1,10 +1,11 @@
-import { UnlockCriteria } from "@/src/config/types";
-import { formatRelativeDate, truncate0x } from "@/src/utils/generic";
 import {
   ClockIcon,
   // LockClosedIcon,
   UserGroupIcon,
 } from "@heroicons/react/20/solid";
+
+import { UnlockCriteria } from "@/src/config/types";
+import { formatRelativeDate, truncate0x } from "@/src/utils/generic";
 
 type Props = {
   lastUpdated: string | Date;

@@ -2,7 +2,7 @@
  * Generic Types ⬜️
  */
 export type UnixDate = number;
-export type HexString = `0x${string}`;
+export type HexString = `0x${string}` | string;
 
 /**
  * Loopring Primitives 🔥

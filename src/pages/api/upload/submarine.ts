@@ -1,12 +1,13 @@
+import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
+import { v4 as uuidv4 } from "uuid";
+
 import {
   checkAuthentication,
   handleError,
   LoopgateError,
 } from "@/src/middleware";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+import { withSessionRoute } from "@/src/middleware/ironSession/withSession";
 
 export interface UploadResponse {
   data: {

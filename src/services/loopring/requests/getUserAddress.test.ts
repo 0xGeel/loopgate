@@ -1,5 +1,6 @@
-import { getUserAddress } from "./getUserAddress";
 import axios from "axios";
+
+import { getUserAddress } from "./getUserAddress";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;

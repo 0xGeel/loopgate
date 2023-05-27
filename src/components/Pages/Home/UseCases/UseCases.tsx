@@ -1,9 +1,11 @@
-import { useState } from "react";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
-import MarqueeRow from "./MarqueeRow";
-import { UseCase, IconNames, Direction } from "./types";
+import { useState } from "react";
 import { animated } from "react-spring";
+
 import useBoop from "@/src/hooks/useBoop";
+
+import MarqueeRow from "./MarqueeRow";
+import { Direction, IconNames, UseCase } from "./types";
 
 const data: UseCase[] = [
   {
