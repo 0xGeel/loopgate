@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { ConnectKitProvider } from "connectkit";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
@@ -26,23 +27,27 @@ const App = ({ Component, pageProps }: AppProps) => {
             walletConnectName: "WalletConnect",
           }}
         >
-          <main className={`${inter.variable} ${unbounded.variable} font-sans`}>
-            <NextHeadBase />
-            {mounted && <Component {...pageProps} />}
-            <Toaster
-              toastOptions={{
-                style: {
-                  backgroundColor: "rgba(17,24,44,.8)",
-                  backdropFilter: "blur(2px)",
-                  color: "#FFFFFF",
-                  fontSize: "14px",
-                  border: "1px solid rgba(255,255,255,.2)",
-                  maxWidth: "420px",
-                  lineHeight: 1.5,
-                },
-              }}
-            />
-          </main>
+          <TooltipProvider delayDuration={0}>
+            <main
+              className={`${inter.variable} ${unbounded.variable} font-sans`}
+            >
+              <NextHeadBase />
+              {mounted && <Component {...pageProps} />}
+              <Toaster
+                toastOptions={{
+                  style: {
+                    backgroundColor: "rgba(17,24,44,.8)",
+                    backdropFilter: "blur(2px)",
+                    color: "#FFFFFF",
+                    fontSize: "14px",
+                    border: "1px solid rgba(255,255,255,.2)",
+                    maxWidth: "420px",
+                    lineHeight: 1.5,
+                  },
+                }}
+              />
+            </main>
+          </TooltipProvider>
         </ConnectKitProvider>
       </siwe.Provider>
     </WagmiConfig>

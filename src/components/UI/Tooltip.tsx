@@ -1,33 +1,49 @@
-// Reference: https://ui.shadcn.com/docs/primitives/tooltip
-
-"use client";
-
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import * as React from "react";
 
 import { cn } from "@/src/utils/generic";
 
-const TooltipProvider = TooltipPrimitive.Provider;
+interface Props {
+  children: React.ReactNode;
+  content: React.ReactNode;
+  // open?: boolean;
+  onOpenChange?: () => void;
+  defaultOpen?: boolean;
+}
 
-const Tooltip = ({ ...props }) => <TooltipPrimitive.Root {...props} />;
-Tooltip.displayName = TooltipPrimitive.Tooltip.displayName;
+const Tooltip = ({
+  children,
+  content,
+  // open = false,
+  defaultOpen = false,
+  onOpenChange,
+  ...props
+}: Props) => {
+  return (
+    <TooltipPrimitive.Root
+      // open={open}
+      defaultOpen={defaultOpen}
+      onOpenChange={onOpenChange}
+    >
+      <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Content
+        side="top"
+        sideOffset={2}
+        align="center"
+        className={cn(
+          "bg-sky-400 rounded-md px-2.5 py-1 text-sm text-slate-900",
+          "data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade will-change-[transform,opacity]"
+        )}
+        {...props}
+      >
+        {content}
+        <TooltipPrimitive.Arrow
+          width={11}
+          height={5}
+          className="fill-sky-400"
+        />
+      </TooltipPrimitive.Content>
+    </TooltipPrimitive.Root>
+  );
+};
 
-const TooltipTrigger = TooltipPrimitive.Trigger;
-
-const TooltipContent = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
-  <TooltipPrimitive.Content
-    ref={ref}
-    sideOffset={sideOffset}
-    className={cn(
-      "z-50 overflow-hidden rounded-md border border-slate-100 bg-white px-3 py-1.5 text-sm text-slate-700 shadow-md animate-in fade-in-50 data-[side=bottom]:slide-in-from-top-1 data-[side=top]:slide-in-from-bottom-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-400",
-      className
-    )}
-    {...props}
-  />
-));
-TooltipContent.displayName = TooltipPrimitive.Content.displayName;
-
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
+export default Tooltip;
