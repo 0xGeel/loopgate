@@ -112,12 +112,27 @@ export interface Database {
       unlockables_with_criteria: {
         Row: {
           content_url: string | null
+          created_at: string | null
           criteria_unlock_amount: number | null
           description: string | null
           id: string | null
           name: string | null
           nft_ids: string | null
           owner: string | null
+          unlisted: boolean | null
+          updated_at: string | null
+        }
+      }
+      unlockables_with_criteria_backup: {
+        Row: {
+          content_url: string | null
+          criteria_unlock_amount: number | null
+          description: string | null
+          id: string | null
+          name: string | null
+          nft_ids: string | null
+          owner: string | null
+          unlisted: boolean | null
           updated_at: string | null
         }
       }

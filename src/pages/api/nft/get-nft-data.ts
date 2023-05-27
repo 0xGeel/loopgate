@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getMinterAndToken, getNftData } from "@/src/services/loopring";
-import logger from "@/src/utils/logger";
 import { handleError, LoopgateError } from "@/src/middleware";
 
 // Request NFTs Data for a Loopring NFT ID

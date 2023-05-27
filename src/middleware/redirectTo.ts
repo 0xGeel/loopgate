@@ -1,4 +1,4 @@
-export const redirectTo = (url: string, isPermanent: boolean = false) => {
+export const redirectTo = (url: string, isPermanent = false) => {
   return {
     redirect: {
       destination: url,

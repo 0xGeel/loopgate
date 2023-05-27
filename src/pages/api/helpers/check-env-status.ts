@@ -9,7 +9,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     "SESSION_SECRET",
   ];
 
-  let undefinedEnvs: string[] = [];
+  const undefinedEnvs: string[] = [];
 
   envsToCheck.forEach((item) => {
     if (process.env[item] === undefined) {

@@ -1,15 +1,20 @@
+// Generic types
 export type UnixDate = number;
+export type HexString = `0x${string}`;
 
+// Loopring Primitives
 export type NftType = "ERC1155" | "ERC721";
+export type NftData = HexString;
 
+// Loopring Responses
 interface CollectionInfo {
   id: number;
-  owner: `0x${string}`;
+  owner: HexString;
   name: string;
-  contractAddress: `0x${string}`;
-  collectionAddress: `0x${string}`;
+  contractAddress: HexString;
+  collectionAddress: HexString;
   baseUri: string;
-  nftFactory: `0x${string}`;
+  nftFactory: HexString;
   description: string;
   avatar: string;
   banner: string;
@@ -21,7 +26,7 @@ interface CollectionInfo {
     tileUri: string;
     thumbnail: string;
   };
-  deploymentStatus: "NOT_DEPLOYED";
+  deploymentStatus: string;
   nftType: NftType;
   times: {
     createdAt: UnixDate;
@@ -45,9 +50,9 @@ export interface NftBalanceResponse {
   data: {
     id: number;
     accountId: number;
-    nftData: `0x${string}`;
-    tokenAddress: `0x${string}`;
-    nftId: `0x${string}`;
+    nftData: HexString;
+    tokenAddress: HexString;
+    nftId: HexString;
     nftType: NftType;
     total: string;
     locked: string;
@@ -57,7 +62,7 @@ export interface NftBalanceResponse {
     };
     deploymentStatus: string;
     isCounterfactualNFT: boolean;
-    minter: `0x${string}`;
+    minter: HexString;
     royaltyPercentage: number;
     preference: {
       favourite: boolean;
@@ -66,4 +71,19 @@ export interface NftBalanceResponse {
     collectionInfo: CollectionInfo;
     updatedAt: UnixDate;
   }[];
+}
+
+export interface NftDataResponse {
+  nftData: HexString;
+  minter: HexString;
+  nftType: NftType;
+  tokenAddress: HexString;
+  nftId: HexString;
+  royaltyPercentage: number;
+  status: string;
+  nftFactory: HexString;
+  nftOwner: HexString;
+  nftBaseUri: HexString;
+  royaltyAddress: HexString;
+  originalMinter: HexString;
 }

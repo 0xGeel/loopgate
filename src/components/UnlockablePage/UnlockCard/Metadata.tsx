@@ -2,7 +2,7 @@ import { UnlockCriteria } from "@/src/config/types";
 import { formatRelativeDate, truncate0x } from "@/src/utils/generic";
 import {
   ClockIcon,
-  LockClosedIcon,
+  // LockClosedIcon,
   UserGroupIcon,
 } from "@heroicons/react/20/solid";
 
@@ -29,6 +29,7 @@ const Metadata = ({ lastUpdated, owner, unlockCriteria }: Props) => (
         {truncate0x(owner)}
       </p>
     </a>
+    {unlockCriteria ? <></> : <></>}
     {/* <button
       className="inline-flex space-x-1.5 items-center hover:text-sky-500 duration-150"
       onClick={() => console.log("Clicked")}

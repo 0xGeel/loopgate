@@ -1,4 +1,4 @@
-import getUserAddress from "./getUserAddress";
+import { getUserAddress } from "./getUserAddress";
 import axios from "axios";
 
 jest.mock("axios");

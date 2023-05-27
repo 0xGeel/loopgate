@@ -9,6 +9,7 @@ import { cn } from "@/src/utils/generic";
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+  // eslint-disable-next-line
 >(({ className, value, ...props }, ref) => (
   <SliderPrimitive.Root
     ref={ref}

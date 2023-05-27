@@ -16,6 +16,8 @@ const UnlockSection = ({ unlockable }: Props) => {
   const { address } = useAccount();
 
   const [isLoading, setIsLoading] = useState(false);
+  // TODO: Type the 'PinataIndexLink' so that this 'any' can be removed.
+  // eslint-disable-next-line
   const [unlockedContent, setUnlockedContent] = useState<any>(null);
 
   const checkUnlock = (

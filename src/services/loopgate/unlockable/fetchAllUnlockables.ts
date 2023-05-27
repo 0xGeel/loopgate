@@ -1,5 +1,5 @@
 import Supabase from "../../supabase";
-import { parseSqlUnlockable } from "../../supabase/helpers";
+import { mapUnlockable } from "../../supabase/helpers";
 
 export const fetchAllUnlockables = async (owner?: string) => {
   const { data: unlockables, error } = await Supabase.from(
@@ -14,9 +14,7 @@ export const fetchAllUnlockables = async (owner?: string) => {
   }
 
   if (unlockables) {
-    const parsedUnlockables = unlockables.map((item) =>
-      parseSqlUnlockable(item)
-    );
+    const parsedUnlockables = unlockables.map((item) => mapUnlockable(item));
 
     return parsedUnlockables;
   }

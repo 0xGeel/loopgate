@@ -18,6 +18,10 @@ export const getServerSideProps: GetServerSideProps = async (context) =>
     : redirectTo("/");
 
 const FormPage = ({ isAuthenticated }: { isAuthenticated: true }) => {
+  if (!isAuthenticated) {
+    window.location.href = "/";
+  }
+
   const [file, setFile] = useState<FileUploadState>();
   const [isLoading, setIsLoading] = useState(false);
 

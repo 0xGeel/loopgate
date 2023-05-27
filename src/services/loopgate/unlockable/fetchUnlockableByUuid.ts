@@ -1,8 +1,8 @@
 import Supabase from "../../supabase";
-import { parseSqlUnlockable } from "../../supabase/helpers";
+import { mapUnlockable } from "../../supabase/helpers";
 
 export const fetchUnlockableByUuid = async (uuid: string) => {
-  let { data: unlockables, error } = await Supabase.from(
+  const { data: unlockables, error } = await Supabase.from(
     "unlockables_with_criteria"
   )
     .select(`*`)
@@ -14,6 +14,6 @@ export const fetchUnlockableByUuid = async (uuid: string) => {
   }
 
   if (unlockables) {
-    return parseSqlUnlockable(unlockables);
+    return mapUnlockable(unlockables);
   }
 };

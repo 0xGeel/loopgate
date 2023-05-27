@@ -1,1 +1,1 @@
-export { parseSqlUnlockable } from "./parseSqlUnlockable";
+export { mapUnlockable } from "./mapUnlockable";

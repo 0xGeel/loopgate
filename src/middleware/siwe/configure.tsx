@@ -12,6 +12,7 @@ type NextSIWEConfig = {
   session?: Partial<IronSessionOptions>;
 };
 
+// eslint-disable-next-line
 type NextSIWESession<TSessionData extends Object = {}> = IronSession &
   TSessionData & {
     nonce?: string;
@@ -24,6 +25,7 @@ type NextSIWEProviderProps = Omit<
   "getNonce" | "createMessage" | "verifyMessage" | "getSession" | "signOut"
 >;
 
+// eslint-disable-next-line
 type ConfigureSIWEResult<TSessionData extends Object = {}> = {
   apiRouteHandler: NextApiHandler;
   Provider: FunctionComponent<NextSIWEProviderProps>;
@@ -33,8 +35,10 @@ type ConfigureSIWEResult<TSessionData extends Object = {}> = {
   ) => Promise<NextSIWESession<TSessionData>>;
 };
 
+// eslint-disable-next-line
 const getSession = async <TSessionData extends Object = {}>(
   req: IncomingMessage,
+  // eslint-disable-next-line
   res: any, // ServerResponse<IncomingMessage>,
   sessionConfig: IronSessionOptions
 ) => {
@@ -146,6 +150,7 @@ const envVar = (name: string) => {
   return value;
 };
 
+// eslint-disable-next-line
 export const configureSIWE = <TSessionData extends Object = {}>({
   apiRoutePrefix,
   statement = "Sign In With Ethereum.",

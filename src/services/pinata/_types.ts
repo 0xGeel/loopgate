@@ -6,12 +6,14 @@ export interface PinataFolderRes {
 export interface PinataFolderItem {
   id: string;
   createdAt: string;
-  cid: string; // starting with `baf...`
+  cid: string;
   name: string;
   originalName: string;
   size: string;
+  // TODO: Add Pinata Metadata instead of 'any'.
+  // eslint-disable-next-line
   metadata: any;
   type: string;
   pinToIpfs: boolean;
-  uri: string; // starting with `/ipfs/baf...`
+  uri: string;
 }

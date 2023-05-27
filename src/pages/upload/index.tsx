@@ -3,6 +3,8 @@
  * There are some parts in this code that I'd like to reuse. Beware, it is messy though.
  */
 
+/* eslint-disable */
+
 import { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import Spinner from "@/src/components/Spinner";

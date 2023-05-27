@@ -24,7 +24,7 @@ interface NodeUploadResponse {
       cid: string;
       name: string;
       originalname: string;
-      metadata: {};
+      metadata: object;
       type: "F";
       pinToIPFS: false;
       uri: string;

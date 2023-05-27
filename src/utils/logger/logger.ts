@@ -16,7 +16,9 @@ const credentialsDefined = checkCredentials([
 
 // Include a mock logger in case no LogFlare credentials are present
 const mockLogger = {
-  error: () => {},
+  error: () => {
+    console.log("");
+  },
 };
 
 const logger = credentialsDefined

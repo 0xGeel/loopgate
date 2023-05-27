@@ -8,6 +8,7 @@ export interface Metadata {
   name?: string;
   description?: string;
   lastUpdated: Date | string;
+  createdAt: Date | string;
 }
 
 export interface UnlockCriteria {
