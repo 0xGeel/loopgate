@@ -17,8 +17,9 @@ export interface UnlockCriteria {
 
 export interface UnlockableV2 {
   id: string;
-  owner: `0x${string}`;
+  owner: string;
   metadata: Metadata;
+  unlisted: boolean;
   content: {
     type: "IPFS";
     url: string;

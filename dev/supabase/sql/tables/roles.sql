@@ -1,3 +1,5 @@
+-- 🦻 NOTE: Currently not in use
+
 -- Create and fill a table with the available user roles
 
 CREATE TABLE roles (

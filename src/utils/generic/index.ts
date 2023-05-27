@@ -5,3 +5,4 @@ export { getCurrentYear } from "./getCurrentYear";
 export { uuidToNumber } from "./uuidToNumber";
 export { truncate0x } from "./truncate0x";
 export { isUuid } from "./isUuid";
+export { checkIfContainsAll } from "./checkIfContainsAll";

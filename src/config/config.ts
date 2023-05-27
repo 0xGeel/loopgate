@@ -55,6 +55,7 @@ const unlockablesV2: UnlockableV2[] = [
         "This exclusive article contains a primer on what Token Gating is, and provides four actionable prompts on how to implement it to bring value to members of your community.",
       lastUpdated: "2023-03-13 16:05:23.481327",
     },
+    unlisted: false,
     content: {
       type: "IPFS",
       url: "bafybeiehgpaip4f7jafzf7imgannx3nnv3ubaiwp6ph56mlyzijpqxi45m",
@@ -72,6 +73,7 @@ const unlockablesV2: UnlockableV2[] = [
     metadata: {
       lastUpdated: "2023-03-13 16:05:23.481327",
     },
+    unlisted: false,
     content: {
       type: "IPFS",
       url: "bafybeihx5eacyxeydcpvudwxa242rnjhn67femy46gzas5d2djb24ti5mi",
@@ -86,6 +88,7 @@ const unlockablesV2: UnlockableV2[] = [
   {
     id: "3eade688-8839-4fd7-b97a-f7c5f5bfc6ad",
     owner: "0x1337CC354AeAf15B0E98A609cd348DF171174e14",
+    unlisted: false,
     metadata: {
       name: "Flappy Bird: Origins",
       description:

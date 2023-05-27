@@ -6,7 +6,8 @@ export const fetchAllUnlockables = async (owner?: string) => {
     "unlockables_with_criteria"
   )
     .select(`*`)
-    .eq(owner ? "owner" : "", owner);
+    .eq(owner ? "owner" : "", owner)
+    .neq("unlisted", true);
 
   if (error) {
     throw error;

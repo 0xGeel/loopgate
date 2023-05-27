@@ -73,6 +73,7 @@ export interface Database {
         Row: {
           content_type_id: number
           content_url: string
+          created_at: string
           criteria_unlock_amount: number
           description: string | null
           id: string
@@ -84,6 +85,7 @@ export interface Database {
         Insert: {
           content_type_id: number
           content_url: string
+          created_at?: string
           criteria_unlock_amount: number
           description?: string | null
           id?: string
@@ -95,6 +97,7 @@ export interface Database {
         Update: {
           content_type_id?: number
           content_url?: string
+          created_at?: string
           criteria_unlock_amount?: number
           description?: string | null
           id?: string

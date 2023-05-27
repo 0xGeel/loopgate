@@ -1,4 +1,4 @@
-import { findUnlockableByUuid } from "../../../utils/generic";
+import { findUnlockableByUuid } from "./findUnlockableByUuid";
 import { ConfigError } from "../../../config/types";
 
 describe("find unlockables based on UUID", () => {
