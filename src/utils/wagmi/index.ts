@@ -1,2 +1,3 @@
-import WagmiClient from "./wagmi";
-export { WagmiClient };
+// import WagmiClient from "./wagmi";
+// export { WagmiClient };
+// export { Config } from "./wagmi";

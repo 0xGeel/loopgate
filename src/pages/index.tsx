@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import { useSIWE } from "connectkit";
 
 const Page = () => {
-  const { signedIn } = useSIWE();
+  const { isSignedIn } = useSIWE();
 
   return (
     <div
@@ -15,9 +15,7 @@ const Page = () => {
       }}
     >
       <Header />
-
-      {!signedIn ? <ConnectPrompt /> : <ConnectedPage />}
-
+      {!isSignedIn ? <ConnectPrompt /> : <ConnectedPage />}
       <Footer />
     </div>
   );

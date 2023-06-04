@@ -4,65 +4,40 @@ import { WagmiConfig } from "wagmi";
 import { ConnectKitProvider } from "connectkit";
 
 import "../styles/globals.css";
-import { WagmiClient } from "../utils/wagmi";
-import { siwe } from "../utils/siwe";
-import { overrides } from "../styles/ConnectKit/overrides";
 import NextHeadBase from "../components/SEO/NextHeadBase";
 import { inter, unbounded } from "../components/Fonts/Fonts";
 import { Toaster } from "react-hot-toast";
+import { connectKitOverrides, toasterOptions } from "../styles/styles";
+import { SiweClient } from "../utils/siwe";
+import Config from "../utils/wagmi/wagmi";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   return (
-    <WagmiConfig client={WagmiClient}>
-      <siwe.Provider>
+    <WagmiConfig config={Config}>
+      <SiweClient.Provider>
         <ConnectKitProvider
-          theme="midnight"
-          customTheme={overrides}
+          theme="auto"
+          mode="light"
+          customTheme={connectKitOverrides}
           options={{
+            hideNoWalletCTA: true,
+            hideQuestionMarkCTA: true,
+            walletConnectCTA: "link",
             walletConnectName: "WalletConnect",
           }}
         >
           <main className={`${inter.variable} ${unbounded.variable} font-sans`}>
             <NextHeadBase />
             {mounted && <Component {...pageProps} />}
-            <Toaster
-              toastOptions={{
-                style: {
-                  backgroundColor: "rgba(17,24,44,.8)",
-                  backdropFilter: "blur(2px)",
-                  color: "#FFFFFF",
-                  fontSize: "14px",
-                  border: "1px solid rgba(255,255,255,.2)",
-                  maxWidth: "420px",
-                  width: "100%",
-                  lineHeight: 1.5,
-                },
-              }}
-            />
+            <Toaster toastOptions={toasterOptions} />
           </main>
         </ConnectKitProvider>
-      </siwe.Provider>
+      </SiweClient.Provider>
     </WagmiConfig>
   );
 };
 
 export default App;
-
-// const disclaimerOptions = {
-//   disclaimer: (
-//     <>
-//       By connecting your wallet you agree to the{" "}
-//       <a target="_blank" rel="noopener noreferrer" href="#!">
-//         Terms of Service
-//       </a>{" "}
-//       and{" "}
-//       <a target="_blank" rel="noopener noreferrer" href="#!">
-//         Privacy Policy
-//       </a>
-//       .
-//     </>
-//   ),
-// };

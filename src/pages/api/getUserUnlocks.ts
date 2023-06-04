@@ -3,7 +3,7 @@ import { findUnlockedCids } from "../../utils/generic";
 import { getAllUserNftIds, getUserAddress } from "../../utils/loopring";
 import { getPinataIndexLink } from "../../utils/pinata";
 import { withSessionRoute } from "@/src/utils/iron-session/withSession";
-import { siwe } from "@/src/utils/siwe";
+import { SiweServer } from "@/src/utils/siwe";
 
 // Summary of what happens:
 // 1️⃣ Call the Loopring API to find the User's Loopring Account ID
@@ -13,7 +13,7 @@ import { siwe } from "@/src/utils/siwe";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;
   const { address } = query;
-  const siweSesh = await siwe.getSession(req, res);
+  const siweSesh = await SiweServer.getSession(req, res);
 
   if (!address || Array.isArray(address)) {
     return res

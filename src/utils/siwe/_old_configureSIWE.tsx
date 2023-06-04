@@ -1,19 +1,37 @@
+import { FunctionComponent, ComponentProps } from "react";
 import { SIWEProvider } from "connectkit";
 import type { IncomingMessage, ServerResponse } from "http";
-import { getIronSession, IronSessionOptions } from "iron-session";
+import { getIronSession, IronSession, IronSessionOptions } from "iron-session";
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
-import { generateNonce, SiweErrorType, SiweMessage } from "siwe";
+import { generateNonce, SiweMessage } from "siwe";
 import { getDefaultProvider } from "ethers";
 
-import {
-  NextSIWESession,
-  RouteHandlerOptions,
-  NextServerSIWEConfig,
-  NextClientSIWEConfig,
-  ConfigureClientSIWEResult,
-  NextSIWEProviderProps,
-  ConfigureServerSIWEResult,
-} from "./types";
+type NextSIWEConfig = {
+  apiRoutePrefix: string;
+  statement?: string;
+  session?: Partial<IronSessionOptions>;
+};
+
+type NextSIWESession<TSessionData extends Object = {}> = IronSession &
+  TSessionData & {
+    nonce?: string;
+    address?: string;
+    chainId?: number;
+  };
+
+type NextSIWEProviderProps = Omit<
+  ComponentProps<typeof SIWEProvider>,
+  "getNonce" | "createMessage" | "verifyMessage" | "getSession" | "signOut"
+>;
+
+type ConfigureSIWEResult<TSessionData extends Object = {}> = {
+  apiRouteHandler: NextApiHandler;
+  Provider: FunctionComponent<NextSIWEProviderProps>;
+  getSession: (
+    req: IncomingMessage,
+    res: ServerResponse
+  ) => Promise<NextSIWESession<TSessionData>>;
+};
 
 const getSession = async <TSessionData extends Object = {}>(
   req: IncomingMessage,
@@ -31,16 +49,12 @@ const getSession = async <TSessionData extends Object = {}>(
 const logoutRoute = async (
   req: NextApiRequest,
   res: NextApiResponse<void>,
-  sessionConfig: IronSessionOptions,
-  afterCallback?: RouteHandlerOptions["afterLogout"]
+  sessionConfig: IronSessionOptions
 ) => {
   switch (req.method) {
     case "GET":
       const session = await getSession(req, res, sessionConfig);
       session.destroy();
-      if (afterCallback) {
-        await afterCallback(req, res);
-      }
       res.status(200).end();
       break;
     default:
@@ -52,8 +66,7 @@ const logoutRoute = async (
 const nonceRoute = async (
   req: NextApiRequest,
   res: NextApiResponse<string>,
-  sessionConfig: IronSessionOptions,
-  afterCallback?: RouteHandlerOptions["afterNonce"]
+  sessionConfig: IronSessionOptions
 ) => {
   switch (req.method) {
     case "GET":
@@ -61,9 +74,6 @@ const nonceRoute = async (
       if (!session.nonce) {
         session.nonce = generateNonce();
         await session.save();
-      }
-      if (afterCallback) {
-        await afterCallback(req, res, session);
       }
       res.send(session.nonce);
       break;
@@ -76,16 +86,11 @@ const nonceRoute = async (
 const sessionRoute = async (
   req: NextApiRequest,
   res: NextApiResponse<{ address?: string; chainId?: number }>,
-  sessionConfig: IronSessionOptions,
-  afterCallback?: RouteHandlerOptions["afterSession"]
+  sessionConfig: IronSessionOptions
 ) => {
   switch (req.method) {
     case "GET":
-      const session = await getSession(req, res, sessionConfig);
-      if (afterCallback) {
-        await afterCallback(req, res, session);
-      }
-      const { address, chainId } = session;
+      const { address, chainId } = await getSession(req, res, sessionConfig);
       res.send({ address, chainId });
       break;
     default:
@@ -97,8 +102,7 @@ const sessionRoute = async (
 const verifyRoute = async (
   req: NextApiRequest,
   res: NextApiResponse<void>,
-  sessionConfig: IronSessionOptions,
-  afterCallback?: RouteHandlerOptions["afterVerify"]
+  sessionConfig: IronSessionOptions
 ) => {
   switch (req.method) {
     case "POST":
@@ -106,47 +110,23 @@ const verifyRoute = async (
         const session = await getSession(req, res, sessionConfig);
         const { message, signature } = req.body;
         const siweMessage = new SiweMessage(message);
+        const ethProvider = getDefaultProvider();
 
-        const { data: fields } = await siweMessage.verify({
-          signature: signature,
-          nonce: session.nonce,
-        });
+        // Verify the SIWE message
+        const fields = await siweMessage.verify(
+          { signature: signature },
+          { provider: ethProvider }
+        );
 
-        // Attempt: Add the previously missing 'ethProvider' to the WalletConnect siweMessage.verify
-        // Family ConnectKit Next SIWE: https://github.com/family/connectkit/blob/main/packages/connectkit-next-siwe/src/configureSIWE.tsx
-        // siweMessage reference: https://github.com/spruceid/siwe/blob/main/packages/siwe/lib/client.ts
-
-        // const ethProvider = getDefaultProvider();
-        // const { data: fields } = await siweMessage.verify(
-        //   {
-        //     signature: signature,
-        //     nonce: session.nonce,
-        //   },
-        //   { provider: ethProvider }
-        // );
-
-        if (fields.nonce !== session.nonce) {
+        if (fields.data.nonce !== session.nonce) {
           return res.status(422).end("Invalid nonce.");
         }
-        session.address = fields.address;
-        session.chainId = fields.chainId;
+        session.address = fields.data.address;
+        session.chainId = fields.data.chainId;
         await session.save();
-        if (afterCallback) {
-          await afterCallback(req, res, session);
-        }
         res.status(200).end();
       } catch (error) {
-        switch (error) {
-          case SiweErrorType.INVALID_NONCE:
-          case SiweErrorType.INVALID_SIGNATURE: {
-            res.status(422).end(String(error));
-            break;
-          }
-          default: {
-            res.status(400).end(String(error));
-            break;
-          }
-        }
+        res.status(400).end(String(error));
       }
       break;
     default:
@@ -163,10 +143,11 @@ const envVar = (name: string) => {
   return value;
 };
 
-export const configureServerSideSIWE = <TSessionData extends Object = {}>({
+export const configureSIWE = <TSessionData extends Object = {}>({
+  apiRoutePrefix,
+  statement = "Sign In With Ethereum.",
   session: { cookieName, password, cookieOptions, ...otherSessionOptions } = {},
-  options: { afterNonce, afterVerify, afterSession, afterLogout } = {},
-}: NextServerSIWEConfig): ConfigureServerSIWEResult<TSessionData> => {
+}: NextSIWEConfig): ConfigureSIWEResult<TSessionData> => {
   const sessionConfig: IronSessionOptions = {
     cookieName: cookieName ?? "connectkit-next-siwe",
     password: password ?? envVar("SESSION_SECRET"),
@@ -187,29 +168,18 @@ export const configureServerSideSIWE = <TSessionData extends Object = {}>({
     const route = req.query.route.join("/");
     switch (route) {
       case "nonce":
-        return await nonceRoute(req, res, sessionConfig, afterNonce);
+        return await nonceRoute(req, res, sessionConfig);
       case "verify":
-        return await verifyRoute(req, res, sessionConfig, afterVerify);
+        return await verifyRoute(req, res, sessionConfig);
       case "session":
-        return await sessionRoute(req, res, sessionConfig, afterSession);
+        return await sessionRoute(req, res, sessionConfig);
       case "logout":
-        return await logoutRoute(req, res, sessionConfig, afterLogout);
+        return await logoutRoute(req, res, sessionConfig);
       default:
         return res.status(404).end();
     }
   };
 
-  return {
-    apiRouteHandler,
-    getSession: async (req: IncomingMessage, res: ServerResponse) =>
-      await getSession<TSessionData>(req, res, sessionConfig),
-  };
-};
-
-export const configureClientSIWE = <TSessionData extends Object = {}>({
-  apiRoutePrefix,
-  statement = "Sign In With Ethereum.",
-}: NextClientSIWEConfig): ConfigureClientSIWEResult<TSessionData> => {
   const NextSIWEProvider = (props: NextSIWEProviderProps) => {
     return (
       <SIWEProvider
@@ -256,6 +226,9 @@ export const configureClientSIWE = <TSessionData extends Object = {}>({
   };
 
   return {
+    apiRouteHandler,
     Provider: NextSIWEProvider,
+    getSession: async (req: IncomingMessage, res: ServerResponse) =>
+      await getSession<TSessionData>(req, res, sessionConfig),
   };
 };

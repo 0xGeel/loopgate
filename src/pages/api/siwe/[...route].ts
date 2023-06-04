@@ -1,2 +1,3 @@
-import { siwe } from "../../../utils/siwe";
-export default siwe.apiRouteHandler;
+import { SiweServer } from "@/src/utils/siwe";
+
+export default SiweServer.apiRouteHandler;
