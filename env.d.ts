@@ -6,6 +6,5 @@ namespace NodeJS {
     LOOPRING_API_KEY: string;
     SESSION_SECRET: string;
     NEXT_PUBLIC_WALLECTONNECT_ID: string;
-    NEXT_PUBLIC_INFURA_ID: string;
   }
 }

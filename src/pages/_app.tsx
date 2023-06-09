@@ -9,7 +9,7 @@ import { inter, unbounded } from "../components/Fonts/Fonts";
 import { Toaster } from "react-hot-toast";
 import { connectKitOverrides, toasterOptions } from "../styles/styles";
 import { SiweClient } from "../utils/siwe";
-import Config from "../utils/wagmi/wagmi";
+import { Config } from "../utils/wagmi";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [mounted, setMounted] = useState(false);

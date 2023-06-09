@@ -1,13 +1,21 @@
-import { publicProvider } from "wagmi/providers/public";
-import { InjectedConnector } from "wagmi/connectors/injected";
-import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { configureChains, createConfig, mainnet } from "wagmi";
+
+import { InjectedConnector } from "wagmi/connectors/injected";
+import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
+import { publicProvider } from "wagmi/providers/public";
 
 const { chains, publicClient } = configureChains([mainnet], [publicProvider()]);
 
-const Config = createConfig({
+export const Config = createConfig({
   connectors: [
-    new InjectedConnector({ chains }),
+    new InjectedConnector({
+      chains,
+      options: {
+        name: "Browser Wallet",
+        shimDisconnect: true,
+      },
+    }),
     new WalletConnectConnector({
       chains,
       options: {
@@ -15,8 +23,9 @@ const Config = createConfig({
         showQrModal: false,
       },
     }),
+    new MetaMaskConnector({
+      chains,
+    }),
   ],
   publicClient,
 });
-
-export default Config;
