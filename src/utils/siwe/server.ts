@@ -1,4 +1,5 @@
-import { configureServerSideSIWE } from "connectkit-next-siwe";
+// import { configureServerSideSIWE } from "connectkit-next-siwe";
+import { configureServerSideSIWE } from "./configure";
 
 export const SiweServer = configureServerSideSIWE({
   session: {

@@ -1,4 +1,5 @@
-import { configureClientSIWE } from "./configureSIWE";
+// import { configureClientSIWE } from "connectkit-next-siwe";
+import { configureClientSIWE } from "./configure";
 
 export const SiweClient = configureClientSIWE({
   apiRoutePrefix: "/api/siwe",

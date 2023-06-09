@@ -3,6 +3,8 @@ import type { IncomingMessage, ServerResponse } from "http";
 import { getIronSession, IronSessionOptions } from "iron-session";
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import { generateNonce, SiweErrorType, SiweMessage } from "siwe";
+
+// Manual patch: See line 113
 import { getDefaultProvider } from "ethers";
 
 import {
@@ -105,25 +107,20 @@ const verifyRoute = async (
       try {
         const session = await getSession(req, res, sessionConfig);
         const { message, signature } = req.body;
+
         const siweMessage = new SiweMessage(message);
 
-        const { data: fields } = await siweMessage.verify({
-          signature: signature,
-          nonce: session.nonce,
-        });
+        // Manual patch: the SIWE package requires a provider to be able to resolve Smart Contract Wallets (Like Loopring Wallet)
+        // See: https://github.com/spruceid/siwe/blob/97531efca33c1770b29d6ca1c2d0057faf734fcc/packages/siwe/lib/client.ts#LL306C1-L307C1
+        const ethProvider = getDefaultProvider();
 
-        // Attempt: Add the previously missing 'ethProvider' to the WalletConnect siweMessage.verify
-        // Family ConnectKit Next SIWE: https://github.com/family/connectkit/blob/main/packages/connectkit-next-siwe/src/configureSIWE.tsx
-        // siweMessage reference: https://github.com/spruceid/siwe/blob/main/packages/siwe/lib/client.ts
-
-        // const ethProvider = getDefaultProvider();
-        // const { data: fields } = await siweMessage.verify(
-        //   {
-        //     signature: signature,
-        //     nonce: session.nonce,
-        //   },
-        //   { provider: ethProvider }
-        // );
+        const { data: fields } = await siweMessage.verify(
+          {
+            signature: signature,
+            nonce: session.nonce,
+          },
+          { provider: ethProvider }
+        );
 
         if (fields.nonce !== session.nonce) {
           return res.status(422).end("Invalid nonce.");
@@ -137,7 +134,10 @@ const verifyRoute = async (
         res.status(200).end();
       } catch (error) {
         switch (error) {
-          case SiweErrorType.INVALID_NONCE:
+          case SiweErrorType.INVALID_NONCE: {
+            res.status(422).end(String(error));
+            break;
+          }
           case SiweErrorType.INVALID_SIGNATURE: {
             res.status(422).end(String(error));
             break;
