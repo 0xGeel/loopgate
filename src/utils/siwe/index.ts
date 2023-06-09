@@ -1,1 +1,2 @@
-export { siwe } from "./siwe";
+export { SiweClient } from "./client";
+export { SiweServer } from "./server";

@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { siwe } from "@/src/utils/siwe";
+import { SiweServer } from "@/src/utils/siwe";
 import { withSessionRoute } from "@/src/utils/iron-session/withSession";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
-  const siweSesh = await siwe.getSession(req, res);
+  const siweSesh = await SiweServer.getSession(req, res);
 
   switch (method) {
     case "GET":

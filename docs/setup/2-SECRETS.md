@@ -41,6 +41,15 @@ The Pinata Submarine API key is used to unlock the hidden files.
 - Next, click on the 'Developers' tab, then the 'Submarine keys' tab.
 - Click on '+ New Key' to generate a new key. Copy it, and paste it in your `.env` file so that `PINATA_SUBMARINE_KEY=YOUR_SUB_KEY`.
 
+## WalletConnect
+
+{% hint style="info" %}
+The WalletConnect Project ID is used to power WalletConnect connections.
+{% endhint %}
+
+- Head over to the WalletConnect documentation to create a Project and generate a Project ID: https://docs.walletconnect.com/2.0/web/sign/installation.
+- Once you have a Project ID paste it in your `.env` file so that `NEXT_PUBLIC_WALLECTONNECT_ID=YOUR_ID`.
+
 ## Session Secret
 
 {% hint style="info" %}

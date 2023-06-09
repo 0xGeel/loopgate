@@ -1,36 +1,31 @@
-import { createClient, configureChains, mainnet, goerli } from "wagmi";
+import { configureChains, createConfig, mainnet } from "wagmi";
 
 import { InjectedConnector } from "wagmi/connectors/injected";
-import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { publicProvider } from "wagmi/providers/public";
 
-const { provider, chains } = configureChains(
-  [mainnet, goerli],
-  [publicProvider()]
-);
+const { chains, publicClient } = configureChains([mainnet], [publicProvider()]);
 
-const WagmiClient = createClient({
-  autoConnect: true,
+export const Config = createConfig({
   connectors: [
     new InjectedConnector({
       chains,
       options: {
-        name: "Injected",
+        name: "Browser Wallet",
         shimDisconnect: true,
       },
     }),
     new WalletConnectConnector({
-      chains: chains,
+      chains,
       options: {
-        qrcode: true,
+        projectId: process.env.NEXT_PUBLIC_WALLECTONNECT_ID,
+        showQrModal: false,
       },
     }),
     new MetaMaskConnector({
-      chains: chains,
+      chains,
     }),
   ],
-  provider,
+  publicClient,
 });
-
-export default WagmiClient;
