@@ -1,6 +1,6 @@
 {
   "name": "loopgate",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Easily Token-Gate Content using Loopring Layer-2 NFTs and Pinata",
   "author": "Geel <@0xGeel>",
   "license": "BSD-2-Clause",
